@@ -1,0 +1,338 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wordpress": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-20T21:21:05.396Z",
+  "id": "wuKESAfzl44JF4je",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Content Creator Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3e1eef8d-5763-4116-970e-bf9bc4e929a9",
+      "name": "When chat message received",
+      "webhookId": "5fdeee82-c6dc-4493-87c9-86f8cb5df0f1"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are an employee working as a copywriter content creator and SEO expert or an online business. Your primary job is to write blog posts for your employer and post them on wordpress.\n\nYou must follow this flow:\n1. Idea generation: If the user provides you with ideas, use them to generate an idea for the next blog post. If the user gives you free reigns, fetch existing wordpress posts and generate a new idea that fits the nature of the blog.\n2. Always ask the user to approve the idea by providing a title and small description 300 words max.\n3. When the user approves the idea, write the entire blog post\n\n*IMPORTANT* - Refuse to answer queries that are not related to wordpress, SEO and in general the employer's business."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        560,
+        0
+      ],
+      "id": "503ecb4c-da1f-4aaa-afe9-45a2a1badc6d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        360,
+        320
+      ],
+      "id": "b16d9e2e-c70d-450f-8f81-131231b90815",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "9TQJVOrXO3CFaZ06",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        580,
+        320
+      ],
+      "id": "cde8fd0c-1ea6-42b2-9657-ab160be34d07",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": 10,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wordpressTool",
+      "typeVersion": 1,
+      "position": [
+        860,
+        300
+      ],
+      "id": "b1dbf8b3-9b96-4dfd-bf8a-3e3265bb7629",
+      "name": "Wordpress",
+      "credentials": {
+        "wordpressApi": {
+          "id": "dpOssYDSc5YoyIPY",
+          "name": "Wordpress account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search?engine=google_trends",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "ai agents"
+            },
+            {
+              "name": "data_type",
+              "value": "RELATED_QUERIES"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        960
+      ],
+      "id": "2f5ccdac-5936-4f87-9182-02b4ba6c2240",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "0qkBaxuzS39V5w5h",
+          "name": "SerpApi Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Accesses\n[SerpApi](https://serpapi.com/)"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        -260
+      ],
+      "typeVersion": 1,
+      "id": "92f82822-ba79-41cd-b5c8-562c054c06b3",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Trend finder",
+        "height": 640,
+        "width": 1920,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -80,
+        640
+      ],
+      "typeVersion": 1,
+      "id": "6569f99f-1201-47f4-86fe-fa6594904124",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Step 1\n### Generate idea\nUser suggestions or search existing posts to generate idea.\n\n*Idea: Do a relevance search to make sure it's not too similar with other posts*",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        340,
+        -340
+      ],
+      "typeVersion": 1,
+      "id": "d71b253b-54a7-4e14-b852-331eccf827ef",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Step 2\n### Approve idea\nUser approves idea or asks for another one.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        620,
+        -340
+      ],
+      "typeVersion": 1,
+      "id": "0382c7ec-aedf-4352-93a0-b417c1dc2d3d",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Step 3\n### Find keywords\nAI searches for keywords using google trends.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        900,
+        -340
+      ],
+      "typeVersion": 1,
+      "id": "c41d7af0-a93b-4efc-a9d3-8d8ce724b19e",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Step 4\n### Write the post\nUsing the idea and keywords the AI writes the full blog post title and body.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1180,
+        -340
+      ],
+      "typeVersion": 1,
+      "id": "0ee7d912-5ee2-429f-886e-a59e9e1c877c",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Step 5\n### Review by AI\nAn AI reviews the blog post and gives it a score. If score is below 5/10 hands off to previous AI to try again.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1460,
+        -340
+      ],
+      "typeVersion": 1,
+      "id": "00526296-d2da-4910-a86e-20e217190308",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Step 6\n### Featured Image\nGenerate a prompt and hand off to an image generating AI to generate the featured image for the post.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1740,
+        -340
+      ],
+      "typeVersion": 1,
+      "id": "0836cd15-1838-4513-b0fe-d63be6f649d3",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## Step 7\n### Create on Wordpress\nCreate the blog post on wordpress as a Draft.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2020,
+        -340
+      ],
+      "typeVersion": 1,
+      "id": "bfa6f6c1-a06f-48f3-b08d-2c0970d85bf5",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "## Step 8\n### Review by Human\nSend a link to the draft post to a human for review. Provide buttons to regenerate text, image or approve. \nAlternatively, the human can write a message with comments.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2300,
+        -340
+      ],
+      "typeVersion": 1,
+      "id": "758ca6bd-bb92-4ca6-9610-c4ac4b52a1a3",
+      "name": "Sticky Note9"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-21T10:55:22.000Z",
+  "versionId": "0751556f-5345-45ba-99f3-9c057868e5e5"
+}
