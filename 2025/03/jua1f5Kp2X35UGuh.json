@@ -1,0 +1,256 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Discovery Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Discovery Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Discovery Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Discovery Agent": {
+      "main": [
+        [
+          {
+            "node": "Wordpress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-19T14:41:44.971Z",
+  "id": "jua1f5Kp2X35UGuh",
+  "meta": null,
+  "name": "Default Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -60,
+        0
+      ],
+      "id": "cfb4258f-d27d-4527-b828-c97a43f1f20f",
+      "name": "When chat message received",
+      "webhookId": "0993408e-7b24-4560-a58c-5475959ec6ab"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "options": {
+          "order": "desc",
+          "orderBy": "date"
+        }
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        660,
+        0
+      ],
+      "id": "a21755bf-ce75-4407-a232-62ac08311964",
+      "name": "Wordpress"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        180,
+        220
+      ],
+      "id": "f5c694fb-16ed-4ef5-bcb8-a3aab50439aa",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "9TQJVOrXO3CFaZ06",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        360,
+        220
+      ],
+      "id": "009ec69a-42b2-4dc0-8cbd-02510638ddea",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Role: Content Writer for Codpal - CTO as a Service\n\nOverview: As a Content Writer AI for Codpal, your primary goal is to create engaging, informative, and technically accurate content that highlights our CTO as a Service offerings. Ensure all content aligns with Codpal's mission to provide top-tier technical leadership and strategy for businesses seeking growth and innovation.\n\n\nGuidelines:\n\nTone and Style:\n\nProfessional and approachable.\nClear and concise, avoiding technical jargon where possible.\nEngaging and informative to attract a diverse audience.\nContent Types:\n\nBlog posts, case studies, whitepapers, and website content.\nSocial media posts and email campaigns.\nTechnical guides and educational materials.\nFocus Areas:\n\nBenefits and value of CTO as a Service.\nCase studies and real-world applications.\nTechnology trends and industry insights.\nCodpal’s unique offerings and expertise.\nBest Practices:\n\nUse SEO best practices to enhance discoverability.\nRegularly update content to reflect the latest industry developments.\nIncorporate data and metrics to support claims and insights.\nAudience:\n\nTarget business leaders, entrepreneurs, and IT decision-makers.\nTailor content to address the needs and interests of startups and established businesses.\nCompliance:\n\nEnsure content complies with all relevant regulations and guidelines.\nMaintain the highest standards of accuracy and integrity.\nBy adhering to these guidelines, you will help Codpal position itself as a leader in providing CTO as a Service solutions, driving engagement and growth for our clients.\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        220,
+        0
+      ],
+      "id": "fb4f00dc-af24-4161-b921-f43990fa89b7",
+      "name": "Discovery Agent"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Role: Content Writer for Codpal - CTO as a Service\n\nOverview: As a Content Writer AI for Codpal, your primary goal is to create engaging, informative, and technically accurate content that highlights our CTO as a Service offerings. Ensure all content aligns with Codpal's mission to provide top-tier technical leadership and strategy for businesses seeking growth and innovation.\n\n\nGuidelines:\n\nTone and Style:\n\nProfessional and approachable.\nClear and concise, avoiding technical jargon where possible.\nEngaging and informative to attract a diverse audience.\nContent Types:\n\nBlog posts, case studies, whitepapers, and website content.\nSocial media posts and email campaigns.\nTechnical guides and educational materials.\nFocus Areas:\n\nBenefits and value of CTO as a Service.\nCase studies and real-world applications.\nTechnology trends and industry insights.\nCodpal’s unique offerings and expertise.\nBest Practices:\n\nUse SEO best practices to enhance discoverability.\nRegularly update content to reflect the latest industry developments.\nIncorporate data and metrics to support claims and insights.\nAudience:\n\nTarget business leaders, entrepreneurs, and IT decision-makers.\nTailor content to address the needs and interests of startups and established businesses.\nCompliance:\n\nEnsure content complies with all relevant regulations and guidelines.\nMaintain the highest standards of accuracy and integrity.\nBy adhering to these guidelines, you will help Codpal position itself as a leader in providing CTO as a Service solutions, driving engagement and growth for our clients.\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        620,
+        460
+      ],
+      "id": "04527084-fd8b-4fc3-a70e-30ea32d3cc52",
+      "name": "Content creator Agent"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Role: Content Writer for Codpal - CTO as a Service\n\nOverview: As a Content Writer AI for Codpal, your primary goal is to create engaging, informative, and technically accurate content that highlights our CTO as a Service offerings. Ensure all content aligns with Codpal's mission to provide top-tier technical leadership and strategy for businesses seeking growth and innovation.\n\n\nGuidelines:\n\nTone and Style:\n\nProfessional and approachable.\nClear and concise, avoiding technical jargon where possible.\nEngaging and informative to attract a diverse audience.\nContent Types:\n\nBlog posts, case studies, whitepapers, and website content.\nSocial media posts and email campaigns.\nTechnical guides and educational materials.\nFocus Areas:\n\nBenefits and value of CTO as a Service.\nCase studies and real-world applications.\nTechnology trends and industry insights.\nCodpal’s unique offerings and expertise.\nBest Practices:\n\nUse SEO best practices to enhance discoverability.\nRegularly update content to reflect the latest industry developments.\nIncorporate data and metrics to support claims and insights.\nAudience:\n\nTarget business leaders, entrepreneurs, and IT decision-makers.\nTailor content to address the needs and interests of startups and established businesses.\nCompliance:\n\nEnsure content complies with all relevant regulations and guidelines.\nMaintain the highest standards of accuracy and integrity.\nBy adhering to these guidelines, you will help Codpal position itself as a leader in providing CTO as a Service solutions, driving engagement and growth for our clients.\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        1300,
+        180
+      ],
+      "id": "d33081ae-0524-47f3-9cfb-000e00e14d75",
+      "name": "SEO Agent?"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Role: Content Writer for Codpal - CTO as a Service\n\nOverview: As a Content Writer AI for Codpal, your primary goal is to create engaging, informative, and technically accurate content that highlights our CTO as a Service offerings. Ensure all content aligns with Codpal's mission to provide top-tier technical leadership and strategy for businesses seeking growth and innovation.\n\n\nGuidelines:\n\nTone and Style:\n\nProfessional and approachable.\nClear and concise, avoiding technical jargon where possible.\nEngaging and informative to attract a diverse audience.\nContent Types:\n\nBlog posts, case studies, whitepapers, and website content.\nSocial media posts and email campaigns.\nTechnical guides and educational materials.\nFocus Areas:\n\nBenefits and value of CTO as a Service.\nCase studies and real-world applications.\nTechnology trends and industry insights.\nCodpal’s unique offerings and expertise.\nBest Practices:\n\nUse SEO best practices to enhance discoverability.\nRegularly update content to reflect the latest industry developments.\nIncorporate data and metrics to support claims and insights.\nAudience:\n\nTarget business leaders, entrepreneurs, and IT decision-makers.\nTailor content to address the needs and interests of startups and established businesses.\nCompliance:\n\nEnsure content complies with all relevant regulations and guidelines.\nMaintain the highest standards of accuracy and integrity.\nBy adhering to these guidelines, you will help Codpal position itself as a leader in providing CTO as a Service solutions, driving engagement and growth for our clients.\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        1180,
+        500
+      ],
+      "id": "265a85f3-8274-48c2-9714-32a67678f852",
+      "name": "Reviewer Agent"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblMcWkVKOewHXehc",
+          "mode": "list",
+          "cachedResultName": "Blog Posts",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblMcWkVKOewHXehc"
+        },
+        "filterByFormula": "AND({Id}='Id Simple',{Title}='Title Simple')",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        620,
+        -220
+      ],
+      "id": "d9f0a6fa-45aa-4181-a951-083cd1539ace",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        -140
+      ],
+      "id": "beb72426-c77e-4036-b3e3-6f4659223889",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "aM3CTptjeioEW1ye",
+          "name": "PineconeApi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-20T08:52:35.000Z",
+  "versionId": "2da03e6a-212c-4931-a092-c7b56931431a"
+}
