@@ -1,0 +1,505 @@
+{
+  "active": false,
+  "connections": {
+    "Get Wordpress Posts": {
+      "main": [
+        [
+          {
+            "node": "Create Vector Documents",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Notify Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Create Vector Documents",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Create Vector Documents",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Get Wordpress Posts",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Wordpress Client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Vector Documents": {
+      "main": [
+        [
+          {
+            "node": "Notify DB is ready",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Wordpress Client": {
+      "main": [
+        [
+          {
+            "node": "Get Client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Client": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify DB is ready": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify Error": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-20T20:09:08.929Z",
+  "id": "hQ2sieB5gtsXaF8W",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Ingest Wordpress Posts",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "status": "publish"
+        }
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        500,
+        300
+      ],
+      "id": "8ebb2603-a4b9-4184-ab61-af48ae2786db",
+      "name": "Get Wordpress Posts",
+      "retryOnFail": true,
+      "alwaysOutputData": false,
+      "credentials": {
+        "wordpressApi": {
+          "id": "dpOssYDSc5YoyIPY",
+          "name": "Wordpress account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "URL"
+            },
+            {
+              "name": "Wordpress Username"
+            },
+            {
+              "name": "Wordpress Password"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        60,
+        100
+      ],
+      "id": "044e7ed9-5b15-4f87-b2e3-213d810bdf35",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        120
+      ],
+      "id": "f77a8c36-b350-4823-8e83-35f16f5813ec",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "9TQJVOrXO3CFaZ06",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.content.rendered }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "source",
+                "value": "={{ $json.link }}"
+              },
+              {
+                "name": "date",
+                "value": "={{ $json.date_gmt }}"
+              },
+              {
+                "name": "title",
+                "value": "={{ $json.title.rendered }}"
+              },
+              {
+                "name": "wordpress_id",
+                "value": "={{ $json.id }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        940,
+        120
+      ],
+      "id": "82d3083a-161c-41ab-becf-c531e9ba2b3f",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        940,
+        280
+      ],
+      "id": "fb9606d2-d894-4a43-876a-9455bbfa9f0a",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8c28100f-8d94-430a-ab01-8ba4413a9ec2",
+              "name": "URL",
+              "value": "={{ $json.URL }}",
+              "type": "string"
+            },
+            {
+              "id": "50c4de88-e341-4a7f-9045-ffcae949665e",
+              "name": "Wordpress Username",
+              "value": "={{ $json['Wordpress Username'] }}",
+              "type": "string"
+            },
+            {
+              "id": "96740962-df02-496a-80bf-2feb4986a4aa",
+              "name": "Wordpress Password",
+              "value": "={{ $json['Wordpress Password'] }}",
+              "type": "string"
+            },
+            {
+              "id": "99534fbc-478e-4f04-9b72-169cee9894fe",
+              "name": "URL Encoded",
+              "value": "={{ $json.URL.base64Encode() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        280,
+        100
+      ],
+      "id": "3a4d5e8c-2a80-4ef8-a2b0-f03e1a5de407",
+      "name": "Config"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "wordpress-blogs",
+          "mode": "list",
+          "cachedResultName": "wordpress-blogs"
+        },
+        "options": {
+          "clearNamespace": true,
+          "pineconeNamespace": "=wordpress-{{ $('Config').item.json['URL Encoded'] }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -100
+      ],
+      "id": "84aef120-98c1-4842-b893-39704f8eadc5",
+      "name": "Create Vector Documents",
+      "credentials": {
+        "pineconeApi": {
+          "id": "aM3CTptjeioEW1ye",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=[{{ $workflow.name }}][{{ $prevNode.name }}] {{ $json.error }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        858,
+        500
+      ],
+      "id": "b0549182-3ed2-4d17-b413-7c43e0c8092b",
+      "name": "Notify Error",
+      "webhookId": "fe5f7c6c-c633-4010-ac4a-8a775aaa996d",
+      "executeOnce": true,
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "ejWBQLu6nGM0maKd",
+          "name": "Discord Webhook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=[{{ $workflow.name }}][{{ $prevNode.name }}] I finished reading your currently published posts. You can now ask me anything related to their content and I can better help you write new blog posts.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        20
+      ],
+      "id": "cee3b51b-b98d-4b27-9426-54686a3677c5",
+      "name": "Notify DB is ready",
+      "webhookId": "fe5f7c6c-c633-4010-ac4a-8a775aaa996d",
+      "executeOnce": true,
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "ejWBQLu6nGM0maKd",
+          "name": "Discord Webhook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblty7DapzrDJ6cV6",
+          "mode": "list",
+          "cachedResultName": "Wordpress Clients",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblty7DapzrDJ6cV6"
+        },
+        "filterByFormula": "=AND({Wordpress Username}='{{ $json['Wordpress Username'] }}', {URL}='{{ $json.URL }}')",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        800,
+        -300
+      ],
+      "id": "70db6382-78df-4db2-abfa-290fe696462f",
+      "name": "Get Wordpress Client",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblfU3UiMHDL5DnNu",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblfU3UiMHDL5DnNu"
+        },
+        "id": "={{ $json.Client[0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1180,
+        -300
+      ],
+      "id": "076a8215-727c-4f43-b381-e443b5c7e76f",
+      "name": "Get Client",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1680,
+        -100
+      ],
+      "id": "9360b9db-63bb-4c6b-a3b5-4c9f34c5b09e",
+      "name": "Send Email",
+      "webhookId": "108630c7-8156-4d64-8320-b1754412bd4a",
+      "executeOnce": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "errorMessage": "=[{{ $workflow.name }}][{{ $prevNode.name }}] {{ $('Get Wordpress Posts').item.json.error }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        500
+      ],
+      "id": "f7bebbfe-e6a9-4873-936d-8521bba1886e",
+      "name": "Stop and Error"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "URL": "https://codpal.com",
+          "Wordpress Username": "apostolis.stephanou@gmail.com",
+          "Wordpress Password": "K^lRRPq*6C9tU!x^sLDsP$Nd"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-22T08:58:25.000Z",
+  "versionId": "48858fdc-8a56-4e25-9a03-273f62269302"
+}
