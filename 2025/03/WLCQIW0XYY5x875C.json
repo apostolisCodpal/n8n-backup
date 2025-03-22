@@ -1,0 +1,655 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Webhook": {
+      "main": [
+        [
+          {
+            "node": "Generate Signature",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get webhook payloads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get webhook payloads": {
+      "main": [
+        [
+          {
+            "node": "Update webhook cursor",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update webhook cursor": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Verify Wordpress Connection",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Verify Wordpress Connection": {
+      "main": [
+        [
+          {
+            "node": "Ingest Wordpress Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If valid signature": {
+      "main": [
+        [
+          {
+            "node": "Get webhook payloads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Decode Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decode Data": {
+      "main": [
+        [
+          {
+            "node": "Get Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Signature": {
+      "main": [
+        [
+          {
+            "node": "If valid signature",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-20T12:45:56.069Z",
+  "id": "WLCQIW0XYY5x875C",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Handle Airtable Webhooks",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "airtable",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -440,
+        480
+      ],
+      "id": "a1457001-e7f1-4f88-9aca-807f52454022",
+      "name": "Webhook",
+      "webhookId": "b29d955f-4831-4fba-9612-3b6170e4c38b"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl514QNEYB7CkLKO",
+          "mode": "list",
+          "cachedResultName": "Webhooks",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tbl514QNEYB7CkLKO"
+        },
+        "filterByFormula": "={webhook_id}='{{ $json.body.webhook.id }}'",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        220,
+        280
+      ],
+      "id": "52b9b5af-037b-43aa-a2a6-abcae327bdf4",
+      "name": "Get Webhook",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.airtable.com/v0/bases/{{ $('Webhook').first().json.body.base.id }}/webhooks/{{ $('Get Webhook').first().json.webhook_id }}/payloads",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "specifyQuery": "json",
+        "jsonQuery": "={{ $if($json.cursor, `{ \"cursor\": ${$json.cursor} }`,  '{}') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        480
+      ],
+      "id": "3ab366bd-6390-4997-be16-bc4d75e71c95",
+      "name": "Get webhook payloads",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "pLH5Anmy9qYQpX6J",
+          "name": "Airtable Bearer Access Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl514QNEYB7CkLKO",
+          "mode": "list",
+          "cachedResultName": "Webhooks",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tbl514QNEYB7CkLKO"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Get Webhook').item.json.id }}",
+            "cursor": "={{ $json.cursor }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "webhook_id",
+              "displayName": "webhook_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "table_id",
+              "displayName": "table_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "expirationTime",
+              "displayName": "expirationTime",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "macSecretBase64",
+              "displayName": "macSecretBase64",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "cursor",
+              "displayName": "cursor",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Modified Time",
+              "displayName": "Last Modified Time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1140,
+        380
+      ],
+      "id": "dbb7a692-cea3-4fcf-b32c-ae2a39c3240e",
+      "name": "Update webhook cursor",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "noData",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1360,
+        380
+      ],
+      "id": "ca01677c-2f86-4964-9d8d-264d065ea938",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\n\nconst data = $input.all();\n\nconst result = [];\nconst uniqueKeys = new Set();\n\n// Iterate over each item in the input array\ndata.forEach(item => {\n  // For each payload in the item\n  item.json.payloads.forEach(payload => {\n    // Extract changed tables\n    const changedTables = payload.changedTablesById;\n    // Iterate over each table id\n    Object.keys(changedTables).forEach(tableId => {\n      const tableData = changedTables[tableId];\n      // Extract changed records for the table\n      const changedRecords = tableData.changedRecordsById;\n      // Iterate over each record id\n      Object.keys(changedRecords).forEach(recordId => {\n        // Create a unique key for the combination\n        const key = `${tableId}-${recordId}`;\n        // Only add the combination if it hasn't been added already\n        if (!uniqueKeys.has(key)) {\n          uniqueKeys.add(key);\n          result.push({\n            tableId,\n            recordId\n          });\n        }\n      });\n    });\n  });\n});\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        580
+      ],
+      "id": "9c778087-f163-494d-8caf-4067bc792dab",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tableId }}",
+                    "rightValue": "={{ $vars.airtable_table_id_clients }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "1fa325a1-0813-44e3-8d64-5ae2f7264886"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Client"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e9f9da5a-64ae-45d1-849e-77ceb435e772",
+                    "leftValue": "={{ $json.tableId }}",
+                    "rightValue": "={{ $vars.airtable_table_id_wordpress_clients }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Wordpress Client"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1360,
+        580
+      ],
+      "id": "b254dc6e-9453-4a95-b904-bb1e477da52b",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "AWcDrvG1WWqCERHL",
+          "mode": "list",
+          "cachedResultName": "Verify Wordpress Connection"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "recordId": "={{ $json.recordId }}"
+          },
+          "matchingColumns": [
+            "recordId"
+          ],
+          "schema": [
+            {
+              "id": "recordId",
+              "displayName": "recordId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1580,
+        580
+      ],
+      "id": "cb7dc065-cfee-4924-8866-d45e680beaf0",
+      "name": "Verify Wordpress Connection"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "hQ2sieB5gtsXaF8W",
+          "mode": "list",
+          "cachedResultName": "Ingest Wordpress Posts"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "URL": "={{ $json.fields.URL }}",
+            "Wordpress Username": "={{ $json.fields['Wordpress Username'] }}",
+            "Wordpress Password": "={{ $json.fields['Wordpress Password'] }}"
+          },
+          "matchingColumns": [
+            "recordId"
+          ],
+          "schema": [
+            {
+              "id": "URL",
+              "displayName": "URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Wordpress Username",
+              "displayName": "Wordpress Username",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Wordpress Password",
+              "displayName": "Wordpress Password",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1800,
+        580
+      ],
+      "id": "da6971e5-550d-4a21-81a8-ea35737bc58c",
+      "name": "Ingest Wordpress Posts"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6d566d0b-1836-42f9-bf71-d70e29b9d2e0",
+              "leftValue": "={{ $json.expectedSignature }}",
+              "rightValue": "={{ $json.requestSignature }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        620,
+        600
+      ],
+      "id": "35e16d85-a69a-47d6-83de-cd265d42e7db",
+      "name": "If valid signature"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {
+          "encoding": "utf8",
+          "keepSource": "json"
+        }
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        480
+      ],
+      "id": "41507206-708f-461b-8cba-1af7c6caec51",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f15797b2-afb1-4331-8d0c-1cb5d4ed177e",
+              "name": "dataDecoded",
+              "value": "={{ $json.data.base64Decode() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        40,
+        480
+      ],
+      "id": "5890b9c1-06cf-4e79-80a8-a69050989a6d",
+      "name": "Decode Data"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const webhookNotificationDeliveryPayload = $('Decode Data').item.json.dataDecoded;\nconst macSecretBase64FromCreate = $input.item.json.macSecretBase64;\n\nconst macSecretDecoded = Buffer.from(macSecretBase64FromCreate, 'base64');\nconst body = Buffer.from(webhookNotificationDeliveryPayload, 'utf8');\n\nconst hmac = require('crypto').createHmac('sha256', macSecretDecoded);\nhmac.update(body.toString(), 'ascii');\nconst expectedSignature = 'hmac-sha256=' + hmac.digest('hex');\n\nreturn {\n  requestSignature: $('Webhook').item.json.headers[\"x-airtable-content-mac\"],\n  expectedSignature\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        360,
+        600
+      ],
+      "id": "809f7ba7-e3ab-462c-8c6d-1cc31822a2cb",
+      "name": "Generate Signature"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-22T09:03:45.000Z",
+  "versionId": "b70108f9-1a1e-49dc-ac72-c1134e3e3f5d"
+}
