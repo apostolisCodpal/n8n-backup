@@ -1,0 +1,1482 @@
+{
+  "active": true,
+  "connections": {
+    "n8n": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Get file data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Items",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get File": {
+      "main": [
+        [
+          {
+            "node": "Merge Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "File is new": {
+      "main": [
+        [
+          {
+            "node": "Create new file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Items": {
+      "main": [
+        [
+          {
+            "node": "isDiffOrNew",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "isDiffOrNew": {
+      "main": [
+        [
+          {
+            "node": "Create sub path",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Status": {
+      "main": [
+        [
+          {
+            "node": "Same file - Do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "File is different",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "File is new",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get file data": {
+      "main": [
+        [
+          {
+            "node": "If file too large",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create new file": {
+      "main": [
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create sub path": {
+      "main": [
+        [
+          {
+            "node": "Check Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Completed Notification",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "File is different": {
+      "main": [
+        [
+          {
+            "node": "Edit existing file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If file too large": {
+      "main": [
+        [
+          {
+            "node": "Get File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit existing file": {
+      "main": [
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Start Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Same file - Do nothing": {
+      "main": [
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start Notification": {
+      "main": [
+        [
+          {
+            "node": "n8n",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Failed Flows": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Once a day": {
+      "main": [
+        [
+          {
+            "node": "Start Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Failed Flows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-21T11:30:11.696Z",
+  "id": "DUSpPaYxb3pJvuUo",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Backup Workflows to Github",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8b9fea80-fb3b-48fe-9652-2a30e06f2f8f",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -60,
+        -260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Subworkflow",
+        "height": 731.7039821513649,
+        "width": 1910.7813046051347,
+        "color": 6
+      },
+      "id": "48ca29ae-1e90-4fc7-971c-f066e2dbc8e7",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -540,
+        120
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "e3f161a6-54b7-4808-88b2-32f511675b45",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -480,
+        500
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "filters": {},
+        "requestOptions": {}
+      },
+      "id": "13d3924f-b3bb-4cee-8748-c2cefefa550f",
+      "name": "n8n",
+      "type": "n8n-nodes-base.n8n",
+      "position": [
+        340,
+        -160
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "n8nApi": {
+          "id": "3AlwArbZ0AB8Dbd8",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8d513345-6484-431f-afb7-7cf045c90f4f",
+              "name": "Done",
+              "type": "boolean",
+              "value": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "82b8e9f2-dc2c-4ff4-9392-086f577b77a1",
+      "name": "Return",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1180,
+        320
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.download_url }}",
+        "options": {}
+      },
+      "id": "4cee27d5-0701-4e02-a8eb-933cee323e10",
+      "name": "Get File",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        140,
+        200
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "45ce825e-9fa6-430c-8931-9aaf22c42585",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.content }}",
+              "rightValue": ""
+            },
+            {
+              "id": "9619a55f-7fb1-4f24-b1a7-7aeb82365806",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.error }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4e636fb4-e4b9-40db-bb86-568663a41331",
+      "name": "If file too large",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -100,
+        220
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {},
+      "id": "29185f46-a605-404a-ab95-5d701d425cc8",
+      "name": "Merge Items",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        -100,
+        480
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "const orderJsonKeys = (jsonObj) => {\n  const ordered = {};\n  Object.keys(jsonObj).sort().forEach(key => {\n    ordered[key] = jsonObj[key];\n  });\n  return ordered;\n}\n\n// Check if file returned with content\nif (Object.keys($input.all()[0].json).includes(\"content\")) {\n  // Decode base64 content and parse JSON\n  const origWorkflow = JSON.parse(Buffer.from($input.all()[0].json.content, 'base64').toString());\n  const n8nWorkflow = $input.all()[1].json;\n  \n  // Order JSON objects\n  const orderedOriginal = orderJsonKeys(origWorkflow);\n  const orderedActual = orderJsonKeys(n8nWorkflow);\n\n  // Determine difference\n  if (JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual)) {\n    $input.all()[0].json.github_status = \"same\";\n  } else {\n    $input.all()[0].json.github_status = \"different\";\n    $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n  $input.all()[0].json.content_decoded = orderedOriginal;\n// No file returned / new workflow\n} else if (Object.keys($input.all()[0].json).includes(\"data\")) {\n  const origWorkflow = JSON.parse($input.all()[0].json.data);\n  const n8nWorkflow = $input.all()[1].json;\n  \n  // Order JSON objects\n  const orderedOriginal = orderJsonKeys(origWorkflow);\n  const orderedActual = orderJsonKeys(n8nWorkflow);\n\n  // Determine difference\n  if (JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual)) {\n    $input.all()[0].json.github_status = \"same\";\n  } else {\n    $input.all()[0].json.github_status = \"different\";\n    $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n  $input.all()[0].json.content_decoded = orderedOriginal;\n\n} else {\n  // Order JSON object\n  const n8nWorkflow = $input.all()[1].json;\n  const orderedActual = orderJsonKeys(n8nWorkflow);\n  \n  // Proper formatting\n  $input.all()[0].json.github_status = \"new\";\n  $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n\n// Return items\nreturn $input.all();\n"
+      },
+      "id": "a6d3b001-c618-457f-b2a3-5a459d983bdf",
+      "name": "isDiffOrNew",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        100,
+        480
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{$json.github_status}}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "same"
+            },
+            {
+              "value2": "different",
+              "output": 1
+            },
+            {
+              "value2": "new",
+              "output": 2
+            }
+          ]
+        }
+      },
+      "id": "4a33f364-b4fd-4ad6-87d1-fff7d6902328",
+      "name": "Check Status",
+      "type": "n8n-nodes-base.switch",
+      "position": [
+        500,
+        480
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "e74ab136-ed0e-47ce-abd0-3ff6b4920fa7",
+      "name": "Same file - Do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        720,
+        320
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "b260cae0-d615-4580-b2eb-19f201f24acf",
+      "name": "File is different",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        720,
+        480
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "3fbfb74f-713a-4bce-a425-d9bdc020c965",
+      "name": "File is new",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        720,
+        680
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "owner": {
+          "__rl": true,
+          "value": "={{ $('Config').first().json.repo_owner }}",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "={{ $('Config').first().json.repo_name }}",
+          "mode": "name"
+        },
+        "filePath": "={{ $json.subPath + $('Execute Workflow Trigger').first().json.id }}.json",
+        "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
+        "commitMessage": "={{$('Execute Workflow Trigger').first().json.name}} ({{$json.github_status}})"
+      },
+      "id": "e831529b-5a2c-43ff-8203-6b088b3be8b6",
+      "name": "Create new file",
+      "type": "n8n-nodes-base.github",
+      "position": [
+        940,
+        680
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "6R0AHV5QcAMcbq0B",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "edit",
+        "owner": {
+          "__rl": true,
+          "mode": "",
+          "value": "={{ $('Config').first().item.repo_owner }}"
+        },
+        "repository": {
+          "__rl": true,
+          "mode": "",
+          "value": "={{ $('Config').first().item.repo_name }}"
+        },
+        "filePath": "={{ $('Config').first().item.repo_path }}{{ $json.subPath }}{{$('Execute Workflow Trigger').first().json.id}}.json",
+        "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
+        "commitMessage": "={{$('Execute Workflow Trigger').first().json.name}} ({{$json.github_status}})"
+      },
+      "id": "7e69be6e-eefa-4bd3-bdaf-86faee5e0996",
+      "name": "Edit existing file",
+      "type": "n8n-nodes-base.github",
+      "position": [
+        940,
+        480
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "6R0AHV5QcAMcbq0B",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a5d87116-1f0e-4183-b294-5512cc89f529",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        540,
+        -160
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dae43d3b-56e5-4098-b602-862ebf5cd073",
+              "name": "subPath",
+              "type": "string",
+              "value": "={{ $('Execute Workflow Trigger').first().json.createdAt.split('-')[0] }}/{{ $('Execute Workflow Trigger').first().json.createdAt.split('-')[1] }}/"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "4524e216-17bd-4f52-9f66-d236166f0399",
+      "name": "Create sub path",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        300,
+        480
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "content": "## Backup to GitHub \nThis workflow will backup all instance workflows to GitHub every 24 hours.\n\nThe files are saved into folders using `YYYY/MM/` for the directory path and `ID.json` for the filename.\n\nThe Repo Owner, Repo Name and Main folder are set using the **Variables** feature but can be replaced with the `Config` node in the subworkflow. \n\nThe workflow runs calls itself to help reduce memory usage, Once the workflow has completed it will send an optional notification to Slack.\n\n### Time to Run\nTested with 1423 workflows on `1.44.1` it took under 30 minutes for the first run and under 12 minutes once the initial run is complete.",
+        "height": 417,
+        "width": 385,
+        "color": 4
+      },
+      "id": "ff1755b7-ec8f-44d1-be57-d8927912e6ed",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -540,
+        -340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Main workflow loop",
+        "height": 416.1856906618075,
+        "width": 1272.6408145680155,
+        "color": 7
+      },
+      "id": "e158df66-2000-47b1-a715-35a5cb9ef04f",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -100,
+        -340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "value": "={{ $json.repo_owner }}",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "={{ $json.repo_name }}",
+          "mode": "name"
+        },
+        "filePath": "={{ $json.repo_path }}{{ $('Execute Workflow Trigger').first().json.createdAt.split('-')[0] }}/{{ $('Execute Workflow Trigger').first().json.createdAt.split('-')[1] }}/{{$json.id}}.json",
+        "asBinaryProperty": false,
+        "additionalParameters": {}
+      },
+      "id": "a0795576-bf0d-4b9d-a567-e4029715b2a2",
+      "name": "Get file data",
+      "type": "n8n-nodes-base.github",
+      "position": [
+        -300,
+        220
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "6R0AHV5QcAMcbq0B",
+          "name": "GitHub account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8f6d1741-772f-462a-811f-4c334185e4f0",
+              "name": "repo_owner",
+              "type": "string",
+              "value": "apostolisCodpal"
+            },
+            {
+              "id": "8cac215c-4fd7-422f-9fd2-6b2d1e5e0383",
+              "name": "repo_name",
+              "type": "string",
+              "value": "n8n-backup"
+            },
+            {
+              "id": "eee305e9-4164-462a-86bd-80f0d58a31ae",
+              "name": "repo_path",
+              "type": "string",
+              "value": "https://github.com/apostolisCodpal/n8n-backup/"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "87032b43-bc4d-4def-beb1-100778da4a7c",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -300,
+        500
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=:information_source:  Starting Workflow Backup [{{ $execution.id }}]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        160,
+        -160
+      ],
+      "id": "cb418083-ffe4-4aae-9157-a8959c668375",
+      "name": "Start Notification",
+      "webhookId": "c05b751a-46e9-4319-af01-bbafdda8a638",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "ejWBQLu6nGM0maKd",
+          "name": "Discord Webhook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=✅ Backup has completed - {{ $('n8n').all().length }} workflows have been processed.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        760,
+        -300
+      ],
+      "id": "2a3c4856-1cf5-45a7-8083-f8459c09eda4",
+      "name": "Completed Notification",
+      "webhookId": "34faf035-b685-46d7-b3b3-21b9c30b496d",
+      "executeOnce": true,
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "ejWBQLu6nGM0maKd",
+          "name": "Discord Webhook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=:x: Failed to backup {{ $('Loop Over Items').item.json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        980,
+        -120
+      ],
+      "id": "217ff6f3-8bf9-4168-9c42-63473b4690d6",
+      "name": "Failed Flows",
+      "webhookId": "34faf035-b685-46d7-b3b3-21b9c30b496d",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "ejWBQLu6nGM0maKd",
+          "name": "Discord Webhook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 1,
+              "triggerAtMinute": 33
+            }
+          ]
+        }
+      },
+      "id": "081f30f7-2890-4405-8995-23dfd6280ed8",
+      "name": "Once a day",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -60,
+        -60
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "DUSpPaYxb3pJvuUo",
+          "mode": "list",
+          "cachedResultName": "Backup Workflows to Github"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        760,
+        -140
+      ],
+      "id": "9041374f-ffe5-4ce5-8b18-e90bcc6c4d8c",
+      "name": "Execute Workflow1",
+      "onError": "continueErrorOutput"
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "createdAt": "2025-03-20T08:53:20.582Z",
+          "updatedAt": "2025-03-21T14:32:05.000Z",
+          "id": "AWcDrvG1WWqCERHL",
+          "name": "Verify Wordpress Connection",
+          "active": false,
+          "nodes": [
+            {
+              "parameters": {
+                "base": {
+                  "__rl": true,
+                  "value": "app3foHr3iDjZBLvs",
+                  "mode": "list",
+                  "cachedResultName": "Engineering Prototype Builder",
+                  "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+                },
+                "table": {
+                  "__rl": true,
+                  "value": "tblty7DapzrDJ6cV6",
+                  "mode": "list",
+                  "cachedResultName": "Wordpress Clients",
+                  "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblty7DapzrDJ6cV6"
+                },
+                "id": "={{ $json.recordId }}",
+                "options": {}
+              },
+              "type": "n8n-nodes-base.airtable",
+              "typeVersion": 2.1,
+              "position": [
+                -100,
+                0
+              ],
+              "id": "c137eccf-a6d8-4ace-aefd-5e46020d57dd",
+              "name": "Get Wordpress Creds",
+              "credentials": {
+                "airtableTokenApi": {
+                  "id": "f9JH5DCFMvod79bz",
+                  "name": "Airtable Personal Access Token account"
+                }
+              }
+            },
+            {
+              "parameters": {
+                "operation": "getAll",
+                "limit": 1,
+                "options": {
+                  "status": "publish"
+                }
+              },
+              "type": "n8n-nodes-base.wordpress",
+              "typeVersion": 1,
+              "position": [
+                100,
+                0
+              ],
+              "id": "597539d5-64f6-42c9-9bb3-593f9540e0d1",
+              "name": "Get Wordpress Posts",
+              "retryOnFail": true,
+              "alwaysOutputData": true,
+              "credentials": {
+                "wordpressApi": {
+                  "id": "dpOssYDSc5YoyIPY",
+                  "name": "Wordpress account"
+                }
+              },
+              "onError": "continueErrorOutput"
+            },
+            {
+              "parameters": {
+                "operation": "update",
+                "base": {
+                  "__rl": true,
+                  "value": "app3foHr3iDjZBLvs",
+                  "mode": "list",
+                  "cachedResultName": "Engineering Prototype Builder",
+                  "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+                },
+                "table": {
+                  "__rl": true,
+                  "value": "tblty7DapzrDJ6cV6",
+                  "mode": "list",
+                  "cachedResultName": "Wordpress Clients",
+                  "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblty7DapzrDJ6cV6"
+                },
+                "columns": {
+                  "mappingMode": "defineBelow",
+                  "value": {
+                    "Error Message": "={{ $json.error ?? $('Edit Fields').item.json.error }}",
+                    "id": "={{ $('Get Wordpress Creds').item.json.id }}",
+                    "ConnectionStatus": "Error",
+                    "Last Modified Time": "={{ $now }}"
+                  },
+                  "matchingColumns": [
+                    "id"
+                  ],
+                  "schema": [
+                    {
+                      "id": "id",
+                      "displayName": "id",
+                      "required": false,
+                      "defaultMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": true
+                    },
+                    {
+                      "id": "Identifier",
+                      "displayName": "Identifier",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": true,
+                      "removed": true
+                    },
+                    {
+                      "id": "Client",
+                      "displayName": "Client",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "array",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "URL",
+                      "displayName": "URL",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "Wordpress Username",
+                      "displayName": "Wordpress Username",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "Wordpress Password",
+                      "displayName": "Wordpress Password",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "ConnectionStatus",
+                      "displayName": "ConnectionStatus",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "options",
+                      "options": [
+                        {
+                          "name": "In progress",
+                          "value": "In progress"
+                        },
+                        {
+                          "name": "Connected",
+                          "value": "Connected"
+                        },
+                        {
+                          "name": "Error",
+                          "value": "Error"
+                        }
+                      ],
+                      "readOnly": false,
+                      "removed": false
+                    },
+                    {
+                      "id": "Error Message",
+                      "displayName": "Error Message",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": false
+                    },
+                    {
+                      "id": "Notes",
+                      "displayName": "Notes",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "Created Time",
+                      "displayName": "Created Time",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "dateTime",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "Last Modified Time",
+                      "displayName": "Last Modified Time",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "dateTime",
+                      "readOnly": false,
+                      "removed": false
+                    }
+                  ],
+                  "attemptToConvertTypes": false,
+                  "convertFieldsToString": false
+                },
+                "options": {}
+              },
+              "type": "n8n-nodes-base.airtable",
+              "typeVersion": 2.1,
+              "position": [
+                860,
+                220
+              ],
+              "id": "56b64e5a-6eca-416f-95e2-c78c238e74a4",
+              "name": "Update record with error",
+              "credentials": {
+                "airtableTokenApi": {
+                  "id": "f9JH5DCFMvod79bz",
+                  "name": "Airtable Personal Access Token account"
+                }
+              }
+            },
+            {
+              "parameters": {
+                "operation": "update",
+                "base": {
+                  "__rl": true,
+                  "value": "app3foHr3iDjZBLvs",
+                  "mode": "list",
+                  "cachedResultName": "Engineering Prototype Builder",
+                  "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+                },
+                "table": {
+                  "__rl": true,
+                  "value": "tblty7DapzrDJ6cV6",
+                  "mode": "list",
+                  "cachedResultName": "Wordpress Clients",
+                  "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblty7DapzrDJ6cV6"
+                },
+                "columns": {
+                  "mappingMode": "defineBelow",
+                  "value": {
+                    "id": "={{ $('Get Wordpress Creds').item.json.id }}",
+                    "Error Message": "={{ \"\" }}",
+                    "ConnectionStatus": "Connected",
+                    "Last Modified Time": "={{ $now }}"
+                  },
+                  "matchingColumns": [
+                    "id"
+                  ],
+                  "schema": [
+                    {
+                      "id": "id",
+                      "displayName": "id",
+                      "required": false,
+                      "defaultMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": true,
+                      "removed": false
+                    },
+                    {
+                      "id": "Identifier",
+                      "displayName": "Identifier",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": true,
+                      "removed": true
+                    },
+                    {
+                      "id": "Client",
+                      "displayName": "Client",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "array",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "URL",
+                      "displayName": "URL",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "Wordpress Username",
+                      "displayName": "Wordpress Username",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "Wordpress Password",
+                      "displayName": "Wordpress Password",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "ConnectionStatus",
+                      "displayName": "ConnectionStatus",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "options",
+                      "options": [
+                        {
+                          "name": "In progress",
+                          "value": "In progress"
+                        },
+                        {
+                          "name": "Connected",
+                          "value": "Connected"
+                        },
+                        {
+                          "name": "Error",
+                          "value": "Error"
+                        }
+                      ],
+                      "readOnly": false,
+                      "removed": false
+                    },
+                    {
+                      "id": "Error Message",
+                      "displayName": "Error Message",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": false
+                    },
+                    {
+                      "id": "Notes",
+                      "displayName": "Notes",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "string",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "Created Time",
+                      "displayName": "Created Time",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "dateTime",
+                      "readOnly": false,
+                      "removed": true
+                    },
+                    {
+                      "id": "Last Modified Time",
+                      "displayName": "Last Modified Time",
+                      "required": false,
+                      "defaultMatch": false,
+                      "canBeUsedToMatch": true,
+                      "display": true,
+                      "type": "dateTime",
+                      "readOnly": false,
+                      "removed": false
+                    }
+                  ],
+                  "attemptToConvertTypes": false,
+                  "convertFieldsToString": false
+                },
+                "options": {}
+              },
+              "type": "n8n-nodes-base.airtable",
+              "typeVersion": 2.1,
+              "position": [
+                840,
+                -180
+              ],
+              "id": "f31a64cb-d3ba-4984-93b4-0a7a68fc95a9",
+              "name": "Update record with success",
+              "credentials": {
+                "airtableTokenApi": {
+                  "id": "f9JH5DCFMvod79bz",
+                  "name": "Airtable Personal Access Token account"
+                }
+              }
+            },
+            {
+              "parameters": {
+                "content": "## TODO\nSend an email to the client?",
+                "height": 120,
+                "width": 200
+              },
+              "type": "n8n-nodes-base.stickyNote",
+              "typeVersion": 1,
+              "position": [
+                1120,
+                220
+              ],
+              "id": "4be22739-0dbb-4f64-b2d8-2ffa2ca7fbb1",
+              "name": "Sticky Note"
+            },
+            {
+              "parameters": {
+                "workflowInputs": {
+                  "values": [
+                    {
+                      "name": "recordId"
+                    }
+                  ]
+                }
+              },
+              "type": "n8n-nodes-base.executeWorkflowTrigger",
+              "typeVersion": 1.1,
+              "position": [
+                -340,
+                0
+              ],
+              "id": "aaf59196-9620-44d1-a1ba-b02812d5eb7c",
+              "name": "When Executed by Another Workflow"
+            },
+            {
+              "parameters": {
+                "mode": "raw",
+                "jsonOutput": "{\n  \"error\": \"Error accessing the API. Ensure the URL points to the root of the wordpress site.\"\n}\n",
+                "options": {}
+              },
+              "type": "n8n-nodes-base.set",
+              "typeVersion": 3.4,
+              "position": [
+                600,
+                0
+              ],
+              "id": "e44fe6fc-32a4-413d-a40f-27888d1adb6b",
+              "name": "Edit Fields"
+            },
+            {
+              "parameters": {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": false,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "c49f2699-2812-435d-92dd-4cb8976d3201",
+                      "leftValue": "={{ $json['0'] }}",
+                      "rightValue": "<",
+                      "operator": {
+                        "type": "string",
+                        "operation": "notEquals"
+                      }
+                    },
+                    {
+                      "id": "01f5f82a-f04b-4f50-a36c-cc219bdf795a",
+                      "leftValue": "={{ $json['1'] }}",
+                      "rightValue": "!",
+                      "operator": {
+                        "type": "string",
+                        "operation": "notEquals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "options": {
+                  "ignoreCase": true
+                }
+              },
+              "type": "n8n-nodes-base.if",
+              "typeVersion": 2.2,
+              "position": [
+                340,
+                -160
+              ],
+              "id": "9cc9ac3c-0bd6-4acd-9a86-fbc20277b5ec",
+              "name": "If not HTML response",
+              "onError": "continueErrorOutput"
+            }
+          ],
+          "connections": {
+            "Get Wordpress Creds": {
+              "main": [
+                [
+                  {
+                    "node": "Get Wordpress Posts",
+                    "type": "main",
+                    "index": 0
+                  }
+                ]
+              ]
+            },
+            "Get Wordpress Posts": {
+              "main": [
+                [
+                  {
+                    "node": "If not HTML response",
+                    "type": "main",
+                    "index": 0
+                  }
+                ],
+                [
+                  {
+                    "node": "Update record with error",
+                    "type": "main",
+                    "index": 0
+                  }
+                ]
+              ]
+            },
+            "Update record with success": {
+              "main": [
+                []
+              ]
+            },
+            "When Executed by Another Workflow": {
+              "main": [
+                [
+                  {
+                    "node": "Get Wordpress Creds",
+                    "type": "main",
+                    "index": 0
+                  }
+                ]
+              ]
+            },
+            "Edit Fields": {
+              "main": [
+                [
+                  {
+                    "node": "Update record with error",
+                    "type": "main",
+                    "index": 0
+                  }
+                ]
+              ]
+            },
+            "If not HTML response": {
+              "main": [
+                [
+                  {
+                    "node": "Update record with success",
+                    "type": "main",
+                    "index": 0
+                  }
+                ],
+                [
+                  {
+                    "node": "Edit Fields",
+                    "type": "main",
+                    "index": 0
+                  }
+                ],
+                [
+                  {
+                    "node": "Edit Fields",
+                    "type": "main",
+                    "index": 0
+                  }
+                ]
+              ]
+            }
+          },
+          "settings": {
+            "executionOrder": "v1",
+            "saveExecutionProgress": true,
+            "callerPolicy": "workflowsFromSameOwner"
+          },
+          "staticData": {
+            "node:Airtable Trigger": {
+              "lastTimeChecked": "2025-03-20T12:35:06Z"
+            }
+          },
+          "meta": {
+            "templateCredsSetupCompleted": true
+          },
+          "pinData": {},
+          "versionId": "c5fb7fce-3d7a-461d-bf2d-7fd219ebd3be",
+          "triggerCount": 3,
+          "tags": []
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Once a day": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-22T10:04:37.000Z",
+  "versionId": "8a4d7a98-f63b-4dba-9e50-ce8ef2beb803"
+}
