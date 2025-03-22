@@ -141,7 +141,7 @@
         ],
         [
           {
-            "node": "Execute Workflow1",
+            "node": "Update Workflow",
             "type": "main",
             "index": 0
           }
@@ -188,33 +188,11 @@
         ]
       ]
     },
-    "On clicking 'execute'": {
-      "main": [
-        [
-          {
-            "node": "Start Notification",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Same file - Do nothing": {
       "main": [
         [
           {
             "node": "Return",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "Config",
             "type": "main",
             "index": 0
           }
@@ -243,18 +221,7 @@
         ]
       ]
     },
-    "Once a day": {
-      "main": [
-        [
-          {
-            "node": "Start Notification",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow1": {
+    "Update Workflow": {
       "main": [
         [
           {
@@ -271,6 +238,39 @@
           }
         ]
       ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Start Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Once a day": {
+      "main": [
+        [
+          {
+            "node": "Start Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-21T11:30:11.696Z",
@@ -280,17 +280,6 @@
   },
   "name": "Backup Workflows to Github",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "8b9fea80-fb3b-48fe-9652-2a30e06f2f8f",
-      "name": "On clicking 'execute'",
-      "type": "n8n-nodes-base.manualTrigger",
-      "position": [
-        -60,
-        -260
-      ],
-      "typeVersion": 1
-    },
     {
       "parameters": {
         "content": "## Subworkflow",
@@ -304,17 +293,6 @@
       "position": [
         -540,
         120
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {},
-      "id": "e3f161a6-54b7-4808-88b2-32f511675b45",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "position": [
-        -480,
-        500
       ],
       "typeVersion": 1
     },
@@ -544,15 +522,15 @@
         "operation": "edit",
         "owner": {
           "__rl": true,
-          "mode": "",
-          "value": "={{ $('Config').first().item.repo_owner }}"
+          "value": "={{ $('Config').first().json.repo_owner }}",
+          "mode": "name"
         },
         "repository": {
           "__rl": true,
-          "mode": "",
-          "value": "={{ $('Config').first().item.repo_name }}"
+          "value": "={{ $('Config').first().json.repo_name }}",
+          "mode": "name"
         },
-        "filePath": "={{ $('Config').first().item.repo_path }}{{ $json.subPath }}{{$('Execute Workflow Trigger').first().json.id}}.json",
+        "filePath": "={{ $json.subPath + $('Execute Workflow Trigger').first().json.id }}.json",
         "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
         "commitMessage": "={{$('Execute Workflow Trigger').first().json.name}} ({{$json.github_status}})"
       },
@@ -655,7 +633,7 @@
           "value": "={{ $json.repo_name }}",
           "mode": "name"
         },
-        "filePath": "={{ $json.repo_path }}{{ $('Execute Workflow Trigger').first().json.createdAt.split('-')[0] }}/{{ $('Execute Workflow Trigger').first().json.createdAt.split('-')[1] }}/{{$json.id}}.json",
+        "filePath": "={{ $('Execute Workflow Trigger').first().json.createdAt.split('-')[0] }}/{{ $('Execute Workflow Trigger').first().json.createdAt.split('-')[1] }}/{{$json.id}}.json",
         "asBinaryProperty": false,
         "additionalParameters": {}
       },
@@ -760,7 +738,7 @@
     {
       "parameters": {
         "authentication": "webhook",
-        "content": "=:x: Failed to backup {{ $('Loop Over Items').item.json.id }}",
+        "content": "=:x: Failed to backup {{ $('Loop Over Items').item.json.id }} {{ $json.error ? `(${$json.error})` : \"\" }}",
         "options": {}
       },
       "type": "n8n-nodes-base.discord",
@@ -778,26 +756,6 @@
           "name": "Discord Webhook account"
         }
       }
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "triggerAtHour": 1,
-              "triggerAtMinute": 33
-            }
-          ]
-        }
-      },
-      "id": "081f30f7-2890-4405-8995-23dfd6280ed8",
-      "name": "Once a day",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "position": [
-        -60,
-        -60
-      ],
-      "typeVersion": 1.2
     },
     {
       "parameters": {
@@ -824,8 +782,51 @@
         -140
       ],
       "id": "9041374f-ffe5-4ce5-8b18-e90bcc6c4d8c",
-      "name": "Execute Workflow1",
+      "name": "Update Workflow",
       "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -260
+      ],
+      "id": "87b17392-cb40-417b-8419-8a0e0238c6e5",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -60,
+        -80
+      ],
+      "id": "8d1afab9-a5fd-4b03-927f-7b4affb86d26",
+      "name": "Once a day"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -500,
+        500
+      ],
+      "id": "853fbe04-a990-4817-a944-582d86ae7cce",
+      "name": "Execute Workflow Trigger"
     }
   ],
   "pinData": {
@@ -833,7 +834,7 @@
       {
         "json": {
           "createdAt": "2025-03-20T08:53:20.582Z",
-          "updatedAt": "2025-03-21T14:32:05.000Z",
+          "updatedAt": "2025-03-22T10:19:19.000Z",
           "id": "AWcDrvG1WWqCERHL",
           "name": "Verify Wordpress Connection",
           "active": false,
@@ -1358,6 +1359,17 @@
               "id": "9cc9ac3c-0bd6-4acd-9a86-fbc20277b5ec",
               "name": "If not HTML response",
               "onError": "continueErrorOutput"
+            },
+            {
+              "parameters": {},
+              "type": "n8n-nodes-base.manualTrigger",
+              "typeVersion": 1,
+              "position": [
+                320,
+                240
+              ],
+              "id": "4d030ce2-9f7c-4a0d-a042-2e6fc463d088",
+              "name": "When clicking ‘Test workflow’"
             }
           ],
           "connections": {
@@ -1457,7 +1469,7 @@
             "templateCredsSetupCompleted": true
           },
           "pinData": {},
-          "versionId": "c5fb7fce-3d7a-461d-bf2d-7fd219ebd3be",
+          "versionId": "37d181f5-e3c6-4e2a-b341-95ec829c9a80",
           "triggerCount": 3,
           "tags": []
         }
@@ -1477,6 +1489,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-03-22T10:04:37.000Z",
-  "versionId": "8a4d7a98-f63b-4dba-9e50-ce8ef2beb803"
+  "updatedAt": "2025-03-22T10:21:28.000Z",
+  "versionId": "8e411cf1-400e-4875-8e36-63ae86980146"
 }
