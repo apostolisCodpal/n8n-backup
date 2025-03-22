@@ -202,8 +202,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        800,
-        120
+        780,
+        140
       ],
       "id": "f77a8c36-b350-4823-8e83-35f16f5813ec",
       "name": "Embeddings OpenAI",
@@ -244,7 +244,7 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1,
       "position": [
-        940,
+        920,
         120
       ],
       "id": "82d3083a-161c-41ab-becf-c531e9ba2b3f",
@@ -342,7 +342,7 @@
       "type": "n8n-nodes-base.discord",
       "typeVersion": 2,
       "position": [
-        858,
+        860,
         500
       ],
       "id": "b0549182-3ed2-4d17-b413-7c43e0c8092b",
@@ -473,7 +473,7 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        1216,
+        1160,
         500
       ],
       "id": "f7bebbfe-e6a9-4873-936d-8521bba1886e",
@@ -500,6 +500,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-22T08:58:25.000Z",
-  "versionId": "48858fdc-8a56-4e25-9a03-273f62269302"
+  "updatedAt": "2025-03-22T19:15:21.000Z",
+  "versionId": "1eae445e-cb52-43d9-975c-bd424b89cc73"
 }
