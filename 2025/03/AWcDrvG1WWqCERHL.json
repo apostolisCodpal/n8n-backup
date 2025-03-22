@@ -610,17 +610,6 @@
       "id": "9cc9ac3c-0bd6-4acd-9a86-fbc20277b5ec",
       "name": "If not HTML response",
       "onError": "continueErrorOutput"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        320,
-        240
-      ],
-      "id": "4d030ce2-9f7c-4a0d-a042-2e6fc463d088",
-      "name": "When clicking ‘Test workflow’"
     }
   ],
   "pinData": {},
@@ -639,6 +628,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2025-03-22T10:19:19.000Z",
-  "versionId": "37d181f5-e3c6-4e2a-b341-95ec829c9a80"
+  "updatedAt": "2025-03-22T10:21:24.000Z",
+  "versionId": "b967ad1d-3ca1-4684-b43d-ba2891f8f4e8"
 }
