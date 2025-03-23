@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Coordinator Agent",
             "type": "main",
             "index": 0
           }
@@ -16,7 +16,195 @@
       "ai_languageModel": [
         [
           {
-            "node": "AI Agent",
+            "node": "Coordinator Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Trends Tool": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "SerpAPI Trends": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        []
+      ]
+    },
+    "Posts": {
+      "ai_tool": [
+        [
+          {
+            "node": "Business Analysis Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pages": {
+      "ai_tool": [
+        [
+          {
+            "node": "Business Analysis Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Business Analysis Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Business Analysis Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "Business Analysis Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Client": {
+      "main": [
+        [
+          {
+            "node": "Wordpress Client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wordpress Client": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Business Analysis Agent Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Coordinator Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sub Workflow": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Business Analysis Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        []
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Coordinator Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "Keyword Research Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Keyword Research Agent",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -27,19 +215,8 @@
       "ai_memory": [
         [
           {
-            "node": "AI Agent",
+            "node": "Coordinator Agent",
             "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wordpress": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -69,18 +246,879 @@
     },
     {
       "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        520,
+        220
+      ],
+      "id": "b16d9e2e-c70d-450f-8f81-131231b90815",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "9TQJVOrXO3CFaZ06",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Step 1\n### Generate idea\nUser suggestions or search existing posts to generate idea.\n\n*Idea: Do a relevance search to make sure it's not too similar with other posts*",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        140,
+        -360
+      ],
+      "typeVersion": 1,
+      "id": "d71b253b-54a7-4e14-b852-331eccf827ef",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Step 2\n### Approve idea\nUser approves idea or asks for another one.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        420,
+        -360
+      ],
+      "typeVersion": 1,
+      "id": "0382c7ec-aedf-4352-93a0-b417c1dc2d3d",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Step 3\n### Find keywords\nAI searches for keywords using google trends.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        700,
+        -360
+      ],
+      "typeVersion": 1,
+      "id": "c41d7af0-a93b-4efc-a9d3-8d8ce724b19e",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Step 4\n### Write the post\nUsing the idea and keywords the AI writes the full blog post title and body.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        980,
+        -360
+      ],
+      "typeVersion": 1,
+      "id": "0ee7d912-5ee2-429f-886e-a59e9e1c877c",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Step 5\n### Review by AI\nAn AI reviews the blog post and gives it a score. If score is below 5/10 hands off to previous AI to try again.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1260,
+        -360
+      ],
+      "typeVersion": 1,
+      "id": "00526296-d2da-4910-a86e-20e217190308",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Step 6\n### Featured Image\nGenerate a prompt and hand off to an image generating AI to generate the featured image for the post.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1540,
+        -360
+      ],
+      "typeVersion": 1,
+      "id": "0836cd15-1838-4513-b0fe-d63be6f649d3",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## Step 7\n### Create on Wordpress\nCreate the blog post on wordpress as a Draft.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1820,
+        -360
+      ],
+      "typeVersion": 1,
+      "id": "bfa6f6c1-a06f-48f3-b08d-2c0970d85bf5",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "## Step 8\n### Review by Human\nSend a link to the draft post to a human for review. Provide buttons to regenerate text, image or approve. \nAlternatively, the human can write a message with comments.",
+        "height": 200,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2100,
+        -360
+      ],
+      "typeVersion": 1,
+      "id": "758ca6bd-bb92-4ca6-9610-c4ac4b52a1a3",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "## Main Agent System Prompt\nYou are an SEO specialist. Use your knowledge and experience on SEO and keywords to help the user conduct extensive keyword research so that they can identify topics for new content. Use the Business Agent to find information about the user's business and then handoff to the Keyword Agent to conduct the keyword research.\n\nIf not explicitly specified, ask the user if he wants you to find keywords based on top trends or rising trends. You can specify this when using the tool.\n\nThen ask the user if they want you to focus in a specific area of their business or let you decide based on their services and content.\n\nIgnore all other queries.",
+        "height": 460,
+        "width": 680,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5040,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "21dc32cc-fa4f-4575-8b81-b3c6100dc1d3",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Get keyword trends related to a query. \"trend\" can be either \"top\" or \"rising\".",
+        "url": "https://serpapi.com/search?engine=google_trends",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "serpApi",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "data_type",
+              "valueProvider": "fieldValue",
+              "value": "RELATED_QUERIES"
+            },
+            {
+              "name": "q"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "dataField": "related_queries"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        300
+      ],
+      "id": "b49405e0-a7c4-4be1-b3a0-08f0093cd37d",
+      "name": "Google Trends Tool",
+      "credentials": {
+        "serpApi": {
+          "id": "QEy6ziLBcTJrXptF",
+          "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search?engine=google_trends",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "serpApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.q }}"
+            },
+            {
+              "name": "data_type",
+              "value": "RELATED_QUERIES"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        20,
+        2160
+      ],
+      "id": "2f5ccdac-5936-4f87-9182-02b4ba6c2240",
+      "name": "SerpAPI Trends",
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "0qkBaxuzS39V5w5h",
+          "name": "SerpApi Key"
+        },
+        "serpApi": {
+          "id": "QEy6ziLBcTJrXptF",
+          "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const results = [];\n\nfor (const item of $input.all()) {\n  const trends = item.json.related_queries[$(\"Sub Workflow\").first().json.trend];\n  trends.forEach(x => {\n    results.push({\n      query: x.query,\n      value: x.value,\n      extracted_value: x.extracted_value,\n    });\n  });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        2160
+      ],
+      "id": "7d1efe0e-337c-49f7-8558-cd1f43c672ee",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Retrieves content from website's static pages. Optionally pass a search query.",
+        "resource": "page",
+        "operation": "getAll",
         "options": {
-          "systemMessage": "You are an employee working as a copywriter content creator and SEO expert or an online business. Your primary job is to write blog posts for your employer and post them on wordpress.\n\nYou must follow this flow:\n1. Idea generation: If the user provides you with ideas, use them to generate an idea for the next blog post. If the user gives you free reigns, fetch existing wordpress posts and generate a new idea that fits the nature of the blog.\n2. Always ask the user to approve the idea by providing a title and small description 300 words max.\n3. When the user approves the idea, write the entire blog post\n\n*IMPORTANT* - Refuse to answer queries that are not related to wordpress, SEO and in general the employer's business."
+          "search": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Search', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.wordpressTool",
+      "typeVersion": 1,
+      "position": [
+        720,
+        1020
+      ],
+      "id": "4c3679b4-ecb9-4bc9-99dc-913373c1e58f",
+      "name": "Pages",
+      "credentials": {
+        "wordpressApi": {
+          "id": "dpOssYDSc5YoyIPY",
+          "name": "Wordpress account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Retrieves content from website's blog posts and dynamic content. Optionally pass a search query.",
+        "operation": "getAll",
+        "options": {
+          "search": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Search', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.wordpressTool",
+      "typeVersion": 1,
+      "position": [
+        860,
+        1020
+      ],
+      "id": "b1dbf8b3-9b96-4dfd-bf8a-3e3265bb7629",
+      "name": "Posts",
+      "credentials": {
+        "wordpressApi": {
+          "id": "dpOssYDSc5YoyIPY",
+          "name": "Wordpress account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Keyword Agent System Prompt\nYou are an SEO specialist. Use your knowledge and experience on SEO and keywords to help the user conduct extensive keyword research to help him identify topics for new content. Use the keyword trends tool to find keyword trends related to your query. \n\nIf not explicitly specified, ask the user if he wants you to find keyword based on top trends or rising trends. You can specify this when using the tool.\n\nYou need to discover the services that the client is offering.\n\nPlan your work by iterating over the keywords at least 3 times, starting from a query and then trying 2 or more queries based on the keywords results from the tool.",
+        "height": 460,
+        "width": 680,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6440,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "7dffe28f-06f9-4e46-8bda-2928d5e08616",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "content": "## Business Agent System Prompt\nYou are business expert. Your job is to help the user find information about their business. Use the Pages and Posts tools if you need to conduct blind research on the user's website and the Search tool if you need to search for information related to a query.\n\nAnswer the user's questions to the best of your ability.",
+        "height": 460,
+        "width": 680,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5740,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "f43cfcad-71dc-47c2-8d7e-3c36b15966ee",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "content": "## Coordinator Agent System Prompt\nYou are the primary coordinator for an SEO keyword research system. Your role is to:\n\n1. Gather initial requirements from the user\n2. Direct the workflow between specialized agents\n3. Track progress and ensure all necessary information is collected\n4. Present the final results to the user\n\nBegin by asking the user for:\n- Whether they prefer keywords based on top trends or rising trends\n- If they want to focus on a specific area of their business or let you decide based on their services and content\n- Any specific industry, location, or target audience considerations\n\nUse the Business Analysis Agent to gather information about the user's business before proceeding to keyword research. Once you have sufficient business context, hand off to the Keyword Research Agent. When keyword research is complete, use the Results Synthesis Agent to compile and present the final list of at least 100 relevant keywords.\n\nMaintain a summary of all findings and decisions throughout the process. Your goal is to ensure a seamless experience for the user while producing comprehensive, actionable keyword research.",
+        "height": 740,
+        "width": 800,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1320,
+        -120
+      ],
+      "typeVersion": 1,
+      "id": "aa9c6f73-985e-48f6-917d-ddf3caa1058a",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "content": "## Business Analysis Agent System Prompt\nYou are a business intelligence expert specializing in digital content analysis. Your job is to build a comprehensive profile of the user's business by:\n\n1. Analyzing the user's WordPress site structure, content, and metadata\n2. Identifying their primary services, products, and value propositions\n3. Determining their target audience and market positioning\n4. Recognizing content gaps and opportunities\n\nUse the Pages and Posts tools to systematically explore the user's website. Begin with the homepage, about page, and service pages to understand their core offerings. Then analyze blog content to identify themes, topics, and writing style.\n\nIf specific information is needed, use the Search tool to find relevant data. When analyzing content, pay special attention to:\n- Existing keyword usage and density\n- Content categories and taxonomies\n- Meta descriptions and title patterns\n- Service/product descriptions and unique selling points\n\nCompile your findings into a structured business profile that includes:\n- Primary business focus and offerings\n- Secondary services or products\n- Target audience demographics and needs\n- Content strengths and gaps\n- Existing SEO patterns and performance indicators\n\nYour output should provide the user with a clear understanding of the business context to inform targeted keyword research.",
+        "height": 740,
+        "width": 800,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2140,
+        -120
+      ],
+      "typeVersion": 1,
+      "id": "6e2efb71-acbb-4056-ad6b-f8d5a476cf7a",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {
+        "content": "## Keyword Research Agent System Prompt\nYou are an advanced SEO specialist focused exclusively on keyword research. Your task is to generate an extensive list of relevant keywords based on the business profile provided by the Business Analysis Agent.\n\nFollow this systematic process:\n1. Create 5-10 primary seed queries based on the business's core offerings and target audience\n2. For each seed query, use the keyword trends tool to gather related keywords (specify top trends or rising trends as indicated by the user)\n3. Analyze the initial results to identify patterns, opportunities, and content gaps\n4. Generate 10-15 secondary queries based on the initial findings\n5. Conduct another round of keyword research using these secondary queries\n6. Based on secondary results, create 5-10 tertiary queries for final refinement\n7. Conduct a final round of keyword research\n\nFor each query, document:\n- The exact query used\n- Rationale for selecting this query\n- Key patterns or insights from the results\n\nWhen using the keyword trends tool, consider:\n- Search volume and competition metrics\n- Seasonal patterns if available\n- Question-based variations (how, what, why, when)\n- Long-tail keyword opportunities\n- Local or geographic variations if relevant\n\nGroup similar keywords and identify thematic clusters. Pay special attention to keywords that:\n- Address specific customer pain points\n- Align with business strengths identified in the business profile\n- Represent content gap opportunities\n- Show promising volume-to-competition ratios\n\nYour output should include the raw keyword data as well as your analysis of patterns and opportunities. Pass this comprehensive data to the Results Synthesis Agent.",
+        "height": 740,
+        "width": 800,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2960,
+        -120
+      ],
+      "typeVersion": 1,
+      "id": "b6a9cd95-e823-45fc-877a-437b21b681cb",
+      "name": "Sticky Note14"
+    },
+    {
+      "parameters": {
+        "content": "## Results Synthesis Agent System Prompt\nYou are a data synthesis specialist focused on organizing and presenting SEO keyword research results. Your task is to transform raw keyword data from the Keyword Research Agent into a structured, actionable format for the user.\n\nProcess the keyword data as follows:\n1. Remove duplicates and close variations\n2. Standardize formatting and notation\n3. Categorize keywords into logical groupings based on:\n   - Topic relevance\n   - Search intent (informational, navigational, transactional, commercial)\n   - Content type suitability (blog post, service page, guide, FAQ)\n   - Funnel stage (awareness, consideration, decision)\n4. Prioritize keywords based on:\n   - Relevance to business objectives\n   - Search volume and competition metrics\n   - Content gap opportunities\n   - Quick win potential\n\nCompile a comprehensive list of at least 100 keywords, organized into the following sections:\n1. High-Priority Keywords (25-30): Keywords with immediate potential\n2. Content Topic Clusters (10-15 clusters): Groups of related keywords that could form content pillars\n3. Long-Tail Opportunities (30-40): Specific, low-competition phrases\n4. Question-Based Keywords (15-20): Queries framed as questions\n5. Emerging Trends (10-15): Keywords showing growth potential\n\nFor each category, include:\n- The keyword list with relevant metrics\n- Brief strategic recommendations\n- Potential content applications\n\nFormat the final output for maximum readability and actionability. Include both the comprehensive keyword list and a strategic summary of findings and recommendations.",
+        "height": 740,
+        "width": 800,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3780,
+        -120
+      ],
+      "typeVersion": 1,
+      "id": "f823dfed-2524-4998-87d5-3df22f255e5f",
+      "name": "Sticky Note15"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are an SEO specialist. Your job is to help the user conduct an extensive keyword research before creating a new blog post on his website. Use the keyword trends tool to find keyword trends related to your query. \nBefore you start, ask the user if he wants you to find keyword based on top trends or rising trends. You can specify this when using the tool.\nPlan your work by iterating over the keywords at least 3 times, starting from a query and then trying 2 or more queries based on the keywords results from the tool.\n\nIgnore all other queries."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.8,
       "position": [
-        560,
+        680,
         0
       ],
       "id": "503ecb4c-da1f-4aaa-afe9-45a2a1badc6d",
-      "name": "AI Agent"
+      "name": "Coordinator Agent"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}",
+        "options": {
+          "systemMessage": "You are a business intelligence expert specializing in digital content analysis. Your job is to build a comprehensive profile of the user's business by:\n\n1. Analyzing the user's WordPress site structure, content, and metadata\n2. Identifying their primary services, products, and value propositions\n3. Determining their target audience and market positioning\n4. Recognizing content gaps and opportunities\n\nUse the Pages and Posts tools to systematically explore the user's website. Begin with the homepage, about page, and service pages to understand their core offerings. Then analyze blog content to identify themes, topics, and writing style.\n\nIf specific information is needed, use the Search tool to find relevant data. When analyzing content, pay special attention to:\n- Existing keyword usage and density\n- Content categories and taxonomies\n- Meta descriptions and title patterns\n- Service/product descriptions and unique selling points\n\nCompile your findings into a structured business profile that includes:\n- Primary business focus and offerings\n- Secondary services or products\n- Target audience demographics and needs\n- Content strengths and gaps\n- Existing SEO patterns and performance indicators\n\nYour output should provide the user with a clear understanding of the business context to inform targeted keyword research."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        620,
+        760
+      ],
+      "id": "84470dff-5496-4567-9aa2-ec76963a8fd9",
+      "name": "Business Analysis Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=business-analyst-{{ $json.config.id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        560,
+        1020
+      ],
+      "id": "e53ad574-e773-440d-94d2-abd18a4e6955",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        380,
+        1020
+      ],
+      "id": "e43f8c1b-41ca-41ac-84be-381077ab4913",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "9TQJVOrXO3CFaZ06",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolName": "company_knowledge_base",
+        "toolDescription": "Performs semantic search on website's content vector store.",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "wordpress-blogs",
+          "mode": "list",
+          "cachedResultName": "wordpress-blogs"
+        },
+        "includeDocumentMetadata": false,
+        "options": {
+          "pineconeNamespace": "=wordpress-{{ $json.config.urlEncoded }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        1020
+      ],
+      "id": "d98cbb71-2091-4330-9b6e-8a68f31aec52",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "aM3CTptjeioEW1ye",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1020,
+        1180
+      ],
+      "id": "0b724e61-2a4e-4630-8a67-dd8a52197c71",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "9TQJVOrXO3CFaZ06",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {
+          "download": false
+        }
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -500,
+        300
+      ],
+      "id": "f8cf26e9-5b58-4c5b-9a85-7bf0135546e7",
+      "name": "Telegram Trigger",
+      "webhookId": "78f5a17f-0062-4575-aa88-b474e61833d4",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblfU3UiMHDL5DnNu",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblfU3UiMHDL5DnNu"
+        },
+        "filterByFormula": "=AND({Messaging App}=\"Telegram\", {Messaging App User}=\"@{{ $json.message.from.username }}\")",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -300,
+        300
+      ],
+      "id": "d31918b2-7a8f-486c-89aa-35fb61efb0fb",
+      "name": "Client",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblty7DapzrDJ6cV6",
+          "mode": "list",
+          "cachedResultName": "Wordpress Clients",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblty7DapzrDJ6cV6"
+        },
+        "id": "={{ $json['Wordpress Clients'][0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -100,
+        300
+      ],
+      "id": "38307fe7-f2df-4e74-8da6-773e0645829a",
+      "name": "Wordpress Client",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "635b6aa3-4766-4b29-b318-e23d2a96ccfc",
+              "name": "id",
+              "value": "={{ $('Client').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "259c6506-e038-4729-ae4b-37a73281a7c4",
+              "name": "Name",
+              "value": "={{ $('Client').item.json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "1da58776-5c25-41d4-9294-a6d985ea1c9d",
+              "name": "urlEncoded",
+              "value": "={{ $json.URL.base64Encode() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        300
+      ],
+      "id": "a12adbc1-61e4-42b9-b9bd-4ebdc041293d",
+      "name": "Config"
+    },
+    {
+      "parameters": {
+        "name": "Business_Analysis_Agent",
+        "description": "Activates Business Analysis Agent to gather information about the user's business from WordPress site and knowledge base.",
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "route": "business_agent",
+            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', ``, 'string') }}",
+            "config": "={{ $json }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "route",
+              "displayName": "route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "trend",
+              "displayName": "trend",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "businessProfile",
+              "displayName": "businessProfile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "keywordData",
+              "displayName": "keywordData",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "config",
+              "displayName": "config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        820,
+        220
+      ],
+      "id": "e431092c-eaca-430f-828f-3adb4fe0cc9a",
+      "name": "Business Analysis Agent Tool"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "route"
+            },
+            {
+              "name": "trend"
+            },
+            {
+              "name": "query"
+            },
+            {
+              "name": "businessProfile"
+            },
+            {
+              "name": "keywordData"
+            },
+            {
+              "name": "config",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -540,
+        880
+      ],
+      "id": "0eac9c88-eeec-4f87-97ea-7aaf733b8dda",
+      "name": "Sub Workflow"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.route }}",
+                    "rightValue": "business_agent",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bb75709e-0885-42c1-bbbf-aa2e8809bde0"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Business Agent"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2ee74f68-251c-45af-9e35-55fdd8d46a42",
+                    "leftValue": "={{ $json.route }}",
+                    "rightValue": "keyword_agent",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Keyword Agent"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8044ad4a-d411-4bf1-b1d7-4e87cb44169c",
+                    "leftValue": "={{ $json.route }}",
+                    "rightValue": "results_agent",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Results Agent"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -320,
+        880
+      ],
+      "id": "cab03625-f0c0-4f8c-a4c2-31c59a9fdc25",
+      "name": "Switch"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        540,
+        1680
+      ],
+      "id": "e6b6af8d-a36a-47b4-8842-8762b5150ff0",
+      "name": "Simple Memory2"
     },
     {
       "parameters": {
@@ -95,10 +1133,10 @@
       "typeVersion": 1.2,
       "position": [
         360,
-        320
+        1680
       ],
-      "id": "b16d9e2e-c70d-450f-8f81-131231b90815",
-      "name": "OpenAI Chat Model",
+      "id": "9641220e-3740-44e6-ae6e-3c03dc9a7fcb",
+      "name": "OpenAI Chat Model2",
       "credentials": {
         "openAiApi": {
           "id": "9TQJVOrXO3CFaZ06",
@@ -107,223 +1145,79 @@
       }
     },
     {
-      "parameters": {},
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        600,
+        1420
+      ],
+      "id": "803de572-6e88-42e3-b390-6dfd1309c7db",
+      "name": "Keyword Research Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=coordinator-{{ $json.id }}",
+        "contextWindowLength": 10
+      },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        580,
-        320
+        680,
+        220
       ],
-      "id": "cde8fd0c-1ea6-42b2-9657-ab160be34d07",
+      "id": "b7d23f81-dd10-47d1-b711-d16b1d395629",
       "name": "Simple Memory"
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "limit": 10,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.wordpressTool",
-      "typeVersion": 1,
-      "position": [
-        860,
-        300
-      ],
-      "id": "b1dbf8b3-9b96-4dfd-bf8a-3e3265bb7629",
-      "name": "Wordpress",
-      "credentials": {
-        "wordpressApi": {
-          "id": "dpOssYDSc5YoyIPY",
-          "name": "Wordpress account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "https://serpapi.com/search?engine=google_trends",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpQueryAuth",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "q",
-              "value": "ai agents"
-            },
-            {
-              "name": "data_type",
-              "value": "RELATED_QUERIES"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        280,
-        960
-      ],
-      "id": "2f5ccdac-5936-4f87-9182-02b4ba6c2240",
-      "name": "HTTP Request",
-      "credentials": {
-        "httpQueryAuth": {
-          "id": "0qkBaxuzS39V5w5h",
-          "name": "SerpApi Key"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "## Accesses\n[SerpApi](https://serpapi.com/)"
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        0,
-        -260
-      ],
-      "typeVersion": 1,
-      "id": "92f82822-ba79-41cd-b5c8-562c054c06b3",
-      "name": "Sticky Note"
-    },
-    {
-      "parameters": {
-        "content": "## Trend finder",
-        "height": 640,
-        "width": 1920,
-        "color": 7
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -80,
-        640
-      ],
-      "typeVersion": 1,
-      "id": "6569f99f-1201-47f4-86fe-fa6594904124",
-      "name": "Sticky Note1"
-    },
-    {
-      "parameters": {
-        "content": "## Step 1\n### Generate idea\nUser suggestions or search existing posts to generate idea.\n\n*Idea: Do a relevance search to make sure it's not too similar with other posts*",
-        "height": 200,
-        "width": 260
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        340,
-        -340
-      ],
-      "typeVersion": 1,
-      "id": "d71b253b-54a7-4e14-b852-331eccf827ef",
-      "name": "Sticky Note2"
-    },
-    {
-      "parameters": {
-        "content": "## Step 2\n### Approve idea\nUser approves idea or asks for another one.",
-        "height": 200,
-        "width": 260
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        620,
-        -340
-      ],
-      "typeVersion": 1,
-      "id": "0382c7ec-aedf-4352-93a0-b417c1dc2d3d",
-      "name": "Sticky Note3"
-    },
-    {
-      "parameters": {
-        "content": "## Step 3\n### Find keywords\nAI searches for keywords using google trends.",
-        "height": 200,
-        "width": 260
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        900,
-        -340
-      ],
-      "typeVersion": 1,
-      "id": "c41d7af0-a93b-4efc-a9d3-8d8ce724b19e",
-      "name": "Sticky Note4"
-    },
-    {
-      "parameters": {
-        "content": "## Step 4\n### Write the post\nUsing the idea and keywords the AI writes the full blog post title and body.",
-        "height": 200,
-        "width": 260
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        1180,
-        -340
-      ],
-      "typeVersion": 1,
-      "id": "0ee7d912-5ee2-429f-886e-a59e9e1c877c",
-      "name": "Sticky Note5"
-    },
-    {
-      "parameters": {
-        "content": "## Step 5\n### Review by AI\nAn AI reviews the blog post and gives it a score. If score is below 5/10 hands off to previous AI to try again.",
-        "height": 200,
-        "width": 260
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        1460,
-        -340
-      ],
-      "typeVersion": 1,
-      "id": "00526296-d2da-4910-a86e-20e217190308",
-      "name": "Sticky Note6"
-    },
-    {
-      "parameters": {
-        "content": "## Step 6\n### Featured Image\nGenerate a prompt and hand off to an image generating AI to generate the featured image for the post.",
-        "height": 200,
-        "width": 260
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        1740,
-        -340
-      ],
-      "typeVersion": 1,
-      "id": "0836cd15-1838-4513-b0fe-d63be6f649d3",
-      "name": "Sticky Note7"
-    },
-    {
-      "parameters": {
-        "content": "## Step 7\n### Create on Wordpress\nCreate the blog post on wordpress as a Draft.",
-        "height": 200,
-        "width": 260
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        2020,
-        -340
-      ],
-      "typeVersion": 1,
-      "id": "bfa6f6c1-a06f-48f3-b08d-2c0970d85bf5",
-      "name": "Sticky Note8"
-    },
-    {
-      "parameters": {
-        "content": "## Step 8\n### Review by Human\nSend a link to the draft post to a human for review. Provide buttons to regenerate text, image or approve. \nAlternatively, the human can write a message with comments.",
-        "height": 200,
-        "width": 260
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        2300,
-        -340
-      ],
-      "typeVersion": 1,
-      "id": "758ca6bd-bb92-4ca6-9610-c4ac4b52a1a3",
-      "name": "Sticky Note9"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Telegram Trigger": [
+      {
+        "json": {
+          "update_id": 975833669,
+          "message": {
+            "message_id": 4,
+            "from": {
+              "id": 893910766,
+              "is_bot": false,
+              "first_name": "Apostolis",
+              "last_name": "Stephanou",
+              "username": "ApostolisTech",
+              "language_code": "en"
+            },
+            "chat": {
+              "id": 893910766,
+              "first_name": "Apostolis",
+              "last_name": "Stephanou",
+              "username": "ApostolisTech",
+              "type": "private"
+            },
+            "date": 1742759187,
+            "text": "/start",
+            "entities": [
+              {
+                "offset": 0,
+                "length": 6,
+                "type": "bot_command"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "Sub Workflow": [
+      {
+        "json": {
+          "route": "business_agent",
+          "query": "What services does the client offer?",
+          "urlEncoded": ""
+        }
+      }
+    ]
+  },
   "repo_name": "n8n-backup",
   "repo_owner": "apostolisCodpal",
   "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
@@ -333,6 +1227,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-21T10:55:22.000Z",
-  "versionId": "0751556f-5345-45ba-99f3-9c057868e5e5"
+  "updatedAt": "2025-03-23T20:40:20.000Z",
+  "versionId": "0dd16e1f-ad30-45bd-87c4-62e179c7750c"
 }
