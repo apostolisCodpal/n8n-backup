@@ -83,7 +83,7 @@
       "main": [
         [
           {
-            "node": "Notify DB is ready",
+            "node": "Config1",
             "type": "main",
             "index": 0
           }
@@ -133,6 +133,79 @@
           }
         ]
       ]
+    },
+    "Wordpress": {
+      "main": [
+        [
+          {
+            "node": "Create Vector Documents1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Notify Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config1": {
+      "main": [
+        [
+          {
+            "node": "Wordpress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Create Vector Documents1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader1": {
+      "ai_document": [
+        [
+          {
+            "node": "Create Vector Documents1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter1": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader1",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Vector Documents1": {
+      "main": [
+        [
+          {
+            "node": "Notify DB is ready",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-20T20:09:08.929Z",
@@ -140,7 +213,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Ingest Wordpress Posts",
+  "name": "Ingest Wordpress Data",
   "nodes": [
     {
       "parameters": {
@@ -153,7 +226,7 @@
       "type": "n8n-nodes-base.wordpress",
       "typeVersion": 1,
       "position": [
-        500,
+        540,
         300
       ],
       "id": "8ebb2603-a4b9-4184-ab61-af48ae2786db",
@@ -202,15 +275,15 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        780,
-        140
+        860,
+        160
       ],
       "id": "f77a8c36-b350-4823-8e83-35f16f5813ec",
       "name": "Embeddings OpenAI",
       "credentials": {
         "openAiApi": {
-          "id": "9TQJVOrXO3CFaZ06",
-          "name": "OpenAi account"
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
         }
       }
     },
@@ -244,8 +317,8 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1,
       "position": [
-        920,
-        120
+        1040,
+        160
       ],
       "id": "82d3083a-161c-41ab-becf-c531e9ba2b3f",
       "name": "Default Data Loader"
@@ -257,8 +330,8 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        940,
-        280
+        1060,
+        320
       ],
       "id": "fb9606d2-d894-4a43-876a-9455bbfa9f0a",
       "name": "Recursive Character Text Splitter"
@@ -321,8 +394,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
       "typeVersion": 1,
       "position": [
-        800,
-        -100
+        920,
+        -60
       ],
       "id": "84aef120-98c1-4842-b893-39704f8eadc5",
       "name": "Create Vector Documents",
@@ -342,8 +415,8 @@
       "type": "n8n-nodes-base.discord",
       "typeVersion": 2,
       "position": [
-        860,
-        500
+        1780,
+        600
       ],
       "id": "b0549182-3ed2-4d17-b413-7c43e0c8092b",
       "name": "Notify Error",
@@ -359,14 +432,14 @@
     {
       "parameters": {
         "authentication": "webhook",
-        "content": "=[{{ $workflow.name }}][{{ $prevNode.name }}] I finished reading your currently published posts. You can now ask me anything related to their content and I can better help you write new blog posts.",
+        "content": "=[{{ $workflow.name }}][{{ $prevNode.name }}] I finished reading your website content. You can now ask me anything related to their content and I can better help you write new blog posts.",
         "options": {}
       },
       "type": "n8n-nodes-base.discord",
       "typeVersion": 2,
       "position": [
-        1300,
-        20
+        2300,
+        -80
       ],
       "id": "cee3b51b-b98d-4b27-9426-54686a3677c5",
       "name": "Notify DB is ready",
@@ -404,7 +477,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        800,
+        920,
         -300
       ],
       "id": "70db6382-78df-4db2-abfa-290fe696462f",
@@ -438,7 +511,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        1180,
+        1300,
         -300
       ],
       "id": "076a8215-727c-4f43-b381-e443b5c7e76f",
@@ -457,8 +530,8 @@
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
-        1680,
-        -100
+        2820,
+        -220
       ],
       "id": "9360b9db-63bb-4c6b-a3b5-4c9f34c5b09e",
       "name": "Send Email",
@@ -473,11 +546,176 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        1160,
-        500
+        2080,
+        600
       ],
       "id": "f7bebbfe-e6a9-4873-936d-8521bba1886e",
       "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "resource": "page",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        80
+      ],
+      "id": "4ab50af1-5ce3-4a33-9285-1a0e813f3f9f",
+      "name": "Wordpress",
+      "retryOnFail": true,
+      "credentials": {
+        "wordpressApi": {
+          "id": "dpOssYDSc5YoyIPY",
+          "name": "Wordpress account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8c28100f-8d94-430a-ab01-8ba4413a9ec2",
+              "name": "URL",
+              "value": "={{ $('Config').item.json.URL }}",
+              "type": "string"
+            },
+            {
+              "id": "50c4de88-e341-4a7f-9045-ffcae949665e",
+              "name": "Wordpress Username",
+              "value": "={{ $('Config').item.json['Wordpress Username'] }}",
+              "type": "string"
+            },
+            {
+              "id": "96740962-df02-496a-80bf-2feb4986a4aa",
+              "name": "Wordpress Password",
+              "value": "={{ $('Config').item.json['Wordpress Password'] }}",
+              "type": "string"
+            },
+            {
+              "id": "99534fbc-478e-4f04-9b72-169cee9894fe",
+              "name": "URL Encoded",
+              "value": "={{ $('Config').item.json.URL.base64Encode() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        -60
+      ],
+      "id": "da8337e6-450b-4053-a376-b7e6cdc422ce",
+      "name": "Config1",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1700,
+        160
+      ],
+      "id": "7763b955-db90-4ce8-8c43-de4ef7ba91d3",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.content.rendered }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "source",
+                "value": "={{ $json.link }}"
+              },
+              {
+                "name": "date",
+                "value": "={{ $json.date_gmt }}"
+              },
+              {
+                "name": "title",
+                "value": "={{ $json.title.rendered }}"
+              },
+              {
+                "name": "wordpress_id",
+                "value": "={{ $json.id }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        160
+      ],
+      "id": "c8116a0a-d03a-4d4c-90ff-6d04ecc679dc",
+      "name": "Default Data Loader1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        320
+      ],
+      "id": "b6be0b5c-8283-41e1-9117-a82d07ca6d08",
+      "name": "Recursive Character Text Splitter1"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "wordpress-blogs",
+          "mode": "list",
+          "cachedResultName": "wordpress-blogs"
+        },
+        "options": {
+          "clearNamespace": false,
+          "pineconeNamespace": "=wordpress-{{ $('Config').item.json['URL Encoded'] }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        -60
+      ],
+      "id": "4c82dddf-cdd4-4100-9810-c317d5b67843",
+      "name": "Create Vector Documents1",
+      "credentials": {
+        "pineconeApi": {
+          "id": "aM3CTptjeioEW1ye",
+          "name": "PineconeApi account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -500,6 +738,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-22T19:15:21.000Z",
-  "versionId": "1eae445e-cb52-43d9-975c-bd424b89cc73"
+  "updatedAt": "2025-03-24T16:40:22.000Z",
+  "versionId": "daf5758f-c84a-4f5f-aa9f-3741c4414665"
 }
