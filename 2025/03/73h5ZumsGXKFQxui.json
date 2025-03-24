@@ -1,0 +1,180 @@
+{
+  "active": false,
+  "connections": {
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Upload File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-24T18:24:37.783Z",
+  "id": "73h5ZumsGXKFQxui",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Airtable Upload File",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const myString = $input.item.json.fileContent ?? '';\nconst encoded = Buffer.from(myString, 'utf8').toString('base64');\nreturn {\n  base64File: encoded\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        120,
+        0
+      ],
+      "id": "b3bffa63-b34e-4d6d-8290-7c8ac7ded61e",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://content.airtable.com/v0/app3foHr3iDjZBLvs/{{ $json.recordId }}/{{ $json.fieldName }}/uploadAttachment",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "airtableTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contentType\": \"{{ $json.contentType }}\",\n  \"file\": \"{{ $json.fileContent }}\",\n  \"filename\": \"{{ $json.fileName }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        0
+      ],
+      "id": "24b4e964-b9bf-4317-8d15-da584302c53f",
+      "name": "Upload File",
+      "credentials": {
+        "airtableApi": {
+          "id": "UQxpdbligJueE1uN",
+          "name": "Airtable account"
+        },
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "recordId"
+            },
+            {
+              "name": "fieldName"
+            },
+            {
+              "name": "fileContent"
+            },
+            {
+              "name": "contentType"
+            },
+            {
+              "name": "fileName"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        0
+      ],
+      "id": "712d7456-5873-4178-8c54-05e32a956580",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "63d69122-3c66-4398-a2da-28e1d84b0704",
+              "name": "recordId",
+              "value": "={{ $('When Executed by Another Workflow').item.json.recordId }}",
+              "type": "string"
+            },
+            {
+              "id": "8648d7c4-153d-4aad-bed6-e99d3446ae29",
+              "name": "fieldName",
+              "value": "={{ $('When Executed by Another Workflow').item.json.fieldName }}",
+              "type": "string"
+            },
+            {
+              "id": "12ca4194-bd70-48fc-a031-803fd579a98b",
+              "name": "fileContent",
+              "value": "={{ $json.base64File }}",
+              "type": "string"
+            },
+            {
+              "id": "cf23f8a4-bb77-4841-aa28-69b5ed596abe",
+              "name": "contentType",
+              "value": "={{ $('When Executed by Another Workflow').item.json.contentType }}",
+              "type": "string"
+            },
+            {
+              "id": "38f1ad7d-97c3-429c-b896-0e9c22c019ff",
+              "name": "fileName",
+              "value": "={{ $('When Executed by Another Workflow').item.json.fileName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        340,
+        0
+      ],
+      "id": "0d829e3a-1416-4c01-9b23-8633b612d2b3",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-24T18:38:18.000Z",
+  "versionId": "dc42b098-861c-46fb-a1e5-6516e22442eb"
+}
