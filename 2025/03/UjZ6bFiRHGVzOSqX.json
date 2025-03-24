@@ -1,0 +1,195 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model11": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Inform the user of progress",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Typing": {
+      "main": [
+        [
+          {
+            "node": "Inform the user of progress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trigger": {
+      "main": [
+        [
+          {
+            "node": "Typing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inform the user of progress": {
+      "main": [
+        [
+          {
+            "node": "Notify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-24T19:56:07.241Z",
+  "id": "UjZ6bFiRHGVzOSqX",
+  "meta": null,
+  "name": "Telegram notify what agent is doing",
+  "nodes": [
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        620,
+        180
+      ],
+      "id": "8052e7b3-2dbd-4264-977c-7f9813bacebd",
+      "name": "OpenAI Chat Model11",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Notify user of progress",
+        "height": 440,
+        "width": 920,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        300,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "0dda242b-a4ef-4996-acd2-34565c9f49ff",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "operation": "sendChatAction",
+        "chatId": "={{ $json.telegramChatId }}"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        20
+      ],
+      "id": "05a91ead-1e08-42e1-b489-9c97367c0518",
+      "name": "Typing",
+      "webhookId": "3aa8a27f-f5fd-43b8-bdea-c9c923c67690",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "telegramChatId"
+            },
+            {
+              "name": "prompt"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        20,
+        20
+      ],
+      "id": "c6b08ce7-ca64-4de0-a044-db7d28b0fdcc",
+      "name": "Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "What are you doing?",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "={{ $('Trigger').item.json.prompt }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        620,
+        20
+      ],
+      "id": "cce0f9cd-6b41-4f43-b684-da9a13dba1a1",
+      "name": "Inform the user of progress"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Trigger').item.json.telegramChatId }}",
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        960,
+        20
+      ],
+      "id": "c9ed7689-52d0-4994-a4a4-9d5b2df90cfd",
+      "name": "Notify",
+      "webhookId": "922e99ac-9093-4b3f-94bb-84607cef1890",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-24T19:56:40.000Z",
+  "versionId": "26fa0bf3-c59c-4d49-83d9-bbc1f7c81d58"
+}
