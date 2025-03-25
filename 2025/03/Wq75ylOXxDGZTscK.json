@@ -1,0 +1,136 @@
+{
+  "active": false,
+  "connections": {
+    "SerpAPI Trends": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "SerpAPI Trends",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-25T06:23:46.143Z",
+  "id": "Wq75ylOXxDGZTscK",
+  "meta": null,
+  "name": "SerpAPI Trends API Tool",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "query"
+            },
+            {
+              "name": "topOrRisingNullable"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "052958c8-e2e5-4dc1-9377-7f17bf42b51e",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search?engine=google_trends",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "serpApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.query }}"
+            },
+            {
+              "name": "data_type",
+              "value": "RELATED_QUERIES"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "6b290d51-bb14-4a0f-9e01-6b95c9b02370",
+      "name": "SerpAPI Trends",
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "0qkBaxuzS39V5w5h",
+          "name": "SerpApi Key"
+        },
+        "serpApi": {
+          "id": "QEy6ziLBcTJrXptF",
+          "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const trend = $(\"Sub Workflow\").first().json.topOrRisingNullable ?? null;\n\nif (trend) {\n  const results = [];\n  \n  const trends = $input.item.json.related_queries[trend];\n  trends.forEach(x => {\n    results.push({\n      query: x.query,\n      value: x.value,\n      extracted_value: x.extracted_value,\n    });\n  });\n  \n  return results;\n}\n\n\nconst result = {};\n\nconst entities = Object.entries($input.item.json.related_queries);\n\nfor (const [key, items] of entities) {\n  result[key] = result[key] ?? [];\n  items.forEach(x => {\n    result[key].push({\n      query: x.query,\n      value: x.value,\n      extracted_value: x.extracted_value,\n    });\n  }\n}\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        0
+      ],
+      "id": "73e215bd-c90a-4eff-ad4f-ae99e4005d32",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "content": "## Google Trends API Tool",
+        "height": 400,
+        "width": 700,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        280,
+        -140
+      ],
+      "typeVersion": 1,
+      "id": "de4efd65-8827-4b81-a259-acf4caf45c79",
+      "name": "Sticky Note3"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-25T06:25:26.000Z",
+  "versionId": "301ee627-4fc3-4d2f-ae4e-da5d4ade137e"
+}
