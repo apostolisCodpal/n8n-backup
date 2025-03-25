@@ -22,22 +22,6 @@
         ]
       ]
     },
-    "SerpAPI Trends": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code": {
-      "main": [
-        []
-      ]
-    },
     "Posts": {
       "ai_tool": [
         [
@@ -88,39 +72,6 @@
           {
             "node": "Pinecone Vector Store",
             "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Telegram Trigger": {
-      "main": [
-        [
-          {
-            "node": "If not /start",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Client": {
-      "main": [
-        [
-          {
-            "node": "Wordpress Client",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wordpress Client": {
-      "main": [
-        [
-          {
-            "node": "Config",
-            "type": "main",
             "index": 0
           }
         ]
@@ -180,24 +131,6 @@
             "type": "main",
             "index": 0
           }
-        ],
-        [
-          {
-            "node": "SerpAPI Trends",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Config": {
-      "main": [
-        [
-          {
-            "node": "Action Typing",
-            "type": "main",
-            "index": 0
-          }
         ]
       ]
     },
@@ -206,17 +139,6 @@
         [
           {
             "node": "Keyword Research Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Simple Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "Coordinator Agent",
             "type": "ai_memory",
             "index": 0
           }
@@ -256,33 +178,6 @@
         ]
       ]
     },
-    "Coordinator Agent": {
-      "main": [
-        []
-      ]
-    },
-    "Action Typing": {
-      "main": [
-        [
-          {
-            "node": "Text Classifier",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If not /start": {
-      "main": [
-        [
-          {
-            "node": "Client",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Edit Fields": {
       "main": [
         [
@@ -309,7 +204,7 @@
       "main": [
         [
           {
-            "node": "Execute Workflow3",
+            "node": "Notify User6",
             "type": "main",
             "index": 0
           }
@@ -327,67 +222,6 @@
         ]
       ]
     },
-    "OpenAI Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Text Classifier",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Coordinator Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Text Classifier": {
-      "main": [
-        [
-          {
-            "node": "Coordinator Agent",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        []
-      ]
-    },
-    "Business Research": {
-      "main": [
-        [
-          {
-            "node": "Keyword Research",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Keyword Research": {
-      "main": [
-        [
-          {
-            "node": "Result Synthesis",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Result Synthesis": {
-      "main": [
-        []
-      ]
-    },
     "Typing3": {
       "main": [
         [
@@ -401,80 +235,9 @@
     },
     "Create Content Strategy Document": {
       "main": [
-        []
-      ]
-    },
-    "Typing4": {
-      "main": [
         [
           {
-            "node": "Inform the user of progress6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model10": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Inform the user of progress6",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Inform the user of progress6": {
-      "main": [
-        [
-          {
-            "node": "Notify6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Keyword Research1": {
-      "main": [
-        [
-          {
-            "node": "Result Synthesis1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Business Research1": {
-      "main": [
-        [
-          {
-            "node": "Keyword Research1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow3": {
-      "main": [
-        [
-          {
-            "node": "Output1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Result Synthesis1": {
-      "main": [
-        [
-          {
-            "node": "Create Content Strategy Document",
+            "node": "Upload SEO Document",
             "type": "main",
             "index": 0
           }
@@ -508,17 +271,6 @@
         [
           {
             "node": "SEO Content Strategy Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "SEO Content Strategy Agent2": {
-      "ai_tool": [
-        [
-          {
-            "node": "Coordinator Agent",
             "type": "ai_tool",
             "index": 0
           }
@@ -620,17 +372,6 @@
         ]
       ]
     },
-    "Call n8n Workflow Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "SEO Content Strategy Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Notify User": {
       "main": [
         [
@@ -690,7 +431,7 @@
       "main": [
         [
           {
-            "node": "Business Research1",
+            "node": "Business Research",
             "type": "main",
             "index": 0
           }
@@ -707,6 +448,94 @@
           }
         ]
       ]
+    },
+    "Business Research": {
+      "main": [
+        [
+          {
+            "node": "Keyword Research",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keyword Research": {
+      "main": [
+        [
+          {
+            "node": "Result Synthesis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Result Synthesis": {
+      "main": [
+        [
+          {
+            "node": "Create Content Strategy Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Output": {
+      "main": [
+        [
+          {
+            "node": "Create Business Analysis Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Business Analysis Document": {
+      "main": [
+        [
+          {
+            "node": "Upload Business Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Business Document": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify User6": {
+      "main": [
+        [
+          {
+            "node": "Output1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get last SEO Content Strategy Document": {
+      "ai_tool": [
+        [
+          {
+            "node": "SEO Content Strategy Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-20T21:21:05.396Z",
@@ -714,7 +543,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Content Creator Agent",
+  "name": "SEO Content Strategy Agent",
   "nodes": [
     {
       "parameters": {
@@ -729,70 +558,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        400,
+        320,
         3300
       ],
       "id": "b16d9e2e-c70d-450f-8f81-131231b90815",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "I92UkH9mThS7D4I6",
-          "name": "CodPal Account"
+          "id": "Rra0E9NIQlT0DRRG",
+          "name": "Apostolos Account"
         }
       }
-    },
-    {
-      "parameters": {
-        "url": "https://serpapi.com/search?engine=google_trends",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "serpApi",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "q",
-              "value": "={{ $json.query }}"
-            },
-            {
-              "name": "data_type",
-              "value": "RELATED_QUERIES"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        680,
-        4280
-      ],
-      "id": "2f5ccdac-5936-4f87-9182-02b4ba6c2240",
-      "name": "SerpAPI Trends",
-      "credentials": {
-        "httpQueryAuth": {
-          "id": "0qkBaxuzS39V5w5h",
-          "name": "SerpApi Key"
-        },
-        "serpApi": {
-          "id": "QEy6ziLBcTJrXptF",
-          "name": "SerpAPI account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "const trend = $(\"Sub Workflow\").first().json.trend ?? null;\n\nif (trend) {\n  const results = [];\n  \n  const trends = $input.item.json.related_queries[trend];\n  trends.forEach(x => {\n    results.push({\n      query: x.query,\n      value: x.value,\n      extracted_value: x.extracted_value,\n    });\n  });\n  \n  return results;\n}\n\n\nconst result = {};\n\nconst entities = Object.entries($input.item.json.related_queries);\n\nfor (const [key, items] of entities) {\n  result[key] = result[key] ?? [];\n  items.forEach(x => {\n    result[key].push({\n      query: x.query,\n      value: x.value,\n      extracted_value: x.extracted_value,\n    });\n  }\n}\n\nreturn result;"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        940,
-        4280
-      ],
-      "id": "7d1efe0e-337c-49f7-8558-cd1f43c672ee",
-      "name": "Code"
     },
     {
       "parameters": {
@@ -807,7 +583,7 @@
       "type": "n8n-nodes-base.wordpressTool",
       "typeVersion": 1,
       "position": [
-        1100,
+        920,
         2260
       ],
       "id": "4c3679b4-ecb9-4bc9-99dc-913373c1e58f",
@@ -833,7 +609,7 @@
       "type": "n8n-nodes-base.wordpressTool",
       "typeVersion": 1,
       "position": [
-        1240,
+        1060,
         2260
       ],
       "id": "b1dbf8b3-9b96-4dfd-bf8a-3e3265bb7629",
@@ -847,31 +623,15 @@
     },
     {
       "parameters": {
-        "content": "## Coordinator Agent System Prompt\nYou are the primary coordinator for an SEO keyword research system. Your role is to:\n\n1. Gather initial requirements from the user\n2. Direct the workflow between specialized agents\n3. Track progress and ensure all necessary information is collected\n4. Present the final results to the user\n\nBegin by asking the user for:\n- Whether they prefer keywords based on top trends or rising trends\n- If they want to focus on a specific area of their business or let you decide based on their services and content\n- Any specific industry, location, or target audience considerations\n\nUse the Business Analysis Agent to gather information about the user's business before proceeding to keyword research. Once you have sufficient business context, hand off to the Keyword Research Agent. When keyword research is complete, use the Results Synthesis Agent to compile and present the final list of at least 100 relevant keywords.\n\nMaintain a summary of all findings and decisions throughout the process. Your goal is to ensure a seamless experience for the user while producing comprehensive, actionable keyword research.\n\nSpeak to the user like you are his worker. Always use \"I\" or \"me\" instead of \"we\" or \"us\". The user doesn't know you are working with other agents. \n\nNever ask the user what their business does. Always use the Business Analysis Agent to gather such information.\n\nKeep your replies clean and concise. Use bullet points where applicable.",
-        "height": 740,
-        "width": 800,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -1120,
-        -1920
-      ],
-      "typeVersion": 1,
-      "id": "aa9c6f73-985e-48f6-917d-ddf3caa1058a",
-      "name": "Sticky Note12"
-    },
-    {
-      "parameters": {
         "content": "## Business Analysis Agent System Prompt\nYou are a business intelligence expert specializing in digital content analysis. Your job is to build a comprehensive profile of the user's business by:\n\n1. Analyzing the user's WordPress site structure, content, and metadata\n2. Determining their target audience and market positioning\n3. Recognizing content gaps and opportunities\n\nUse the Pages and Posts tools to systematically explore the user's website. Begin with the homepage, about page, and service pages to understand their core offerings. Then analyze blog content to identify themes, topics, and writing style.\n\nIf specific information is needed, use the company knowledge base tool to find relevant data. When analyzing content, pay special attention to:\n- Existing keyword usage and density\n- Content categories and taxonomies\n- Meta descriptions and title patterns\n- Service/product descriptions and unique selling points\n\nCompile your findings into a structured business profile that includes:\n- Primary business focus and offerings\n- Secondary services or products\n- Target audience demographics and needs\n- Content strengths and gaps\n- Existing SEO patterns and performance indicators\n\nYour output should provide the user with a clear understanding of the business context.",
-        "height": 740,
+        "height": 780,
         "width": 800,
         "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -300,
-        -1920
+        680,
+        -480
       ],
       "typeVersion": 1,
       "id": "6e2efb71-acbb-4056-ad6b-f8d5a476cf7a",
@@ -880,14 +640,14 @@
     {
       "parameters": {
         "content": "## Keyword Research Agent System Prompt\nYou are an expert SEO Keyword Research Agent with access to keyword trends API and Google search SerpAPI tools. Your sole function is to identify high-value keyword opportunities based on business profiles.\n\n### Process:\nAnalyze the business profile to extract core offerings, target audience, and unique value propositions\nGenerate 15-20 seed keywords covering primary business functions and customer needs\nUse keyword_trends_api(query, parameters) for each seed keyword\nIdentify patterns in volume, competition, and search intent\nGenerate 30-40 secondary keywords based on trends data\nPerform serpapi_search(query) on promising keywords to validate commercial intent\nGenerate 50+ long-tail variations focusing on high-intent phrases\nGroup keywords into themed clusters based on search intent and funnel stage\n\n### For each keyword cluster, document:\nSearch volume range\nCompetition difficulty (low/medium/high)\nSearch intent classification (informational/commercial/transactional)\nSeasonal patterns if applicable\nGeographic relevance if applicable\n\n### Requirements:\nConsider MINIMUM 100 total keywords before final recommendations\nPrioritize keywords with optimal volume-to-competition ratio\nInclude question-based variations (how/what/why/when)\nNote keywords addressing specific pain points from business profile\nIdentify content gap opportunities between competitors and business capabilities\n\n### Your final output must include:\nTop 20 recommended keywords with complete metrics\n3-5 thematic content clusters for content strategy development\nSpecific recommendations for quick wins vs. long-term keyword targets",
-        "height": 740,
+        "height": 780,
         "width": 800,
         "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        520,
-        -1920
+        1500,
+        -480
       ],
       "typeVersion": 1,
       "id": "b6a9cd95-e823-45fc-877a-437b21b681cb",
@@ -896,35 +656,18 @@
     {
       "parameters": {
         "content": "## Results Synthesis Agent System Prompt\nYou are a data synthesis specialist focused on organizing and presenting SEO keyword research results. Your task is to transform raw keyword data from the Keyword Research Agent into a structured, actionable format for the user.\n\nProcess the keyword data as follows:\n1. Remove duplicates and close variations\n2. Standardize formatting and notation\n3. Categorize keywords into logical groupings based on:\n   - Topic relevance\n   - Search intent (informational, navigational, transactional, commercial)\n   - Content type suitability (blog post, service page, guide, FAQ)\n   - Funnel stage (awareness, consideration, decision)\n4. Prioritize keywords based on:\n   - Relevance to business objectives\n   - Search volume and competition metrics\n   - Content gap opportunities\n   - Quick win potential\n\nCompile a comprehensive list of at least 100 keywords, organized into the following sections:\n1. High-Priority Keywords (25-30): Keywords with immediate potential\n2. Content Topic Clusters (10-15 clusters): Groups of related keywords that could form content pillars\n3. Long-Tail Opportunities (30-40): Specific, low-competition phrases\n4. Question-Based Keywords (15-20): Queries framed as questions\n5. Emerging Trends (10-15): Keywords showing growth potential\n\nFor each category, include:\n- The keyword list with relevant metrics\n- Brief strategic recommendations\n- Potential content applications\n\nYour final output should be an SEO Content Strategy Document. Format the final output for maximum readability and actionability. Include both the comprehensive keyword list and a strategic summary of findings and recommendations.",
-        "height": 740,
+        "height": 780,
         "width": 800,
         "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1340,
-        -1920
+        2320,
+        -480
       ],
       "typeVersion": 1,
       "id": "f823dfed-2524-4998-87d5-3df22f255e5f",
       "name": "Sticky Note15"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('Config').item.json.message }}",
-        "options": {
-          "systemMessage": "You are the primary coordinator for an SEO keyword research system. Your role is to:\n\n1. Gather initial requirements from the user\n2. Direct the workflow between specialized agents\n3. Track progress and ensure all necessary information is collected\n4. Present the final results to the user\n\nBegin by asking the user for:\n- Whether they prefer keywords based on top trends or rising trends\n- If they want to focus on a specific area of their business or let you decide based on their services and content\n- Any specific industry, location, or target audience considerations\n\nUse the Business Analysis Agent to gather information about the user's business before proceeding to keyword research. Once you have sufficient business context, hand off to the Keyword Research Agent. When keyword research is complete, use the Results Synthesis Agent to compile and present the final list of at least 100 relevant keywords.\n\nMaintain a summary of all findings and decisions throughout the process. Your goal is to ensure a seamless experience for the user while producing comprehensive, actionable keyword research.\n\nSpeak to the user like you are his worker. Always use \"I\" or \"me\" instead of \"we\" or \"us\". The user doesn't know you are working with other agents. \n\nNever ask the user what their business does. Always use the Business Analysis Agent to gather such information.\n\nKeep your replies clean and concise. Use bullet points where applicable."
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.8,
-      "position": [
-        580,
-        -40
-      ],
-      "id": "503ecb4c-da1f-4aaa-afe9-45a2a1badc6d",
-      "name": "Coordinator Agent"
     },
     {
       "parameters": {
@@ -937,7 +680,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.8,
       "position": [
-        1080,
+        900,
         2000
       ],
       "id": "84470dff-5496-4567-9aa2-ec76963a8fd9",
@@ -951,7 +694,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        940,
+        760,
         2260
       ],
       "id": "e53ad574-e773-440d-94d2-abd18a4e6955",
@@ -977,7 +720,7 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
       "typeVersion": 1,
       "position": [
-        1380,
+        1200,
         2260
       ],
       "id": "d98cbb71-2091-4330-9b6e-8a68f31aec52",
@@ -998,7 +741,7 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1400,
+        1220,
         2420
       ],
       "id": "0b724e61-2a4e-4630-8a67-dd8a52197c71",
@@ -1009,179 +752,6 @@
           "name": "IFX Account"
         }
       }
-    },
-    {
-      "parameters": {
-        "updates": [
-          "message"
-        ],
-        "additionalFields": {
-          "download": false
-        }
-      },
-      "type": "n8n-nodes-base.telegramTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        -1540,
-        60
-      ],
-      "id": "f8cf26e9-5b58-4c5b-9a85-7bf0135546e7",
-      "name": "Telegram Trigger",
-      "webhookId": "78f5a17f-0062-4575-aa88-b474e61833d4",
-      "credentials": {
-        "telegramApi": {
-          "id": "EHNvbxKETcV3t5MW",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "search",
-        "base": {
-          "__rl": true,
-          "value": "app3foHr3iDjZBLvs",
-          "mode": "list",
-          "cachedResultName": "Engineering Prototype Builder",
-          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblfU3UiMHDL5DnNu",
-          "mode": "list",
-          "cachedResultName": "Clients",
-          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblfU3UiMHDL5DnNu"
-        },
-        "filterByFormula": "=AND({Messaging App}=\"Telegram\", {Messaging App User}=\"@{{ $('Telegram Trigger').item.json.message.from.username }}\")",
-        "returnAll": false,
-        "limit": 1,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -1120,
-        0
-      ],
-      "id": "d31918b2-7a8f-486c-89aa-35fb61efb0fb",
-      "name": "Client",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "f9JH5DCFMvod79bz",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "base": {
-          "__rl": true,
-          "value": "app3foHr3iDjZBLvs",
-          "mode": "list",
-          "cachedResultName": "Engineering Prototype Builder",
-          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblty7DapzrDJ6cV6",
-          "mode": "list",
-          "cachedResultName": "Wordpress Clients",
-          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblty7DapzrDJ6cV6"
-        },
-        "id": "={{ $json['Wordpress Clients'][0] }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -1120,
-        240
-      ],
-      "id": "38307fe7-f2df-4e74-8da6-773e0645829a",
-      "name": "Wordpress Client",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "f9JH5DCFMvod79bz",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "635b6aa3-4766-4b29-b318-e23d2a96ccfc",
-              "name": "id",
-              "value": "={{ $('Client').item.json.id }}",
-              "type": "string"
-            },
-            {
-              "id": "259c6506-e038-4729-ae4b-37a73281a7c4",
-              "name": "Name",
-              "value": "={{ $('Client').item.json.Name }}",
-              "type": "string"
-            },
-            {
-              "id": "1da58776-5c25-41d4-9294-a6d985ea1c9d",
-              "name": "urlEncoded",
-              "value": "={{ $json.URL.base64Encode() }}",
-              "type": "string"
-            },
-            {
-              "id": "8c863289-b1dd-4122-ac06-d825aa1d8581",
-              "name": "telegramChatId",
-              "value": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
-              "type": "string"
-            },
-            {
-              "id": "8c75bb0f-c975-41a5-ba35-b293624d865b",
-              "name": "message",
-              "value": "={{ $('Telegram Trigger').item.json.message.text }}",
-              "type": "string"
-            },
-            {
-              "id": "1d00fb9b-7478-45a6-90b2-9b7056f7d6dc",
-              "name": "wordpressUsername",
-              "value": "={{ $json[\"Wordpress Username\"] }}",
-              "type": "string"
-            },
-            {
-              "id": "2faa367f-ce60-4235-a8ee-06ef72a52303",
-              "name": "wordpressPassword",
-              "value": "={{ $json[\"Wordpress Password\"] }}",
-              "type": "string"
-            },
-            {
-              "id": "96145c8b-5eb2-4baa-b018-7f26dda1ce1c",
-              "name": "wordpressUrl",
-              "value": "={{ $json.URL }}",
-              "type": "string"
-            },
-            {
-              "id": "f9aadfa4-4037-45b5-8888-ae2d897bfd35",
-              "name": "wordpressClientId",
-              "value": "={{ $json.id }}",
-              "type": "string"
-            },
-            {
-              "id": "642e5844-f04f-4214-b6c1-f3e9e22208ba",
-              "name": "wordpressClientIdentifier",
-              "value": "={{ $json.Identifier }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -880,
-        100
-      ],
-      "id": "a12adbc1-61e4-42b9-b9bd-4ebdc041293d",
-      "name": "Config"
     },
     {
       "parameters": {
@@ -1212,7 +782,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1620,
+        -1400,
         2520
       ],
       "id": "0eac9c88-eeec-4f87-97ea-7aaf733b8dda",
@@ -1370,31 +940,6 @@
               },
               "renameOutput": true,
               "outputKey": "Results Agent"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "f1ffcdb7-7d5f-4191-9b20-f642e6de8261",
-                    "leftValue": "={{ $('Sub Workflow').item.json.route }}",
-                    "rightValue": "keyword_trends_tool",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "Keyword Trends Tool"
             }
           ]
         },
@@ -1442,57 +987,21 @@
     },
     {
       "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "=coordinator-{{ $json.id }}",
-        "contextWindowLength": 10
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        600,
-        200
-      ],
-      "id": "b7d23f81-dd10-47d1-b711-d16b1d395629",
-      "name": "Simple Memory"
-    },
-    {
-      "parameters": {
         "name": "keyword_trends_api",
-        "description": "Retrieves trending keywords related to a trend, query and businessProfile. The \"trend\" input can be either \"top\" or \"rising\".",
+        "description": "Retrieves top and rising keywords related to a keyword query.",
         "workflowId": {
           "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
+          "value": "Wq75ylOXxDGZTscK",
+          "mode": "list",
+          "cachedResultName": "SerpAPI Trends API Tool"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "route": "keyword_trends_tool",
-            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', ``, 'string') }}",
-            "config": "={{ $json.config }}"
+            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', `Seed keyword to find related keywords`, 'string') }}"
           },
           "matchingColumns": [],
           "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
             {
               "id": "query",
               "displayName": "query",
@@ -1500,38 +1009,17 @@
               "defaultMatch": false,
               "display": true,
               "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
+              "type": "string"
             },
             {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
+              "id": "topOrRisingNullable",
+              "displayName": "topOrRisingNullable",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "canBeUsedToMatch": true,
               "type": "string",
               "removed": true
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -1599,60 +1087,6 @@
     },
     {
       "parameters": {
-        "operation": "sendChatAction",
-        "chatId": "={{ $json.telegramChatId }}"
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        -680,
-        100
-      ],
-      "id": "7af9668d-e39d-4725-82ce-36b03717c02b",
-      "name": "Action Typing",
-      "webhookId": "bac8b6dd-e07b-499e-99bc-e33e1bbf1246",
-      "credentials": {
-        "telegramApi": {
-          "id": "EHNvbxKETcV3t5MW",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "abe3be92-7f5e-4f9d-8116-0bf639975b96",
-              "leftValue": "={{ $json.message.text }}",
-              "rightValue": "/start",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -1340,
-        60
-      ],
-      "id": "50aa2096-8ef9-41dd-ba92-fb27af1f7a03",
-      "name": "If not /start"
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -1698,7 +1132,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        900,
+        720,
         2000
       ],
       "id": "a92dc5e6-0091-4409-a6fc-3bfe80542a7e",
@@ -1754,22 +1188,6 @@
     },
     {
       "parameters": {
-        "content": "## Google Trends API Tool",
-        "height": 400,
-        "width": 700,
-        "color": 6
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        520,
-        4140
-      ],
-      "typeVersion": 1,
-      "id": "f124303a-e215-43fe-9737-e8c357cd9bc9",
-      "name": "Sticky Note3"
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -1785,7 +1203,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1800,
+        1400,
         2000
       ],
       "id": "fad30f9e-61e1-4c20-8908-d29331ce6622",
@@ -1839,357 +1257,6 @@
     },
     {
       "parameters": {
-        "inputText": "={{ $('Config').item.json.message }}",
-        "categories": {
-          "categories": [
-            {
-              "category": "Post Request",
-              "description": "User is asking for blog post creation ideas or creation, with or without keywords."
-            },
-            {
-              "category": "Other"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.textClassifier",
-      "typeVersion": 1,
-      "position": [
-        -360,
-        100
-      ],
-      "id": "f38efac4-dcc4-4a03-80f0-91e2da54248e",
-      "name": "Text Classifier"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4o-mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        -360,
-        320
-      ],
-      "id": "5a68833b-c85f-4c1e-8bfd-4a81717d57f6",
-      "name": "OpenAI Chat Model1",
-      "credentials": {
-        "openAiApi": {
-          "id": "I92UkH9mThS7D4I6",
-          "name": "CodPal Account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4o",
-          "mode": "list",
-          "cachedResultName": "gpt-4o"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        460,
-        200
-      ],
-      "id": "b416a45d-4865-4766-896b-a8b8bfa05f52",
-      "name": "OpenAI Chat Model2",
-      "credentials": {
-        "openAiApi": {
-          "id": "I92UkH9mThS7D4I6",
-          "name": "CodPal Account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "route": "keyword_agent",
-            "config": "={{ $('Config').item.json }}",
-            "businessProfile": "={{ $json.output }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        820,
-        -520
-      ],
-      "id": "1649d7f8-86b6-4d8b-800d-704fb448cb5b",
-      "name": "Keyword Research",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "route": "business_agent",
-            "config": "={{ $('Config').item.json }}",
-            "query": "Research the company's website and extract comprehensive business intelligence to support keyword research.\nAccess the company's website, social media, knowledge base, and any available content to compile a complete business profile including:\n\n- Core offerings and target audience\n- Brand voice and specialized terminology\n- Customer pain points and journey stages\n- Competitive positioning\n- Growth objectives and priorities\n\nStructure your findings for the user. Include specific examples of terminology, customer questions, and content themes where possible."
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        640,
-        -520
-      ],
-      "id": "8343100a-3356-4d65-b4c3-302c79c27e2f",
-      "name": "Business Research",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "route": "results_agent",
-            "config": "={{ $('Config').item.json }}",
-            "businessProfile": "={{ $('Business Research').item.json.output }}",
-            "keywordData": "={{ $json.output }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        1000,
-        -520
-      ],
-      "id": "2d491b7a-8fd9-4be0-a6b1-2b953b7b2185",
-      "name": "Result Synthesis",
-      "disabled": true
-    },
-    {
-      "parameters": {
         "operation": "sendChatAction",
         "chatId": "={{ $('Sub Workflow').item.json.config.telegramChatId }}"
       },
@@ -2223,14 +1290,14 @@
           "__rl": true,
           "value": "tblC4sKplGpZuUPYz",
           "mode": "list",
-          "cachedResultName": "SEO Content Research",
+          "cachedResultName": "Wordpress Client Documents",
           "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblC4sKplGpZuUPYz"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Wordpress Client": "={{ $('Sub Workflow').item.json.config.wordpressClientId }}",
-            "content": "={{ $json.output }}"
+            "Wordpress Client": "=['{{ $('Sub Workflow').item.json.config.wordpressClientId }}']",
+            "DocumentType": "SeoContentStrategy"
           },
           "matchingColumns": [],
           "schema": [
@@ -2257,19 +1324,51 @@
               "removed": false
             },
             {
-              "id": "content",
-              "displayName": "content",
+              "id": "Wordpress Client Identifier",
+              "displayName": "Wordpress Client Identifier",
               "required": false,
               "defaultMatch": false,
               "canBeUsedToMatch": true,
               "display": true,
               "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "DocumentType",
+              "displayName": "DocumentType",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "SeoContentStrategy",
+                  "value": "SeoContentStrategy"
+                },
+                {
+                  "name": "BusinessAnalysis",
+                  "value": "BusinessAnalysis"
+                }
+              ],
               "readOnly": false,
               "removed": false
             },
             {
-              "id": "date",
-              "displayName": "date",
+              "id": "Document",
+              "displayName": "Document",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
               "required": false,
               "defaultMatch": false,
               "canBeUsedToMatch": true,
@@ -2301,422 +1400,9 @@
     },
     {
       "parameters": {
-        "operation": "sendChatAction",
-        "chatId": "={{ $('Config').item.json.telegramChatId }}"
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        1480,
-        -20
-      ],
-      "id": "929f92fd-6ac3-4dca-a80d-78372c50ab6f",
-      "name": "Typing4",
-      "webhookId": "3aa8a27f-f5fd-43b8-bdea-c9c923c67690",
-      "credentials": {
-        "telegramApi": {
-          "id": "EHNvbxKETcV3t5MW",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $('Config').item.json.telegramChatId }}",
-        "text": "={{ $json.output }}",
-        "additionalFields": {
-          "appendAttribution": false
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        2020,
-        -20
-      ],
-      "id": "3bffad3e-df89-4485-942c-6fefd756dfba",
-      "name": "Notify6",
-      "webhookId": "922e99ac-9093-4b3f-94bb-84607cef1890",
-      "credentials": {
-        "telegramApi": {
-          "id": "EHNvbxKETcV3t5MW",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4o-mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        1680,
-        160
-      ],
-      "id": "4fcff56a-6f00-49b8-a0e7-2f2d75324b06",
-      "name": "OpenAI Chat Model10",
-      "credentials": {
-        "openAiApi": {
-          "id": "I92UkH9mThS7D4I6",
-          "name": "CodPal Account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "What are you doing?",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "Inform the user that you are coming up with a topic for his next post."
-            }
-          ]
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.5,
-      "position": [
-        1680,
-        -20
-      ],
-      "id": "fac16b2c-87e4-4354-a325-1d6fb44ee944",
-      "name": "Inform the user of progress6"
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "route": "keyword_agent",
-            "config": "={{ $('Sub Workflow').item.json.config }}",
-            "businessProfile": "={{ $json.output }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        1060,
-        1540
-      ],
-      "id": "084773c4-1f64-40c4-a65a-dc22ca954153",
-      "name": "Keyword Research1"
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "route": "business_agent",
-            "config": "={{ $('Sub Workflow').item.json.config }}",
-            "query": "Research the company's website and extract comprehensive business intelligence to support keyword research.\nAccess the company's website, social media, knowledge base, and any available content to compile a complete business profile including:\n\n- Core offerings and target audience\n- Brand voice and specialized terminology\n- Customer pain points and journey stages\n- Competitive positioning\n- Growth objectives and priorities\n\nStructure your findings for the user. Include specific examples of terminology, customer questions, and content themes where possible."
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        880,
-        1540
-      ],
-      "id": "1f42d3ea-71d8-4766-bd7d-18840cc046ee",
-      "name": "Business Research1"
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "route": "results_agent",
-            "config": "={{ $('Sub Workflow').item.json.config }}",
-            "businessProfile": "={{ $('Business Research1').item.json.output }}",
-            "keywordData": "={{ $json.output }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        1240,
-        1540
-      ],
-      "id": "19bb4b90-b69e-4cd3-a0cb-a3ea616e8da0",
-      "name": "Result Synthesis1"
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "UjZ6bFiRHGVzOSqX",
-          "mode": "list",
-          "cachedResultName": "Telegram notify what agent is doing"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "prompt": "Inform the user that you are done with your keyword research",
-            "telegramChatId": "={{ $('Sub Workflow').item.json.config }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "telegramChatId",
-              "displayName": "telegramChatId",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string"
-            },
-            {
-              "id": "prompt",
-              "displayName": "prompt",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string"
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        1460,
-        2820
-      ],
-      "id": "b452f27a-ba5c-4333-96be-10b7a446c524",
-      "name": "Execute Workflow3"
-    },
-    {
-      "parameters": {
         "content": "## SEO Content Strategy Document Flow",
         "height": 400,
-        "width": 1160,
+        "width": 1400,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -2737,7 +1423,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        1100,
+        880,
         1020
       ],
       "id": "9fec90b2-f536-4677-9f5d-ed3f2e62eba9",
@@ -2756,7 +1442,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        940,
+        720,
         1020
       ],
       "id": "36fb59fa-522a-4bab-b5be-cc96623f74b0",
@@ -2870,7 +1556,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.1,
       "position": [
-        1240,
+        1020,
         1020
       ],
       "id": "f4fc582c-4c9c-42d5-9a17-edcf89b5790a",
@@ -2893,108 +1579,6 @@
       "name": "Sticky Note6"
     },
     {
-      "parameters": {
-        "name": "seo_content_strategy_tool",
-        "description": "Generates an SEO content strategy by analysing the user's business and google keyword trends. If a strategy was recently generated it will return that one.",
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "route": "call_seo_content_strategy_agent",
-            "config": "={{ $('Config').item.json }}",
-            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', `Send a message to the agent asking them to give you the strategy.`, 'string') }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            },
-            {
-              "id": "notifyUser",
-              "displayName": "notifyUser",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2.1,
-      "position": [
-        740,
-        200
-      ],
-      "id": "e431092c-eaca-430f-828f-3adb4fe0cc9a",
-      "name": "SEO Content Strategy Agent2"
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
@@ -3008,14 +1592,14 @@
     {
       "parameters": {
         "content": "# SEO Content Strategy Agent\n\nYou are an expert SEO content strategist agent designed to help businesses develop comprehensive content strategies based on industry analysis and keyword research.\n\n## Core Capabilities\n\n1. Generate data-driven SEO content strategies tailored to specific businesses and their target audiences\n2. Retrieve and refine previously created strategies\n3. Provide actionable recommendations for content creation and optimization\n\n## Tools\n\nYou have access to two primary tools:\n\n- `seo_content_strategy_tool`: Generates new content strategies based on business analysis and keyword research\n- `get_last_seo_content_strategy`: Retrieves the most recent content strategy you generated\n\n## Workflow Protocol\n\n1. When a user requests a content strategy, first attempt to retrieve the last strategy using `get_last_seo_content_strategy`\n2. If no previous strategy exists, or if the user explicitly requests a new strategy, use `seo_content_strategy_tool` to generate a fresh strategy\n3. Always analyze the retrieved or generated strategy to ensure it meets the user's specific needs\n4. Present the strategy exactly as retrieved.\n\n## Error Handling\n\nIf either tool fails:\n1. Inform the user of the issue\n2. Suggest alternative approaches\n3. Offer to try again or provide general SEO content guidance",
-        "height": 880,
-        "width": 1220,
+        "height": 780,
+        "width": 1140,
         "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        3540,
-        660
+        -480,
+        -480
       ],
       "typeVersion": 1,
       "id": "f8a94ecb-3860-4a7b-ab3c-f40e1559f66a",
@@ -3205,107 +1789,6 @@
     },
     {
       "parameters": {
-        "name": "get_last_seo_content_strategy",
-        "description": "Retrieve the latest SEO Content Strategy you created.",
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "config": "={{ $('Sub Workflow').item.json.config }}",
-            "route": "get_last_seo_content_strategy"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            },
-            {
-              "id": "notifyUser",
-              "displayName": "notifyUser",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2.1,
-      "position": [
-        1380,
-        1020
-      ],
-      "id": "e799b088-e757-434e-b904-13a9e3000ac4",
-      "name": "Call n8n Workflow Tool"
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "UjZ6bFiRHGVzOSqX",
@@ -3413,7 +1896,7 @@
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "telegramChatId": "={{ $('Sub Workflow').item.json.config }}",
+            "telegramChatId": "={{ $('Sub Workflow').item.json.config.telegramChatId }}",
             "prompt": "Inform the user that you are starting your keyword research."
           },
           "matchingColumns": [],
@@ -3463,7 +1946,7 @@
           "mappingMode": "defineBelow",
           "value": {
             "prompt": "Inform the user that you are analyzing his business to find the best keyword research strategy.",
-            "telegramChatId": "={{ $('Sub Workflow').item.json.config }}"
+            "telegramChatId": "={{ $('Sub Workflow').item.json.config.telegramChatId }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -3494,7 +1977,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        660,
+        560,
         2000
       ],
       "id": "15568141-1cce-443c-914c-bfc672f68725",
@@ -3512,7 +1995,7 @@
           "mappingMode": "defineBelow",
           "value": {
             "prompt": "Inform the user that you are done with your business analysis",
-            "telegramChatId": "={{ $('Sub Workflow').item.json.config }}"
+            "telegramChatId": "={{ $('Sub Workflow').item.json.config.telegramChatId }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -3543,7 +2026,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1560,
+        1240,
         2000
       ],
       "id": "aebd996a-9329-49f0-820c-3557f41fb213",
@@ -3561,7 +2044,7 @@
           "mappingMode": "defineBelow",
           "value": {
             "prompt": "Inform the user that you will conduct your research and later create an SEO Content Strategy document.",
-            "telegramChatId": "={{ $('Sub Workflow').item.json.config }}"
+            "telegramChatId": "={{ $('Sub Workflow').item.json.config.telegramChatId }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -3653,14 +2136,771 @@
       ],
       "id": "9d5101b6-7755-470d-a8e5-9719fd010978",
       "name": "Strategy Content"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "route": "business_agent",
+            "config": "={{ $('Sub Workflow').item.json.config }}",
+            "query": "Research the company's website and extract comprehensive business intelligence to support keyword research.\nAccess the company's website, social media, knowledge base, and any available content to compile a complete business profile including:\n\n- Core offerings and target audience\n- Brand voice and specialized terminology\n- Customer pain points and journey stages\n- Competitive positioning\n- Growth objectives and priorities\n\nStructure your findings for the user. Include specific examples of terminology, customer questions, and content themes where possible."
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "route",
+              "displayName": "route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "trend",
+              "displayName": "trend",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "businessProfile",
+              "displayName": "businessProfile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "keywordData",
+              "displayName": "keywordData",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "config",
+              "displayName": "config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        1540
+      ],
+      "id": "1f42d3ea-71d8-4766-bd7d-18840cc046ee",
+      "name": "Business Research"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "route": "keyword_agent",
+            "config": "={{ $('Sub Workflow').item.json.config }}",
+            "businessProfile": "={{ $json.output }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "route",
+              "displayName": "route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "trend",
+              "displayName": "trend",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "businessProfile",
+              "displayName": "businessProfile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "keywordData",
+              "displayName": "keywordData",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "config",
+              "displayName": "config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1060,
+        1540
+      ],
+      "id": "084773c4-1f64-40c4-a65a-dc22ca954153",
+      "name": "Keyword Research"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "route": "results_agent",
+            "config": "={{ $('Sub Workflow').item.json.config }}",
+            "businessProfile": "={{ $('Business Research').item.json.output }}",
+            "keywordData": "={{ $json.output }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "route",
+              "displayName": "route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "trend",
+              "displayName": "trend",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "businessProfile",
+              "displayName": "businessProfile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "keywordData",
+              "displayName": "keywordData",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "config",
+              "displayName": "config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1240,
+        1540
+      ],
+      "id": "19bb4b90-b69e-4cd3-a0cb-a3ea616e8da0",
+      "name": "Result Synthesis"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblC4sKplGpZuUPYz",
+          "mode": "list",
+          "cachedResultName": "Wordpress Client Documents",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblC4sKplGpZuUPYz"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Wordpress Client": "=['{{ $('Sub Workflow').item.json.config.wordpressClientId }}']",
+            "DocumentType": "BusinessAnalysis"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Identifier",
+              "displayName": "Identifier",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Wordpress Client",
+              "displayName": "Wordpress Client",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Wordpress Client Identifier",
+              "displayName": "Wordpress Client Identifier",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "DocumentType",
+              "displayName": "DocumentType",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "SeoContentStrategy",
+                  "value": "SeoContentStrategy"
+                },
+                {
+                  "name": "BusinessAnalysis",
+                  "value": "BusinessAnalysis"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Document",
+              "displayName": "Document",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1580,
+        2000
+      ],
+      "id": "ba1d4223-1072-41e3-b63a-c5efbe265e5c",
+      "name": "Create Business Analysis Document",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "73h5ZumsGXKFQxui",
+          "mode": "list",
+          "cachedResultName": "Airtable Upload File"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "recordId": "={{ $json.id}}",
+            "fieldName": "Document",
+            "fileContent": "={{ $('Result Synthesis').item.json.output }}",
+            "contentType": "text/markdown",
+            "fileName": "=SeoContentStrategy-{{ $now.format('yyyy-MM-dd') }}.md"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "recordId",
+              "displayName": "recordId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "fieldName",
+              "displayName": "fieldName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "fileContent",
+              "displayName": "fileContent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "contentType",
+              "displayName": "contentType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "fileName",
+              "displayName": "fileName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1660,
+        1540
+      ],
+      "id": "9d951db8-3379-4e12-9dc8-2a21502b67b4",
+      "name": "Upload SEO Document"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "73h5ZumsGXKFQxui",
+          "mode": "list",
+          "cachedResultName": "Airtable Upload File"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "recordId": "={{ $json.id}}",
+            "fieldName": "Document",
+            "fileContent": "={{ $('Output').item.json.output }}",
+            "contentType": "text/markdown",
+            "fileName": "=BusinessAnalysis-{{ $now.format('yyyy-MM-dd') }}.md"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "recordId",
+              "displayName": "recordId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "fieldName",
+              "displayName": "fieldName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "fileContent",
+              "displayName": "fileContent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "contentType",
+              "displayName": "contentType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "fileName",
+              "displayName": "fileName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1780,
+        2000
+      ],
+      "id": "249494ec-6667-4219-a84e-a60f9d4d6a4a",
+      "name": "Upload Business Document"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "UjZ6bFiRHGVzOSqX",
+          "mode": "list",
+          "cachedResultName": "Telegram notify what agent is doing"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "prompt": "Inform the user that you are done with your keyword research",
+            "telegramChatId": "={{ $('Sub Workflow').item.json.config.telegramChatId }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "telegramChatId",
+              "displayName": "telegramChatId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "prompt",
+              "displayName": "prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1460,
+        2820
+      ],
+      "id": "b452f27a-ba5c-4333-96be-10b7a446c524",
+      "name": "Notify User6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "644de78c-a970-4884-9240-ae1e106f730f",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "68e5c968-e9db-4c7b-b5b8-1dab37e2096f",
+              "name": "createdTime",
+              "value": "={{ $json.createdTime }}",
+              "type": "string"
+            },
+            {
+              "id": "9ddb907c-ec9a-40f0-83d5-f387d3745061",
+              "name": "documentType",
+              "value": "={{ $('Create Business Analysis Document').item.json.fields.DocumentType }}",
+              "type": "string"
+            },
+            {
+              "id": "c21d1f61-c3da-4986-99cd-e7d870812726",
+              "name": "filename",
+              "value": "={{ $json.fields.fldkPUl3tSHLKLygm[0].filename }}",
+              "type": "string"
+            },
+            {
+              "id": "dcefdd7c-f3a4-4ea1-834d-01f641d99873",
+              "name": "documentUrl",
+              "value": "={{ $json.fields.fldkPUl3tSHLKLygm[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "36c39469-abfd-45a3-ae14-ccfb0527d82f",
+              "name": "output",
+              "value": "={{ $('Output').item.json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1960,
+        2000
+      ],
+      "id": "7c1fd4d2-67ed-44c6-97fd-c2e1c955d8a8",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "name": "get_last_seo_content_strategy",
+        "description": "Retrieve the latest SEO Content Strategy you created.",
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "config": "={{ $('Sub Workflow').item.json.config }}",
+            "route": "get_last_seo_content_strategy"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "route",
+              "displayName": "route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "trend",
+              "displayName": "trend",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "businessProfile",
+              "displayName": "businessProfile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "keywordData",
+              "displayName": "keywordData",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "config",
+              "displayName": "config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            },
+            {
+              "id": "notifyUser",
+              "displayName": "notifyUser",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        1160,
+        1020
+      ],
+      "id": "e799b088-e757-434e-b904-13a9e3000ac4",
+      "name": "Get last SEO Content Strategy Document"
     }
   ],
   "pinData": {
     "Sub Workflow": [
       {
         "json": {
-          "route": "get_last_seo_content_strategy",
-          "query": "What services does the client offer?",
+          "route": "business_agent",
+          "query": "Create a business analysis document for me",
           "urlEncoded": "",
           "config": {
             "id": "rece2Siq6iLfUTt9s",
@@ -3687,6 +2927,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2025-03-24T20:26:16.000Z",
-  "versionId": "45ab8553-1aea-4404-866e-38625ab95768"
+  "updatedAt": "2025-03-25T07:20:38.000Z",
+  "versionId": "ba1d4210-81d6-4a26-8926-7b706833d093"
 }
