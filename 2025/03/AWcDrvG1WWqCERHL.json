@@ -112,7 +112,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -100,
+        -120,
         0
       ],
       "id": "c137eccf-a6d8-4ace-aefd-5e46020d57dd",
@@ -628,6 +628,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2025-03-22T10:21:24.000Z",
-  "versionId": "b967ad1d-3ca1-4684-b43d-ba2891f8f4e8"
+  "updatedAt": "2025-03-25T13:34:49.000Z",
+  "versionId": "711e7507-e8fe-4d4d-bdc7-371146e619fd"
 }
