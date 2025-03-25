@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Fetch latest SEO Content Strategy": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If": {
       "main": [
         [
@@ -38,7 +27,18 @@
       "main": [
         [
           {
-            "node": "Fetch latest SEO Content Strategy",
+            "node": "Fetch latest Wordpress Client Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch latest Wordpress Client Document": {
+      "main": [
+        [
+          {
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -49,15 +49,17 @@
   "createdAt": "2025-03-24T20:04:52.729Z",
   "id": "LJeRjkaNnZAhxS0W",
   "meta": null,
-  "name": "Get Latest SEO Content Strategy",
+  "name": "Airtable Get Document",
   "nodes": [
     {
       "parameters": {
         "workflowInputs": {
           "values": [
             {
-              "name": "wordpressClientIdentifier",
-              "type": "number"
+              "name": "wordpressClientId"
+            },
+            {
+              "name": "documentType"
             }
           ]
         }
@@ -70,55 +72,6 @@
       ],
       "id": "f3faf5cc-d454-4b43-8737-b49ef938091e",
       "name": "When Executed by Another Workflow"
-    },
-    {
-      "parameters": {
-        "operation": "search",
-        "base": {
-          "__rl": true,
-          "value": "app3foHr3iDjZBLvs",
-          "mode": "list",
-          "cachedResultName": "Engineering Prototype Builder",
-          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblC4sKplGpZuUPYz",
-          "mode": "list",
-          "cachedResultName": "SEO Content Research",
-          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblC4sKplGpZuUPYz"
-        },
-        "filterByFormula": "={Wordpress Client Identifier}={{ $json.wordpressClientIdentifier }}",
-        "returnAll": false,
-        "limit": 1,
-        "options": {
-          "downloadFields": [
-            "Attachments"
-          ]
-        },
-        "sort": {
-          "property": [
-            {
-              "field": "Date",
-              "direction": "desc"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        260,
-        20
-      ],
-      "id": "8f73e24c-1dab-4173-b3d5-eb13435b7764",
-      "name": "Fetch latest SEO Content Strategy",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "f9JH5DCFMvod79bz",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
     },
     {
       "parameters": {
@@ -157,7 +110,7 @@
     {
       "parameters": {
         "operation": "text",
-        "binaryPropertyName": "Attachments_0",
+        "binaryPropertyName": "Document_0",
         "destinationKey": "content",
         "options": {}
       },
@@ -183,13 +136,64 @@
       ],
       "id": "78bc22e2-e399-4b88-8a13-032dc2013630",
       "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblC4sKplGpZuUPYz",
+          "mode": "list",
+          "cachedResultName": "Wordpress Client Documents",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblC4sKplGpZuUPYz"
+        },
+        "filterByFormula": "=AND(\n  {Wordpress Client} = '{{ $json.wordpressClientId }}',\n  {DocumentType} = '{{ $json.documentType }}'\n)",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "downloadFields": [
+            "Document"
+          ]
+        },
+        "sort": {
+          "property": [
+            {
+              "field": "Date",
+              "direction": "desc"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        260,
+        20
+      ],
+      "id": "31892475-36a0-4eae-9fd8-03b5d630cc7d",
+      "name": "Fetch latest Wordpress Client Document",
+      "alwaysOutputData": false,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
     }
   ],
   "pinData": {
     "When Executed by Another Workflow": [
       {
         "json": {
-          "wordpressClientIdentifier": 1
+          "wordpressClientId": "recffZZw0CIteTg2l",
+          "documentType": "SeoContentStrategy"
         }
       }
     ]
@@ -203,6 +207,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-24T20:20:08.000Z",
-  "versionId": "ba5cddc1-a24a-4588-8db1-6b3cc446e0ae"
+  "updatedAt": "2025-03-25T13:42:08.000Z",
+  "versionId": "cbb4fbef-ffd3-4ebf-b5c0-571bdf7a232e"
 }
