@@ -26,18 +26,7 @@
       "main": [
         [
           {
-            "node": "Airtable",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Airtable": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
+            "node": "Update Webhook",
             "type": "main",
             "index": 0
           }
@@ -218,6 +207,17 @@
           }
         ]
       ]
+    },
+    "Update Webhook": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-20T14:32:49.229Z",
@@ -283,131 +283,6 @@
         "httpHeaderAuth": {
           "id": "pLH5Anmy9qYQpX6J",
           "name": "Airtable Bearer Access Token"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "base": {
-          "__rl": true,
-          "value": "app3foHr3iDjZBLvs",
-          "mode": "list",
-          "cachedResultName": "Engineering Prototype Builder",
-          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tbl514QNEYB7CkLKO",
-          "mode": "list",
-          "cachedResultName": "Webhooks",
-          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tbl514QNEYB7CkLKO"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "webhook_id": "={{ $('Loop Over Items').item.json.id }}",
-            "expirationTime": "={{ $json.expirationTime }}",
-            "Last Modified Time": "={{ $now }}"
-          },
-          "matchingColumns": [
-            "webhook_id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "webhook_id",
-              "displayName": "webhook_id",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "table_id",
-              "displayName": "table_id",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "expirationTime",
-              "displayName": "expirationTime",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "macSecretBase64",
-              "displayName": "macSecretBase64",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "cursor",
-              "displayName": "cursor",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Last Modified Time",
-              "displayName": "Last Modified Time",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        1580,
-        300
-      ],
-      "id": "6e4abe84-2eac-4445-95b4-a2e8a272a7a2",
-      "name": "Airtable",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "f9JH5DCFMvod79bz",
-          "name": "Airtable Personal Access Token account"
         }
       }
     },
@@ -1005,6 +880,131 @@
           "name": "Airtable Personal Access Token account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl514QNEYB7CkLKO",
+          "mode": "list",
+          "cachedResultName": "Webhooks",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tbl514QNEYB7CkLKO"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "webhook_id": "={{ $('Loop Over Items').item.json.id }}",
+            "expirationTime": "={{ $json.expirationTime }}",
+            "Last Modified Time": "={{ $now }}"
+          },
+          "matchingColumns": [
+            "webhook_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "webhook_id",
+              "displayName": "webhook_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "table_id",
+              "displayName": "table_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "expirationTime",
+              "displayName": "expirationTime",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "macSecretBase64",
+              "displayName": "macSecretBase64",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "cursor",
+              "displayName": "cursor",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Last Modified Time",
+              "displayName": "Last Modified Time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1580,
+        300
+      ],
+      "id": "6e4abe84-2eac-4445-95b4-a2e8a272a7a2",
+      "name": "Update Webhook",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1017,6 +1017,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-20T18:42:34.000Z",
-  "versionId": "1f268dab-44b0-40d4-ae75-7e7c46471f00"
+  "updatedAt": "2025-03-25T13:34:17.000Z",
+  "versionId": "210de0fb-9815-49d0-8723-58b19414e848"
 }
