@@ -1,0 +1,471 @@
+{
+  "active": false,
+  "connections": {
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Typing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model12": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Ask user for permission",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Typing": {
+      "main": [
+        [
+          {
+            "node": "Ask user for permission",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ask user for permission": {
+      "main": [
+        [
+          {
+            "node": "Wait for permission",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for permission": {
+      "main": [
+        [
+          {
+            "node": "If approved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If approved": {
+      "main": [
+        [
+          {
+            "node": "Strategy Content",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate SEO Content Strategy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Document": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-26T18:56:56.137Z",
+  "id": "bh0ZlfpPSQlAPRhl",
+  "meta": null,
+  "name": "SEO Content Strategy Get or Generate",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "PgPZPQiIkt3xt7Tb",
+          "mode": "list",
+          "cachedResultName": "SEO Content Strategy Generator v2"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "route": "create_seo_content_strategy",
+            "config": "={{ $('Trigger').first().json.config }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "route",
+              "displayName": "route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "trend",
+              "displayName": "trend",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "businessProfile",
+              "displayName": "businessProfile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "keywordData",
+              "displayName": "keywordData",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "config",
+              "displayName": "config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1560,
+        80
+      ],
+      "id": "c4f8557d-378d-4615-99ac-70d7d367497a",
+      "name": "Generate SEO Content Strategy"
+    },
+    {
+      "parameters": {
+        "operation": "getTimeBetweenDates",
+        "startDate": "={{ $json.createdTime }}",
+        "endDate": "={{ $now }}",
+        "units": [
+          "day",
+          "hour"
+        ],
+        "options": {
+          "includeInputFields": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        380,
+        0
+      ],
+      "id": "f6abcfa6-96a9-4a52-a6a9-6cbc1cad482e",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        780,
+        220
+      ],
+      "id": "2622c09f-9273-4cbd-8068-d06977cf27bc",
+      "name": "OpenAI Chat Model12",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendChatAction",
+        "chatId": "={{ $('Trigger').first().json.config.telegramChatId }}"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        580,
+        0
+      ],
+      "id": "08b46fa0-3941-4c69-a250-2ec628d124dc",
+      "name": "Typing",
+      "webhookId": "3aa8a27f-f5fd-43b8-bdea-c9c923c67690",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Write the following message by rewriting the date into a human friendly way.\n\nMessage: I found a strategy I created {X days} ago. Do you mind if I reuse it?\n\nDate: {{ JSON.stringify($('Date & Time').item.json.timeDifference, null, 2) }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Answer the user's question without any additional comments or information. Keep the response as concise as possible."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        760,
+        0
+      ],
+      "id": "aa7874c9-4568-4625-a3a3-222d783b7853",
+      "name": "Ask user for permission"
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "chatId": "={{ $('Trigger').first().json.config.telegramChatId }}",
+        "message": "={{ $json.text }}",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "disapproveLabel": "❌ Create new strategy"
+          }
+        },
+        "options": {
+          "limitWaitTime": {
+            "values": {
+              "resumeAmount": 7,
+              "resumeUnit": "days"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1100,
+        0
+      ],
+      "id": "382d95ec-7a5f-482c-baa7-e2dfef4b54a9",
+      "name": "Wait for permission",
+      "webhookId": "68ca8d74-58f2-4518-818d-92409e425640",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5a4a9bc6-a23f-4058-9fac-10755f4fe7be",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        0
+      ],
+      "id": "2ecd1e14-fb90-4a9f-bf8a-fa029fde903e",
+      "name": "If approved"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "LJeRjkaNnZAhxS0W",
+          "mode": "list",
+          "cachedResultName": "Get Latest SEO Content Strategy"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "wordpressClientId": "={{ $json.config.wordpressClientId }}",
+            "documentType": "SeoContentStrategy"
+          },
+          "matchingColumns": [
+            "wordpressClientIdentifier"
+          ],
+          "schema": [
+            {
+              "id": "wordpressClientId",
+              "displayName": "wordpressClientId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "documentType",
+              "displayName": "documentType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        180,
+        0
+      ],
+      "id": "22825cb7-ffec-4112-9d8e-46e27386da44",
+      "name": "Get Document"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return $('Get Document').first().json;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        -80
+      ],
+      "id": "b45dc6a3-361d-46f5-9419-a4d17b9dc714",
+      "name": "Strategy Content"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "config",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -40,
+        0
+      ],
+      "id": "539c7538-7fc6-4ed2-be12-ae38ad2b802b",
+      "name": "Trigger"
+    }
+  ],
+  "pinData": {
+    "Trigger": [
+      {
+        "json": {
+          "config": {
+            "id": "rece2Siq6iLfUTt9s",
+            "Name": "Apostolos",
+            "urlEncoded": "aHR0cHM6Ly9jb2RwYWwuY29t",
+            "telegramChatId": "893910766",
+            "message": "/start",
+            "wordpressUsername": "apostolis.stephanou@gmail.com",
+            "wordpressPassword": "K^lRRPq*6C9tU!x^sLDsP$Nd",
+            "wordpressUrl": "https://codpal.com",
+            "wordpressClientId": "recffZZw0CIteTg2l",
+            "wordpressClientIdentifier": 1
+          }
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-26T19:22:58.000Z",
+  "versionId": "e8be47bf-6863-4cb1-a459-cbbe8c5ba227"
+}
