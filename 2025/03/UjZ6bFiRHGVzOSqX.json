@@ -137,14 +137,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "What are you doing?",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "={{ $('Trigger').item.json.prompt }}"
-            }
-          ]
-        }
+        "text": "=Update the following prompt in the first tense. Ex. \"I'm doing something....\"\n\nPrompt: {{ $('Trigger').item.json.prompt }}\n\nOutput only the updated prompt."
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.5,
@@ -190,6 +183,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-24T19:56:40.000Z",
-  "versionId": "26fa0bf3-c59c-4d49-83d9-bbc1f7c81d58"
+  "updatedAt": "2025-03-26T18:14:20.000Z",
+  "versionId": "888d23e8-ed7d-418f-9ae4-c52b8eedf365"
 }
