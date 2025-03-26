@@ -90,13 +90,7 @@
     },
     "Switch": {
       "main": [
-        [
-          {
-            "node": "SEO Agent",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "Get lastest Strategy",
@@ -272,17 +266,6 @@
           {
             "node": "SEO Content Strategy Agent",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "SEO Agent": {
-      "main": [
-        [
-          {
-            "node": "SEO Content Strategy Agent",
-            "type": "main",
             "index": 0
           }
         ]
@@ -543,7 +526,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "SEO Content Strategy Agent",
+  "name": "SEO Content Strategy Generator",
   "nodes": [
     {
       "parameters": {
@@ -630,7 +613,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        680,
+        960,
         -480
       ],
       "typeVersion": 1,
@@ -646,7 +629,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1500,
+        1780,
         -480
       ],
       "typeVersion": 1,
@@ -662,7 +645,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2320,
+        2600,
         -480
       ],
       "typeVersion": 1,
@@ -962,7 +945,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        960,
+        940,
         3080
       ],
       "id": "e6b6af8d-a36a-47b4-8842-8762b5150ff0",
@@ -1029,7 +1012,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.1,
       "position": [
-        1140,
+        1120,
         3080
       ],
       "id": "cef2cc80-30ee-4b60-86b9-a6a7c8778d8b",
@@ -1042,7 +1025,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
       "typeVersion": 1,
       "position": [
-        1300,
+        1280,
         3080
       ],
       "id": "2bb11982-236d-4b59-b6c0-8bd95c3dcd4f",
@@ -1424,7 +1407,7 @@
       "typeVersion": 1.3,
       "position": [
         880,
-        1020
+        900
       ],
       "id": "9fec90b2-f536-4677-9f5d-ed3f2e62eba9",
       "name": "Simple Memory4"
@@ -1443,7 +1426,7 @@
       "typeVersion": 1.2,
       "position": [
         720,
-        1020
+        900
       ],
       "id": "36fb59fa-522a-4bab-b5be-cc96623f74b0",
       "name": "OpenAI Chat Model3",
@@ -1466,10 +1449,11 @@
       "typeVersion": 1.8,
       "position": [
         1020,
-        780
+        660
       ],
       "id": "291d3d71-393d-48d1-8b09-fafb42866828",
-      "name": "SEO Content Strategy Agent"
+      "name": "SEO Content Strategy Agent",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1557,7 +1541,7 @@
       "typeVersion": 2.1,
       "position": [
         1020,
-        1020
+        900
       ],
       "id": "f4fc582c-4c9c-42d5-9a17-edcf89b5790a",
       "name": "SEO Content Strategy Tool"
@@ -1572,22 +1556,11 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         500,
-        680
+        560
       ],
       "typeVersion": 1,
       "id": "7c48f19e-4165-4614-9b6a-6ba74c5565a5",
       "name": "Sticky Note6"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        760,
-        780
-      ],
-      "id": "9b684f86-6070-4652-9340-c3846f77f0f4",
-      "name": "SEO Agent"
     },
     {
       "parameters": {
@@ -1598,7 +1571,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -480,
+        -200,
         -480
       ],
       "typeVersion": 1,
@@ -1610,8 +1583,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        660,
-        1240
+        520,
+        1220
       ],
       "id": "1a83b94a-0f32-4dc6-adfd-3940552fd7ab",
       "name": "Get lastest Strategy"
@@ -1633,7 +1606,7 @@
       "typeVersion": 2,
       "position": [
         1940,
-        1240
+        1220
       ],
       "id": "ca59df79-2ba3-4953-ac17-0d49f9978796",
       "name": "Date & Time"
@@ -1651,7 +1624,7 @@
       "typeVersion": 1.2,
       "position": [
         2340,
-        1400
+        1380
       ],
       "id": "4f66e84c-49c9-4b97-b345-bc6df36b358e",
       "name": "OpenAI Chat Model12",
@@ -1671,7 +1644,7 @@
       "typeVersion": 1.2,
       "position": [
         2160,
-        1240
+        1220
       ],
       "id": "c82c1991-86b9-4d05-bdd2-5fc523c4a041",
       "name": "Typing",
@@ -1699,7 +1672,7 @@
       "typeVersion": 1.5,
       "position": [
         2340,
-        1240
+        1220
       ],
       "id": "de37d0f6-ddb8-47b5-9769-5bf7c7eb6512",
       "name": "Ask user for permission"
@@ -1728,7 +1701,7 @@
       "typeVersion": 1.2,
       "position": [
         2680,
-        1240
+        1220
       ],
       "id": "f37b8956-9143-4cac-9d29-07e77ce285ec",
       "name": "Wait for permission",
@@ -1769,7 +1742,7 @@
       "typeVersion": 2.2,
       "position": [
         2860,
-        1240
+        1220
       ],
       "id": "dbf08b6b-dbc7-4353-9cbc-0f8fb06aad9b",
       "name": "If approved"
@@ -1781,8 +1754,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3080,
-        1360
+        3100,
+        1300
       ],
       "id": "eed458ba-2434-4c68-a6c7-a93bdef32ecc",
       "name": "Empty"
@@ -2092,20 +2065,31 @@
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "wordpressClientIdentifier": "={{ $('Sub Workflow').item.json.config.wordpressClientIdentifier }}"
+            "wordpressClientId": "={{ $('Sub Workflow').item.json.config.wordpressClientId }}",
+            "documentType": "SeoContentStrategy"
           },
           "matchingColumns": [
             "wordpressClientIdentifier"
           ],
           "schema": [
             {
-              "id": "wordpressClientIdentifier",
-              "displayName": "wordpressClientIdentifier",
+              "id": "wordpressClientId",
+              "displayName": "wordpressClientId",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "canBeUsedToMatch": true,
-              "type": "number",
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "documentType",
+              "displayName": "documentType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
               "removed": false
             }
           ],
@@ -2118,7 +2102,7 @@
       "typeVersion": 1.2,
       "position": [
         1720,
-        1240
+        1220
       ],
       "id": "715d5e32-bacd-4771-9fb8-4729c6599544",
       "name": "Get Document"
@@ -2126,12 +2110,12 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "return $('Get Document').item.json;"
+        "jsCode": "return $('Get Document').first().json;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3080,
+        3100,
         1140
       ],
       "id": "9d5101b6-7755-470d-a8e5-9719fd010978",
@@ -2888,36 +2872,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.1,
       "position": [
-        1160,
-        1020
+        1180,
+        900
       ],
       "id": "e799b088-e757-434e-b904-13a9e3000ac4",
       "name": "Get last SEO Content Strategy Document"
     }
   ],
-  "pinData": {
-    "Sub Workflow": [
-      {
-        "json": {
-          "route": "business_agent",
-          "query": "Create a business analysis document for me",
-          "urlEncoded": "",
-          "config": {
-            "id": "rece2Siq6iLfUTt9s",
-            "Name": "Apostolos",
-            "urlEncoded": "aHR0cHM6Ly9jb2RwYWwuY29t",
-            "telegramChatId": "893910766",
-            "message": "/start",
-            "wordpressUsername": "apostolis.stephanou@gmail.com",
-            "wordpressPassword": "K^lRRPq*6C9tU!x^sLDsP$Nd",
-            "wordpressUrl": "https://codpal.com",
-            "wordpressClientId": "recffZZw0CIteTg2l",
-            "wordpressClientIdentifier": 1
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "repo_name": "n8n-backup",
   "repo_owner": "apostolisCodpal",
   "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
@@ -2927,6 +2889,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2025-03-25T07:20:38.000Z",
-  "versionId": "ba1d4210-81d6-4a26-8926-7b706833d093"
+  "updatedAt": "2025-03-26T19:01:43.000Z",
+  "versionId": "cbf3a769-03a6-42c4-bdb0-167aa91d4598"
 }
