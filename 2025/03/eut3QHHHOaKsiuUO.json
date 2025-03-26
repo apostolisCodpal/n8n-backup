@@ -1,0 +1,280 @@
+{
+  "active": false,
+  "connections": {
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Get Posts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trigger": {
+      "main": [
+        [
+          {
+            "node": "WP Creds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WP Creds": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Posts": {
+      "main": [
+        [
+          {
+            "node": "Strip content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Pages": {
+      "main": [
+        [
+          {
+            "node": "Strip content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-26T06:35:17.381Z",
+  "id": "eut3QHHHOaKsiuUO",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Wordpress Get Excerpts",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Trigger').item.json.postsOrPages }}",
+                    "rightValue": "posts",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "3000b9e1-3a21-4a2d-b659-3473db756da2"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Posts"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "01f13b2a-3511-439a-89b9-2c3d60e474e0",
+                    "leftValue": "={{ $('Trigger').item.json.postsOrPages }}",
+                    "rightValue": "pages",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Pages"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        500,
+        0
+      ],
+      "id": "9ebc0b60-c600-474e-8d69-ced864b83e10",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": "={{ $('Trigger').item.json.limit ?? 100 }}",
+        "options": {
+          "order": "desc",
+          "orderBy": "date",
+          "search": "={{ $('Trigger').item.json.search ?? '' }}",
+          "status": "publish"
+        }
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        860,
+        -120
+      ],
+      "id": "ca6632d6-5e98-4e28-aec6-93e7569fc243",
+      "name": "Get Posts",
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "WP Creds",
+              "type": "object"
+            },
+            {
+              "name": "postsOrPages"
+            },
+            {
+              "name": "limit",
+              "type": "number"
+            },
+            {
+              "name": "search"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "57364ace-da07-4e4a-8ea0-7511e8d9c55a",
+      "name": "Trigger"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return $input.item.json['WP Creds'];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ],
+      "id": "bc70da46-3723-44e3-b607-546d54f4fa0e",
+      "name": "WP Creds"
+    },
+    {
+      "parameters": {
+        "resource": "page",
+        "operation": "getAll",
+        "limit": "={{ $('Trigger').item.json.limit ?? 100 }}",
+        "options": {
+          "order": "desc",
+          "orderBy": "date",
+          "search": "={{ $('Trigger').item.json.search ?? '' }}",
+          "status": "publish"
+        }
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        860,
+        120
+      ],
+      "id": "b416ee15-c633-4a64-be0c-4be0f7261a4e",
+      "name": "Get Pages",
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const results = [];\n\nfor (const item of $input.all()) {\n  const json = item.json;\n  results.push({\n    title: json.title.rendered,\n    excerpt: json.excerpt.rendered,\n    link: json.link,\n  });\n}\n\nreturn results;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        20
+      ],
+      "id": "679abc66-c73c-4747-892e-411fb07e2f2d",
+      "name": "Strip content",
+      "notesInFlow": true,
+      "notes": "Keep only Title, Excerpt and Link"
+    }
+  ],
+  "pinData": {
+    "Trigger": [
+      {
+        "json": {
+          "WP Creds": {
+            "URL": "https://codpal.com",
+            "Wordpress Username": "apostolis.stephanou@gmail.com",
+            "Wordpress Password": "6qbs fmaO kidl pQNm sT6I LyaU"
+          },
+          "postsOrPages": "posts",
+          "limit": 10,
+          "search": ""
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-26T06:53:16.000Z",
+  "versionId": "1cc04543-8478-4cff-a211-a0d22c8940d8"
+}
