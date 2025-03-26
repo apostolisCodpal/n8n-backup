@@ -1,11 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Form": {
-      "main": [
-        []
-      ]
-    },
     "Settings": {
       "main": [
         [
@@ -32,7 +27,7 @@
       "main": [
         [
           {
-            "node": "Set image ID for the post",
+            "node": "Image Review",
             "type": "main",
             "index": 0
           }
@@ -79,13 +74,7 @@
     },
     "Set image ID for the post": {
       "main": [
-        [
-          {
-            "node": "Respond: Success",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Merge chapters title and text": {
@@ -213,7 +202,7 @@
       "main": [
         [
           {
-            "node": "Post on Wordpress",
+            "node": "Write SEO Conclusion",
             "type": "main",
             "index": 0
           }
@@ -309,29 +298,8 @@
       "main": [
         [
           {
-            "node": "Write Conclusion",
+            "node": "WP Creds",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model5": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Write Conclusion",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "Summarization Chain",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "Image Prompt",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -348,22 +316,11 @@
         ]
       ]
     },
-    "Write Conclusion": {
-      "main": [
-        [
-          {
-            "node": "Image Prompt",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Final Article": {
       "main": [
         [
           {
-            "node": "WP Creds",
+            "node": "Post on Wordpress",
             "type": "main",
             "index": 0
           }
@@ -380,6 +337,95 @@
           }
         ]
       ]
+    },
+    "Get Post Excerpts": {
+      "ai_tool": [
+        [
+          {
+            "node": "Write SEO Conclusion",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write SEO Conclusion": {
+      "main": [
+        [
+          {
+            "node": "Image Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Thinking model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Image Prompt",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Review": {
+      "main": [
+        [
+          {
+            "node": "Sentiment Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sentiment Analysis": {
+      "main": [
+        [
+          {
+            "node": "Generate featured image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set image ID for the post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Sentiment Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI 4o": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarization Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Write SEO Conclusion",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-25T10:50:55.815Z",
@@ -389,76 +435,6 @@
   },
   "name": "Generate Wordpress Post",
   "nodes": [
-    {
-      "parameters": {
-        "path": "create-wordpress-post",
-        "formTitle": "Create a WordPress post with AI",
-        "formDescription": "Fill this form with the required information to create a draft post on WordPress",
-        "formFields": {
-          "values": [
-            {
-              "fieldLabel": "Keywords (comma-separated)",
-              "requiredField": true
-            },
-            {
-              "fieldLabel": "Number of chapters",
-              "fieldType": "dropdown",
-              "fieldOptions": {
-                "values": [
-                  {
-                    "option": "1"
-                  },
-                  {
-                    "option": "2"
-                  },
-                  {
-                    "option": "3"
-                  },
-                  {
-                    "option": "4"
-                  },
-                  {
-                    "option": "5"
-                  },
-                  {
-                    "option": "6"
-                  },
-                  {
-                    "option": "7"
-                  },
-                  {
-                    "option": "8"
-                  },
-                  {
-                    "option": "9"
-                  },
-                  {
-                    "option": "10"
-                  }
-                ]
-              },
-              "requiredField": true
-            },
-            {
-              "fieldLabel": "Max words count",
-              "fieldType": "number",
-              "requiredField": true
-            }
-          ]
-        },
-        "responseMode": "responseNode",
-        "options": {}
-      },
-      "id": "a2a838ce-72d7-4419-8b09-db400e2f3942",
-      "name": "Form",
-      "type": "n8n-nodes-base.formTrigger",
-      "position": [
-        120,
-        -320
-      ],
-      "webhookId": "4b937814-e829-4df7-aaba-31192babf7e1",
-      "typeVersion": 2
-    },
     {
       "parameters": {
         "content": "## Data check",
@@ -527,7 +503,7 @@
       "parameters": {
         "content": "## Featured image",
         "height": 369,
-        "width": 578,
+        "width": 1238,
         "color": 3
       },
       "id": "8514908b-d35d-4a8f-9f7c-eb121105503a",
@@ -541,7 +517,7 @@
     },
     {
       "parameters": {
-        "content": "The image is generated with Dall-E, uploaded to WordPress, and then connected to the post as its featured image",
+        "content": "The image is generated with DALL-E 3, uploaded to WordPress, and then connected to the post as its featured image",
         "height": 80,
         "width": 498,
         "color": 7
@@ -584,70 +560,6 @@
       "position": [
         600,
         -20
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "## User form",
-        "height": 370.512611879577,
-        "width": 239.97343293577688,
-        "color": 7
-      },
-      "id": "78c5b3c0-ed96-44d1-857d-fc25010f9d8d",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        60,
-        -500
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "The user triggers the post creation",
-        "height": 80,
-        "width": 199.7721486302032,
-        "color": 7
-      },
-      "id": "2df6cc40-730e-49fd-b06c-ba0e346dda25",
-      "name": "Sticky Note13",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        80,
-        -440
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "## User feedback",
-        "height": 370.512611879577,
-        "width": 219.70753707029849,
-        "color": 7
-      },
-      "id": "e64c9f3c-2568-4f91-b997-f11cc3f4b67e",
-      "name": "Sticky Note4",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        5260,
-        -20
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "Final confirmation to the user",
-        "height": 80,
-        "width": 183.38125554060056,
-        "color": 7
-      },
-      "id": "95573e3d-36fd-496b-9dd9-d8845371dba3",
-      "name": "Sticky Note14",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        5280,
-        40
       ],
       "typeVersion": 1
     },
@@ -770,7 +682,7 @@
       "name": "Merge chapters title and text",
       "type": "n8n-nodes-base.merge",
       "position": [
-        2600,
+        2620,
         280
       ],
       "typeVersion": 2.1
@@ -793,15 +705,15 @@
       "typeVersion": 1,
       "credentials": {
         "wordpressApi": {
-          "id": "dpOssYDSc5YoyIPY",
-          "name": "Wordpress account"
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
         }
       }
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "https://wp-demo.mondo.surf/wp-json/wp/v2/media",
+        "url": "={{$('WP Creds').item.json.URL}}/wp-json/wp/v2/media",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "wordpressApi",
         "sendHeaders": true,
@@ -828,15 +740,15 @@
       "typeVersion": 4.1,
       "credentials": {
         "wordpressApi": {
-          "id": "dpOssYDSc5YoyIPY",
-          "name": "Wordpress account"
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
         }
       }
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://wp-demo.mondo.surf/wp-json/wp/v2/posts/{{ $('Post on Wordpress').item.json.id }}",
+        "url": "={{$('WP Creds').item.json.URL}}/wp-json/wp/v2/posts/{{ $('Post on Wordpress').item.json.id }}",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "wordpressApi",
         "sendQuery": true,
@@ -844,7 +756,7 @@
           "parameters": [
             {
               "name": "featured_media",
-              "value": "={{ $json.id }}"
+              "value": "={{ $('Upload media').last().json.id }}"
             }
           ]
         },
@@ -854,31 +766,16 @@
       "name": "Set image ID for the post",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        5080,
+        5660,
         160
       ],
       "typeVersion": 4.1,
       "credentials": {
         "wordpressApi": {
-          "id": "dpOssYDSc5YoyIPY",
-          "name": "Wordpress account"
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
         }
       }
-    },
-    {
-      "parameters": {
-        "respondWith": "json",
-        "responseBody": "={\n    \"formSubmittedText\": \"The article {{ $json.title.rendered }} was correctly created as a draft on WordPress!\"\n}",
-        "options": {}
-      },
-      "id": "8201eabc-7f56-44f3-941e-49f6508e9315",
-      "name": "Respond: Success",
-      "type": "n8n-nodes-base.respondToWebhook",
-      "position": [
-        5320,
-        160
-      ],
-      "typeVersion": 1
     },
     {
       "parameters": {
@@ -948,7 +845,7 @@
       "parameters": {
         "content": "## Content preparation",
         "height": 474,
-        "width": 420,
+        "width": 460,
         "color": 2
       },
       "id": "9a0f847e-7247-4874-8a53-25972fd5dd85",
@@ -990,7 +887,7 @@
       "name": "Generate featured image",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "position": [
-        4700,
+        4720,
         160
       ],
       "typeVersion": 1,
@@ -1031,7 +928,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -760,
+        -540,
         160
       ],
       "id": "0e112b45-15b1-416a-8606-75c688666569",
@@ -1081,7 +978,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -300,
+        -80,
         160
       ],
       "id": "c8244d6e-b445-454a-9917-18b7d186b006",
@@ -1109,7 +1006,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -520,
+        -300,
         160
       ],
       "id": "571fefe0-b1f6-4502-a2ca-f316a2acf487",
@@ -1165,7 +1062,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -80,
+        140,
         160
       ],
       "id": "90fc28ab-4fc2-4fbd-9735-8b18d9b928d2",
@@ -1284,7 +1181,7 @@
         "promptType": "define",
         "text": "=Write a chapter for the article: {{ $('Settings').item.json.title }}, {{  $('Create post outline').item.json.output.subtitle }}.\nAritble introduction: {{ $('Create post outline').item.json.output.introduction }}\nSEO keywords: {{ $('Create post outline').item.json.output.keywords }}\n\n{{ $itemIndex > 0 ?\n`The previous chapter talks about ${$input.all()[$itemIndex-1].json.title} - ${$input.all()[$itemIndex-1].json.prompt}`\n: \"\" }}\n{{ $itemIndex < $input.all().length ?\n  `The following chapter will talk about ${$input.all()[$itemIndex+1].json.title} - ${$input.all()[$itemIndex+1].json.prompt}`\n: \"\" }}\n\nYour task is to write the current chapter, integrating it seamlessly into the article.\n\nChapter {{ $itemIndex + 1 }}\n- title: {{ $json.title }}\n- prompt: {{ $json.prompt }}\n\nOutput only the chapter with no other commentery.",
         "options": {
-          "systemMessage": "=You are an SEO Blog Post Post Copywriter. Your task is to write chapters for blog posts. The user will provide you the article subject. They will also provide you with SEO keywords to try and include in your writing where applicable.\n\nGuidelines:\n- Don't add internal titles or headings.\n- Each chapther should be around {{ Math.round(1500/ $('Create post outline').item.json.output.chapters.length) }} words\n- Go deep in the topic you treat, don't just throw some superficial info\n- Search on Wikipedia to verify the accuracy of what you write.\n- Consider the previous and following chapters when writing the text for this chapter. The text must be coherent with the previous and following chapters.\n- This chapter should not repeat the concepts already exposed in the previous chapter.\n- This chapter is a part of a larger article so don't include an introduction or conclusions. This chapter should merge with the rest of the article.\n- IMPORTANT: Do not use markdown.\n- Use HTML for formatting, but limited to bold, italic and lists."
+          "systemMessage": "=You are an SEO Blog Post Post Copywriter. Your task is to write chapters for blog posts. The user will provide you the article subject. They will also provide you with SEO keywords to try and include in your writing where applicable.\n\nGuidelines:\n- Don't add internal titles or headings.\n- Each chapther should be around {{ Math.round(1200/ $('Create post outline').item.json.output.chapters.length) }} words\n- Go deep in the topic you treat, don't just throw some superficial info\n- Search on Wikipedia to verify the accuracy of what you write.\n- Consider the previous and following chapters when writing the text for this chapter. The text must be coherent with the previous and following chapters.\n- This chapter should not repeat the concepts already exposed in the previous chapter.\n- This chapter is a part of a larger article so don't include an introduction or conclusions. This chapter should merge with the rest of the article.\n- IMPORTANT: Do not use markdown.\n- Use HTML for formatting, but limited to bold, italic and lists."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -1307,7 +1204,7 @@
       "name": "Sticky Note23",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        4100,
+        3300,
         -20
       ],
       "typeVersion": 1
@@ -1323,7 +1220,7 @@
       "name": "Sticky Note24",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        4120,
+        3320,
         40
       ],
       "typeVersion": 1
@@ -1357,7 +1254,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4160,
+        3360,
         160
       ],
       "id": "1ac209ac-3206-46f6-b04e-4ba4bbdb7d97",
@@ -1376,7 +1273,7 @@
       "typeVersion": 1.2,
       "position": [
         1720,
-        400
+        380
       ],
       "id": "ff31db34-908e-4223-b0bf-eebf8df7a4c1",
       "name": "OpenAI Chat Model2",
@@ -1401,7 +1298,7 @@
       "typeVersion": 1.2,
       "position": [
         2020,
-        400
+        380
       ],
       "id": "7b1065c6-2579-49f3-a07b-ee1aa957f587",
       "name": "OpenAI Chat Model3",
@@ -1541,11 +1438,321 @@
       "type": "@n8n/n8n-nodes-langchain.chainSummarization",
       "typeVersion": 2,
       "position": [
-        2920,
-        120
+        2960,
+        160
       ],
       "id": "7b074c3c-a828-4d23-817f-19241a043dd1",
       "name": "Summarization Chain"
+    },
+    {
+      "parameters": {
+        "jsCode": "let article = \"\";\n\n// Introduction\narticle += $('Create post outline').first().json.output.introduction;\narticle += \"<br><br>\";\n\nfor (const item of $input.all()) {\n  article += \"<h2>\" + item.json.title + \"</h2>\";\n  article += \"<br><br>\";\n  article += item.json.chapterHtml;\n  article += \"<br><br>\";\n}\n\nreturn [\n  {\n    \"article\": article\n  }\n];"
+      },
+      "id": "ab872ddb-ee66-4172-9d4a-f5303cbeafbc",
+      "name": "Article without conclusion",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        2760,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "let article = $(\"Article without conclusion\").item.json.article;\nconst conclusion = $('Write SEO Conclusion').item.json.output;\nconst imagePrompt = $input.item.json.text;\n\n// Conclusions\narticle += \"<h2>Conclusions</h2>\";\narticle += \"<br><br>\";\narticle += conclusion;\n\nreturn {\n  article,\n  imagePrompt,\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4200,
+        160
+      ],
+      "id": "d7964776-6b20-47f4-a2cb-fa8607321c97",
+      "name": "Final Article"
+    },
+    {
+      "parameters": {
+        "content": "## Generate image prompt",
+        "height": 371,
+        "width": 433,
+        "color": 6
+      },
+      "id": "03e83da9-727c-4486-8891-fe4c6b31810d",
+      "name": "Sticky Note25",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3900,
+        -20
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Imagine an image for the article below. Come up with an idea for the image and then try vividly to describe it. It's important that you think about what you want the image to be before you write the prompt. Do not mention any text in the image prompt.\n\nArticle summary: {{ $('Summarization Chain').item.json.response.text }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "System Role: **Dall-E 3 Enhanced Prompt Generator System Instructions**:\n\n**Narrative Enrichment**: Upon receiving basic input, transform it into a vivid, immersive mental image for the user, emphasizing clarity and conciseness.\n**Artistic Integrity**: Ensure that the nuances of the generated output resonate deeply with any specified medium, whether it's 'photography', 'painting', 'sketch', etc.\n**Inclusive Imagery**: When depicting human subjects, showcase a diverse range of ethnicities and genders.\n**Descriptive Dexterity**: Create descriptions that are evocative but not overly verbose, staying within a limit of 2-3 sentences. Descriptions should serve as a springboard for imagination.\n**User/Assistant Interaction**: Interact with a blend of wit, humour, and artistic flair and as the worlds top DALL-E text to image prompt desinger. Engage the user to obtain a theme or concept, then adhere to the above guidelines, employing all your creative acumen to meet the user's desires. Engage users by occasionally asking open-ended questions about their artistic preferences or the mood they're aiming for.\n**Reality**: Keep your prompts grounded to reality.\n\n**Usage Protocol**:\n\nFor every user input, generate a unique and distinct prompt. No matter the length of the users input, the improved creative output will stricky adhere to 2-3, perfectly crafted and taylored NLP prompts.\n\nOutput only the 2-3 sentence prompt. No other output."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        3920,
+        160
+      ],
+      "id": "ad0599fe-6087-4b6a-9db3-bb0dfad2be02",
+      "name": "Image Prompt"
+    },
+    {
+      "parameters": {
+        "content": "## Generate LLM summary",
+        "height": 371,
+        "width": 353,
+        "color": 6
+      },
+      "id": "4d3bd902-142b-4579-9b6e-276c5a5d1677",
+      "name": "Sticky Note26",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2920,
+        -20
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Generates a short summary to be used to write a conclusion and image prompt",
+        "height": 80,
+        "width": 308,
+        "color": 7
+      },
+      "id": "6324639c-0a58-4a46-8b7c-0d9e08b274b0",
+      "name": "Sticky Note27",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2940,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "name": "get_old_post_excerpts",
+        "description": "Call this tool to get previous posts from the user's blog. The tool returns title, excerpt and link.",
+        "workflowId": {
+          "__rl": true,
+          "value": "eut3QHHHOaKsiuUO",
+          "mode": "list",
+          "cachedResultName": "Wordpress Get Excerpts"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "WP Creds": "={{ $('WP Creds').item.json }}",
+            "postsOrPages": "posts",
+            "limit": 20
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "WP Creds",
+              "displayName": "WP Creds",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object"
+            },
+            {
+              "id": "postsOrPages",
+              "displayName": "postsOrPages",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "limit",
+              "displayName": "limit",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number"
+            },
+            {
+              "id": "search",
+              "displayName": "search",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        3740,
+        400
+      ],
+      "id": "f0b49ef5-81bf-4167-ad97-51ff51c40394",
+      "name": "Get Post Excerpts"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Write a conclusion for the following article.\n\nSummary: {{ $('Summarization Chain').item.json.response.text }}",
+        "options": {
+          "systemMessage": "You are a professional copywriter.\nThe user will provide a summary to an article.\nYour task is to write a conclusion for the article.\nBefore writing the article, call the get_old_post_excerpts tool to get a list of old articles.\nIdentify ONE article that might be a good next read for the reader and include a link to it in your conclusion.\nThe link should be seamless, as if part of the flow of the conclusion.\nOutput only the conclusion without any other commentary.\nLink format:\n<a href=\"{link}\">{title}</a>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        3580,
+        160
+      ],
+      "id": "52d2686c-a252-4f77-81ea-2621e096c483",
+      "name": "Write SEO Conclusion"
+    },
+    {
+      "parameters": {
+        "content": "## Generate SEO conclusion",
+        "height": 371,
+        "width": 333,
+        "color": 6
+      },
+      "id": "cb50ba8f-9b52-44d1-826d-1c67279836f3",
+      "name": "Sticky Note28",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3540,
+        -20
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Generates a conclusion using the article summary. Includes a link to another relevant post.",
+        "height": 80,
+        "width": 308,
+        "color": 7
+      },
+      "id": "2eceebcb-fdab-45cb-bbfc-2ec16a43ebd5",
+      "name": "Sticky Note29",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3560,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "o3-mini",
+          "mode": "list",
+          "cachedResultName": "o3-mini"
+        },
+        "options": {
+          "reasoningEffort": "medium"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3940,
+        380
+      ],
+      "id": "384e06d4-a169-4d06-a5c3-bc81c79bd087",
+      "name": "Thinking model",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "text": "This image is planned to go on my blog.\nPlease review if the image is suitable to go on my blog or not.\nIf you identify any of the below, the image should not go on my blog:\n- Miss-formed people, animals, buildings etc\n- Text (no text is allowed on the image)\nDo you identify any of the above?\nOutput only yes or no",
+        "imageUrls": "={{ $json.source_url }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        5080,
+        160
+      ],
+      "id": "c8a84a2c-90cd-4d74-a749-56bea19882a8",
+      "name": "Image Review",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.content }}",
+        "options": {
+          "categories": "Positive, Negative"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.sentimentAnalysis",
+      "typeVersion": 1,
+      "position": [
+        5260,
+        160
+      ],
+      "id": "eb112b91-c509-440d-8a06-fe2be7221acf",
+      "name": "Sentiment Analysis"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5280,
+        380
+      ],
+      "id": "bb659985-6363-4ac3-b729-24934f8a2048",
+      "name": "OpenAI Mini",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1560,102 +1767,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3240,
-        400
+        3320,
+        480
       ],
       "id": "b1fcbc65-28c3-49df-b250-e877e8a279a6",
-      "name": "OpenAI Chat Model5",
+      "name": "OpenAI 4o",
       "credentials": {
         "openAiApi": {
           "id": "I92UkH9mThS7D4I6",
           "name": "CodPal Account"
         }
       }
-    },
-    {
-      "parameters": {
-        "jsCode": "let article = \"\";\n\n// Introduction\narticle += $('Create post outline').first().json.output.introduction;\narticle += \"<br><br>\";\n\nfor (const item of $input.all()) {\n  article += \"<h2>\" + item.json.title + \"</h2>\";\n  article += \"<br><br>\";\n  article += item.json.chapterHtml;\n  article += \"<br><br>\";\n}\n\n// Conclusions\narticle += \"<strong>Conclusions</strong>\";\narticle += \"<br><br>\";\narticle += $('Create post outline').first().json.output.conclusions;\n\nreturn [\n  {\n    \"article\": article\n  }\n];"
-      },
-      "id": "ab872ddb-ee66-4172-9d4a-f5303cbeafbc",
-      "name": "Article without conclusion",
-      "type": "n8n-nodes-base.code",
-      "position": [
-        2720,
-        160
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Write a conclusion for the following article.\n\nSummary: {{ $json.response.text }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "You are a professional copywriter.\nThe user will provide a summary to an article.\nYour task is to write a conclusion for the article.\nOutput only the conclusion without any other commentary."
-            }
-          ]
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.5,
-      "position": [
-        3220,
-        120
-      ],
-      "id": "4fc66547-7479-4fae-a88f-f2fa51f31ece",
-      "name": "Write Conclusion"
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "let article = $(\"Article without conclusion\").item.json.article;\nconst conclusion = $('Write Conclusion').item.json.text;\nconst imagePrompt = $input.item.json.text;\n\n// Conclusions\narticle += \"<h2>Conclusions</h2>\";\narticle += \"<br><br>\";\narticle += conclusion;\n\nreturn {\n  article,\n  imagePrompt,\n};"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        3860,
-        120
-      ],
-      "id": "d7964776-6b20-47f4-a2cb-fa8607321c97",
-      "name": "Final Article"
-    },
-    {
-      "parameters": {
-        "content": "## Generate article conclusion and image prompt",
-        "height": 371,
-        "width": 1193,
-        "color": 6
-      },
-      "id": "03e83da9-727c-4486-8891-fe4c6b31810d",
-      "name": "Sticky Note25",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        2880,
-        -20
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Generate an image prompt to use for the featured image of my new new blog post. The article is going on my website.\n\nArticle summary: {{ $('Summarization Chain').item.json.response.text }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "System Role: **Dall-E 3 Enhanced Prompt Generator System Instructions**:\n\n**Narrative Enrichment**: Upon receiving basic input, transform it into a vivid, immersive mental image for the user, emphasizing clarity and conciseness.\n**Artistic Integrity**: Ensure that the nuances of the generated output resonate deeply with any specified medium, whether it's 'photography', 'painting', 'sketch', etc.\n**Inclusive Imagery**: When depicting human subjects, showcase a diverse range of ethnicities and genders.\n**Descriptive Dexterity**: Create descriptions that are evocative but not overly verbose, staying within a limit of 2-3 sentences. Descriptions should serve as a springboard for imagination.\n5. **User/Assistant Interaction**: Interact with a blend of wit, humor, and artistic flair and as the worlds top DALL-E text to image prompt desinger. Engage the user to obtain a theme or concept, then adhere to the above guidelines, employing all your creative acumen to meet the user's desires. Engage users by occasionally asking open-ended questions about their artistic preferences or the mood they're aiming for.\n\n**Usage Protocol**:\n\nFor every user input, generate a unique and distinct prompt. No matter the length of the users input, the improved creative output will stricky adhere to 2-3, perfectly crafted and taylored NLP prompts.\n\nOutput only the 2-3 sentence prompt. No other output."
-            }
-          ]
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.5,
-      "position": [
-        3540,
-        120
-      ],
-      "id": "ad0599fe-6087-4b6a-9db3-bb0dfad2be02",
-      "name": "Image Prompt"
     }
   ],
   "pinData": {
@@ -1663,8 +1785,8 @@
       {
         "json": {
           "wordpressClientId": "recffZZw0CIteTg2l",
-          "title": "Boost Business Agility with Domain-Driven Design",
-          "description": "DDD with microservices enables scalable, flexible systems aligned with evolving business goals."
+          "title": "Empower Your Business with Expert CTO Leadership",
+          "description": "In today's rapidly evolving technological landscape, the role of the Chief Technology Officer (CTO) has become more crucial than ever. A CTO stands at the crossroads of technology and business, serving as the key figure responsible for outlining and implementing the technological vision that aligns with the company’s overall strategic goals."
         }
       }
     ]
@@ -1678,6 +1800,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-25T19:42:07.000Z",
-  "versionId": "cd29d5bd-d8ba-496a-9812-24bc07529f60"
+  "updatedAt": "2025-03-26T11:49:50.000Z",
+  "versionId": "63a8555d-f7db-42a8-8259-79decc6123a3"
 }
