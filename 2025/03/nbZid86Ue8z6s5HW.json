@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "If not /start",
+            "node": "Client",
             "type": "main",
             "index": 0
           }
@@ -38,7 +38,7 @@
       "main": [
         [
           {
-            "node": "Action Typing",
+            "node": "If not /start",
             "type": "main",
             "index": 0
           }
@@ -60,7 +60,7 @@
       "main": [
         [
           {
-            "node": "Routing Agent",
+            "node": "Copywriter",
             "type": "main",
             "index": 0
           }
@@ -71,7 +71,14 @@
       "main": [
         [
           {
-            "node": "Client",
+            "node": "Action Typing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Welcome Message",
             "type": "main",
             "index": 0
           }
@@ -100,22 +107,11 @@
         ]
       ]
     },
-    "SEO Content Strategy Agent Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "Copywriter",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "SubWorkflow": {
       "main": [
         [
           {
-            "node": "Get SEO Strategy Document",
+            "node": "Get or Generate SEO Strategy Document",
             "type": "main",
             "index": 0
           }
@@ -131,13 +127,7 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Blog Post Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Structured Output Parser": {
@@ -173,56 +163,12 @@
         ]
       ]
     },
-    "Blog Post Agent Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "Copywriter",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model3": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Blog Post Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Blog Post Agent Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "Blog Post Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Post Idea Agent Memory": {
       "ai_memory": [
         [
           {
             "node": "Post Idea Agent",
             "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get SEO Strategy Document": {
-      "main": [
-        [
-          {
-            "node": "Get Document",
-            "type": "main",
             "index": 0
           }
         ]
@@ -274,49 +220,9 @@
     },
     "Switch1": {
       "main": [
-        [
-          {
-            "node": "Reply to user1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Copywriter",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Business Knowledge Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model4": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Business Knowledge Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Simple Memory2": {
-      "ai_memory": [
-        [
-          {
-            "node": "Business Knowledge Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
+        [],
+        [],
+        []
       ]
     },
     "Copywriter": {
@@ -334,7 +240,7 @@
       "ai_tool": [
         [
           {
-            "node": "Business Knowledge Agent",
+            "node": "Copywriter",
             "type": "ai_tool",
             "index": 0
           }
@@ -347,17 +253,6 @@
           {
             "node": "Pinecone Vector Store",
             "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Business Knowledge Agent": {
-      "main": [
-        [
-          {
-            "node": "Reply to user2",
-            "type": "main",
             "index": 0
           }
         ]
@@ -376,10 +271,38 @@
     },
     "SerpAPI": {
       "ai_tool": [
+        []
+      ]
+    },
+    "Get or Generate SEO Strategy Document": {
+      "main": [
         [
           {
-            "node": "Business Knowledge Agent",
+            "node": "If already generating",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Blog Post Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Copywriter",
             "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If already generating": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Get Document",
+            "type": "main",
             "index": 0
           }
         ]
@@ -405,8 +328,8 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1760,
-        340
+        -1360,
+        280
       ],
       "id": "233140ef-c23a-4218-ab01-716d106d45d2",
       "name": "Telegram Trigger",
@@ -443,7 +366,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -1340,
+        -1100,
         280
       ],
       "id": "94f52344-4037-4e6d-bad9-e40572a95d31",
@@ -477,7 +400,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -1340,
+        -1100,
         520
       ],
       "id": "571f9556-b162-4d34-bf4e-dc5b81b3a2d5",
@@ -560,8 +483,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1100,
-        380
+        -860,
+        520
       ],
       "id": "019b43a7-cadb-447f-abf3-ed17250b9a7b",
       "name": "Config"
@@ -569,13 +492,13 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "=copywriter-{{ $('Client').item.json.id }}"
+        "sessionKey": "=copywriter1-{{ $('Client').item.json.id }}"
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        600,
-        480
+        300,
+        620
       ],
       "id": "921943ba-0d88-48ad-aae7-45ce02518194",
       "name": "Simple Memory"
@@ -588,7 +511,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -860,
+        -400,
         380
       ],
       "id": "ad4aba58-5341-4139-ba01-85910e1e3143",
@@ -613,7 +536,7 @@
           "conditions": [
             {
               "id": "abe3be92-7f5e-4f9d-8116-0bf639975b96",
-              "leftValue": "={{ $json.message.text }}",
+              "leftValue": "={{ $('Telegram Trigger').item.json.message.text }}",
               "rightValue": "/start",
               "operator": {
                 "type": "string",
@@ -628,8 +551,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1560,
-        340
+        -660,
+        520
       ],
       "id": "9d0a6634-b59d-4d2e-9db1-8d3d957532e9",
       "name": "If not /start"
@@ -646,8 +569,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -680,
-        600
+        -200,
+        120
       ],
       "id": "b2e1ecfd-c139-4443-892d-50e80625ae9e",
       "name": "OpenAI Chat Model1",
@@ -656,7 +579,8 @@
           "id": "I92UkH9mThS7D4I6",
           "name": "CodPal Account"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -671,8 +595,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        440,
-        480
+        140,
+        620
       ],
       "id": "731c17ed-6aca-4c9e-8788-02667946a1ae",
       "name": "OpenAI Chat Model2",
@@ -685,97 +609,6 @@
     },
     {
       "parameters": {
-        "name": "seo_content_strategy",
-        "description": "Generates an SEO content strategy by analysing the user's business and google keyword trends. If a strategy was recently generated it will return that one.",
-        "workflowId": {
-          "__rl": true,
-          "value": "wuKESAfzl44JF4je",
-          "mode": "list",
-          "cachedResultName": "SEO Content Strategy Agent"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "route": "call_seo_content_strategy_agent",
-            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', `Send a message to the agent asking them to give you the strategy.`, 'string') }}",
-            "config": "={{ $('Config').item.json }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string"
-            },
-            {
-              "id": "trend",
-              "displayName": "trend",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string"
-            },
-            {
-              "id": "businessProfile",
-              "displayName": "businessProfile",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "keywordData",
-              "displayName": "keywordData",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object"
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2.1,
-      "position": [
-        760,
-        480
-      ],
-      "id": "bb1ddc1d-3a5c-416e-a2b8-3319d55ff3b9",
-      "name": "SEO Content Strategy Agent Tool",
-      "disabled": true
-    },
-    {
-      "parameters": {
         "content": "# Coordinator Agent System Prompt\n\nYou are a coordinator agent with access to three specialized tools:\n\n## Tools Overview\n\n### 1. idea_agent\n- **Function:** Creates a post idea using an SEO Content Strategy document.\n- **Capabilities:**\n  - Remembers past interactions.\n  - Can generate alternative ideas based on user feedback.\n- **Usage:** Always seek user approval for any generated idea before proceeding. If the user rejects the idea, capture their feedback and pass it along to the idea_agent to generate a revised idea.\n\n### 2. blog_post_agent\n- **Function:** Manages posts on the user's WordPress site.\n- **Capabilities:**\n  - **Create:** Generates a draft post based on a provided idea.\n  - **Update:** Updates an existing post when provided with the post identifier and the required changes.\n  - **List:** Retrieves a list of all posts.\n- **Usage:** Where reasonable, return the post URL to the user for review.\n\n## Responsibilities & Workflow\n\n### Assess User Intent\n- Determine whether the user’s request is for:\n  - An SEO content strategy.\n  - A post idea.\n  - A blog post creation, update, or listing.\n\n### Coordination of Tool Usage\n- **Step 1:** Retrieve the latest SEO content strategy by calling the **seo_content_strategy_agent**.\n- **Step 2:** Use the retrieved strategy as input for the **idea_agent** to generate a post idea.\n  - **Important:** Always request explicit user approval for the generated idea.\n  - If the user rejects the idea, incorporate their feedback and request an alternative idea from the **idea_agent**.\n- **Step 3:** Once an approved idea is obtained:\n  - **For creation:** Call the **blog_post_agent** to create a draft post on the user's WordPress site and send the post URL to the user for review.\n  - **For updates:** Call the **blog_post_agent** with the specific post identifier and the modifications required.\n  - **For listing:** Use **blog_post_agent** to retrieve and display all posts.\n\n### Data Flow & Validation\n- Always ensure the SEO content strategy is current by calling **seo_content_strategy_agent**.\n- Confirm that any generated idea is clearly based on the strategy data.\n- Validate user instructions for post updates before proceeding with **blog_post_agent**.\n\n### Communication & Iteration\n- Clearly inform the user of the current stage in the process.\n- Obtain explicit user approval for any post idea before moving forward.\n- Iteratively refine ideas by capturing user feedback and passing it to **idea_agent** if necessary.\n- Provide clear instructions or requests for additional details when handling post updates via **blog_post_agent**.\n\n---\n\nYour goal is to seamlessly coordinate these tools to fulfill the user's requests efficiently and accurately, ensuring that each output is data-driven and aligned with the overall SEO strategy while maintaining clear user communication and approval at each stage.",
         "height": 1400,
         "width": 1300,
@@ -783,8 +616,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1240,
-        -360
+        1640,
+        -200
       ],
       "typeVersion": 1,
       "id": "d1069d76-0a24-43b1-9e82-8abc4feb7751",
@@ -813,8 +646,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1100,
-        1700
+        -1060,
+        1940
       ],
       "id": "e3c2c4a7-f84c-4ff5-9817-3059cf4f6aaf",
       "name": "SubWorkflow"
@@ -859,7 +692,7 @@
                   {
                     "id": "088b63ae-cb93-4e40-a19a-8d40da3eca5a",
                     "leftValue": "={{ $('SubWorkflow').item.json.route }}",
-                    "rightValue": "post_agent",
+                    "rightValue": "create_blog_post",
                     "operator": {
                       "type": "string",
                       "operation": "equals",
@@ -870,7 +703,7 @@
                 "combinator": "and"
               },
               "renameOutput": true,
-              "outputKey": "Create Post Agent"
+              "outputKey": "Create Blog Post"
             }
           ]
         },
@@ -879,8 +712,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -40,
-        1700
+        180,
+        1960
       ],
       "id": "3cc625ef-b9b4-4fe8-be8d-2d0268a558fa",
       "name": "Switch"
@@ -897,8 +730,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.8,
       "position": [
-        660,
-        1320
+        820,
+        1680
       ],
       "id": "86902b53-6fe9-4079-9bc2-a45421f81ce4",
       "name": "Post Idea Agent"
@@ -911,8 +744,8 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        920,
-        1540
+        1060,
+        1900
       ],
       "id": "9ba51da1-b791-4004-abeb-d46e6a9556f6",
       "name": "Structured Output Parser"
@@ -929,8 +762,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        560,
-        1540
+        680,
+        1900
       ],
       "id": "5395519c-69ec-4489-8cbf-e6d5a151b296",
       "name": "OpenAI Chat Model",
@@ -1010,8 +843,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.1,
       "position": [
-        920,
-        480
+        440,
+        620
       ],
       "id": "c7403771-0b95-446d-aa41-a4268c038e13",
       "name": "Idea Agent Tool"
@@ -1027,8 +860,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1260,
-        240
+        920,
+        380
       ],
       "id": "878c1e5f-a1ce-4a27-ae61-26bec570781a",
       "name": "Reply to user",
@@ -1042,189 +875,17 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "options": {
-          "systemMessage": "You are a helpful assistant"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.8,
-      "position": [
-        660,
-        1780
-      ],
-      "id": "61da2a2e-44c0-4219-b2cf-bb50c90718d3",
-      "name": "Blog Post Agent",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "name": "blog_post_agent",
-        "description": "Communicate with the Blog Post Agent. You can ask them to create, update and find blog posts. Always pass the title and description when asking for a new post. The agent has access to the latest seoContentStrategy, you do not need to send it.",
-        "workflowId": {
-          "__rl": true,
-          "value": "nbZid86Ue8z6s5HW",
-          "mode": "list",
-          "cachedResultName": "Content Creator Agent"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "route": "create_post_agent",
-            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', `Send a message to the agent asking them to create, update or list a post. Pass user specific requests if any.`, 'string') }}",
-            "config": "={{ $('Config').item.json }}"
-          },
-          "matchingColumns": [
-            "route"
-          ],
-          "schema": [
-            {
-              "id": "route",
-              "displayName": "route",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "query",
-              "displayName": "query",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "seoContentStrategy",
-              "displayName": "seoContentStrategy",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2.1,
-      "position": [
-        1100,
-        480
-      ],
-      "id": "425bea77-12ad-4843-b165-f8610e694088",
-      "name": "Blog Post Agent Tool"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4o-mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        520,
-        2020
-      ],
-      "id": "c4ac58a1-7680-447c-855e-d581e0ae05dd",
-      "name": "OpenAI Chat Model3",
-      "credentials": {
-        "openAiApi": {
-          "id": "I92UkH9mThS7D4I6",
-          "name": "CodPal Account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "=blog-post-{{ $('Params').item.json.id }}"
+        "sessionKey": "=post-idea1-{{ $('Params').item.json.id }}"
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        680,
-        2020
-      ],
-      "id": "fc7c521f-0d99-4e21-b123-6a69e0536f76",
-      "name": "Blog Post Agent Memory"
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "=post-idea-{{ $('Params').item.json.id }}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        740,
-        1540
+        840,
+        1900
       ],
       "id": "ac775e84-307b-48fc-8db4-72b1ebc28cc6",
       "name": "Post Idea Agent Memory"
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "bh0ZlfpPSQlAPRhl",
-          "mode": "list",
-          "cachedResultName": "SEO Content Strategy Get or Generate"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "config": "={{ $json.config }}"
-          },
-          "matchingColumns": [
-            "config"
-          ],
-          "schema": [
-            {
-              "id": "config",
-              "displayName": "config",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "object",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        -840,
-        1700
-      ],
-      "id": "31ec316a-777b-4099-acd9-3b13028c23e2",
-      "name": "Get SEO Strategy Document"
     },
     {
       "parameters": {
@@ -1234,8 +895,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -280,
-        1700
+        -80,
+        1960
       ],
       "id": "017049e8-7b34-480d-82ee-aaef97cd0f86",
       "name": "Params"
@@ -1250,8 +911,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1380,
-        1580
+        1640,
+        1240
       ],
       "id": "13e90e75-ac17-4fc4-88d2-23d7d269b334",
       "name": "Sticky Note"
@@ -1303,8 +964,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -560,
-        1700
+        -300,
+        1960
       ],
       "id": "4940a8ca-fbc9-4c54-9138-01d0739cd51d",
       "name": "Get Document"
@@ -1315,17 +976,18 @@
         "text": "={{ $('Config').item.json.message }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "You are a Multi-Agent Router\n\n## Core Function\nRoute requests exclusively to two agents:\n1. Blog Post Generation Agent\n2. Business Knowledge Retrieval Agent\n\n## Routing Rules\n- Forward blog post idea/creation requests to Blog Post Generation Agent\n- Direct business knowledge queries to Business Knowledge Retrieval Agent. For example questions about website content or posts.\n\n## Decision Criteria\n- Accept ONLY requests about:\n  * Generating blog post ideas\n  * Creating blog posts\n  * Questions about existing blog post or website content\n\n## IMPORTANT: Always respond with the following json format:\n{\n  \"route\": \"user\" or \"blog-post-agent\" or \"business-knowledge-agent\",\n  \"message\": \"message to be passed\"\n}"
+          "systemMessage": "You are a Multi-Agent Router\n\n## Core Function\nRoute requests exclusively to two agents:\n1. Blog Post and idea Generation Agent\n2. Business Knowledge Retrieval Agent\n\n## Routing Rules\n- Forward blog post idea/creation requests to Blog Post Generation Agent\n- Direct business knowledge queries to Business Knowledge Retrieval Agent. For example questions about website content or posts.\n\n## Decision Criteria\n- Accept ONLY requests about:\n  * Generating blog post ideas\n  * Creating blog posts\n  * Questions about existing blog post or website content\n\n## IMPORTANT: Always respond with the following json format:\n{\n  \"route\": \"user\" or \"blog-post-agent\" or \"business-knowledge-agent\",\n  \"message\": \"message to be passed\"\n}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.8,
       "position": [
-        -660,
-        380
+        -180,
+        -100
       ],
       "id": "3f010cfe-4a29-400b-b91b-490c9fb9216b",
-      "name": "Routing Agent"
+      "name": "Routing Agent",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1336,11 +998,12 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        -540,
-        600
+        -60,
+        120
       ],
       "id": "1dbf0dd2-8b85-46d4-941a-23d64d8feabd",
-      "name": "Simple Memory1"
+      "name": "Simple Memory1",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1428,105 +1091,26 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -120,
-        380
+        360,
+        -100
       ],
       "id": "4aed78ef-f08a-415f-9830-b988e1815c8e",
-      "name": "Switch1"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $('Config').item.json.telegramChatId }}",
-        "text": "={{ $json.message }}",
-        "additionalFields": {
-          "appendAttribution": false
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        240,
-        60
-      ],
-      "id": "c87aadae-4ddc-4499-9f81-c94285b34e69",
-      "name": "Reply to user1",
-      "webhookId": "077e413c-2611-45e3-842f-0c76932ac034",
-      "credentials": {
-        "telegramApi": {
-          "id": "EHNvbxKETcV3t5MW",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.message }}",
-        "options": {
-          "systemMessage": "You are a specialized agent with dual search capabilities:\n- Primary source: Vector store of business website content\n- Fallback: Google search for additional information\n\nOperational Guidelines:\n- First, search the vector store for answers\n- If insufficient information found, perform a Google search\n- Prioritize website content over search results\n- Provide clear, concise answers\n- Cite sources for information\n\nSearch Strategy:\n- Use semantic search in vector store\n- Conduct targeted Google search if needed\n- Filter results for business relevance"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.8,
-      "position": [
-        560,
-        700
-      ],
-      "id": "f5e61cd1-6840-4e5b-95c9-256635380b8e",
-      "name": "Business Knowledge Agent"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4o",
-          "mode": "list",
-          "cachedResultName": "gpt-4o"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        280,
-        900
-      ],
-      "id": "912501d4-d0a9-42f4-953b-17d79b3018d2",
-      "name": "OpenAI Chat Model4",
-      "credentials": {
-        "openAiApi": {
-          "id": "I92UkH9mThS7D4I6",
-          "name": "CodPal Account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "=business-knowledge-{{ $('Client').item.json.id }}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        480,
-        900
-      ],
-      "id": "dc19ec2e-24b3-4291-ae2b-d0b0e0ad9ad1",
-      "name": "Simple Memory2"
+      "name": "Switch1",
+      "disabled": true
     },
     {
       "parameters": {
         "promptType": "define",
         "text": "={{ $('Config').item.json.message }}",
         "options": {
-          "systemMessage": "# Coordinator Agent System Prompt\n\nYou are a coordinator agent with access to three specialized tools:\n\n## Tools Overview\n\n### 1. seo_content_strategy_agent\n- **Function:** Generates an SEO content strategy by analyzing the user's business and Google keyword trends.\n- **Usage:** Always call this tool to retrieve the current SEO content strategy.\n\n### 2. idea_agent\n- **Function:** Creates a post idea using an SEO Content Strategy document.\n- **Capabilities:**\n  - Remembers past interactions.\n  - Can generate alternative ideas based on user feedback.\n- **Usage:** Always seek user approval for any generated idea before proceeding. If the user rejects the idea, capture their feedback and pass it along to the idea_agent to generate a revised idea.\n\n### 3. blog_post_agent\n- **Function:** Manages posts on the user's WordPress site.\n- **Capabilities:**\n  - **Create:** Generates a draft post based on a provided idea.\n  - **Update:** Updates an existing post when provided with the post identifier and the required changes.\n  - **List:** Retrieves a list of all posts.\n- **Usage:** Where reasonable, return the post URL to the user for review.\n\n## Responsibilities & Workflow\n\n### Assess User Intent\n- Determine whether the user’s request is for:\n  - An SEO content strategy.\n  - A post idea.\n  - A blog post creation, update, or listing.\n\n### Coordination of Tool Usage\n- **Step 1:** Retrieve the latest SEO content strategy by calling the **seo_content_strategy_agent**.\n- **Step 2:** Use the retrieved strategy as input for the **idea_agent** to generate a post idea.\n  - **Important:** Always request explicit user approval for the generated idea.\n  - If the user rejects the idea, incorporate their feedback and request an alternative idea from the **idea_agent**.\n- **Step 3:** Once an approved idea is obtained:\n  - **For creation:** Call the **blog_post_agent** to create a draft post on the user's WordPress site and send the post URL to the user for review.\n  - **For updates:** Call the **blog_post_agent** with the specific post identifier and the modifications required.\n  - **For listing:** Use **blog_post_agent** to retrieve and display all posts.\n\n### Data Flow & Validation\n- Always ensure the SEO content strategy is current by calling **seo_content_strategy_agent**.\n- Confirm that any generated idea is clearly based on the strategy data.\n- Validate user instructions for post updates before proceeding with **blog_post_agent**.\n\n### Communication & Iteration\n- Clearly inform the user of the current stage in the process.\n- Obtain explicit user approval for any post idea before moving forward.\n- Iteratively refine ideas by capturing user feedback and passing it to **idea_agent** if necessary.\n- Provide clear instructions or requests for additional details when handling post updates via **blog_post_agent**.\n\n---\n\nYour goal is to seamlessly coordinate these tools to fulfill the user's requests efficiently and accurately, ensuring that each output is data-driven and aligned with the overall SEO strategy while maintaining clear user communication and approval at each stage."
+          "systemMessage": "=You are an expert SEO copywriter with access to powerful content creation tools:\n- idea_agent for SEO-driven blog post ideas\n- create_blog_post for content generation\n- website_knowledge_base for grounded research\n\nYou are unable to schedule work for later. If there are any problems with your tools, ask the user to try again later.\nIf you get an error ALREADY_GENERATING from a tool, inform the user that you are already working and they need to ask again when you are done.\n\nCurrent Date: {{ $now.format('yyyy-MM-dd HH:mm') }}\n\nCRITICAL INSTRUCTION: \n1. For new blog posts, ALWAYS:\n   - Generate idea using idea_agent\n   - Get user APPROVAL before creating post\n   - Use create_blog_post only after user confirms\n2. Use website_knowledge_base for ALL user questions to ensure answer accuracy\n3. If idea is rejected, generate new ideas until user approves"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.8,
       "position": [
-        660,
-        240
+        360,
+        380
       ],
       "id": "4b0ba40d-a5eb-4a23-ba9e-6eb625723aaa",
       "name": "Copywriter"
@@ -1534,8 +1118,8 @@
     {
       "parameters": {
         "mode": "retrieve-as-tool",
-        "toolName": "company_knowledge_base",
-        "toolDescription": "Semantic search on all company and website data. Use this search tool to answer questions grounded to the user's data.",
+        "toolName": "website_knowledge_base",
+        "toolDescription": "Semantic search on all website data. Use this search tool to answer questions grounded to the user's website data.",
         "pineconeIndex": {
           "__rl": true,
           "value": "wordpress-blogs",
@@ -1549,8 +1133,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
       "typeVersion": 1,
       "position": [
-        800,
-        920
+        740,
+        620
       ],
       "id": "6a12c21d-c25e-434c-bb32-7c4ef8dbf968",
       "name": "Pinecone Vector Store",
@@ -1570,8 +1154,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        820,
-        1060
+        760,
+        760
       ],
       "id": "8b039e88-f436-4383-bb03-bee0afc7a2f0",
       "name": "Embeddings OpenAI",
@@ -1584,41 +1168,18 @@
     },
     {
       "parameters": {
-        "chatId": "={{ $('Config').item.json.telegramChatId }}",
-        "text": "={{ $json.output }}",
-        "additionalFields": {
-          "appendAttribution": false
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        960,
-        700
-      ],
-      "id": "39b57ad5-d222-4c80-b3ea-0f714bf244ce",
-      "name": "Reply to user2",
-      "webhookId": "077e413c-2611-45e3-842f-0c76932ac034",
-      "credentials": {
-        "telegramApi": {
-          "id": "EHNvbxKETcV3t5MW",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "mode": "runOnceForEachItem",
         "jsCode": "return JSON.parse($input.item.json.output)"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -320,
-        380
+        160,
+        -100
       ],
       "id": "4e14e6b2-550d-46bf-8ecc-8f8ef2eb47a0",
-      "name": "Code"
+      "name": "Code",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1627,8 +1188,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
       "typeVersion": 1,
       "position": [
-        640,
-        920
+        1100,
+        760
       ],
       "id": "7a9573eb-292e-4f34-be7c-7781d1ac7d3c",
       "name": "SerpAPI",
@@ -1636,6 +1197,193 @@
         "serpApi": {
           "id": "QEy6ziLBcTJrXptF",
           "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "categories": {
+          "categories": [
+            {
+              "category": "Blog Post Agent",
+              "description": "Forward blog post idea/creation requests to Blog Post Generation Agent"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        -100
+      ],
+      "id": "cc6cfdef-494d-433f-b59a-d5211bb7691a",
+      "name": "Text Classifier",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "bh0ZlfpPSQlAPRhl",
+          "mode": "list",
+          "cachedResultName": "SEO Content Strategy Get or Generate"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "config": "={{ $json.config }}"
+          },
+          "matchingColumns": [
+            "config"
+          ],
+          "schema": [
+            {
+              "id": "config",
+              "displayName": "config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -820,
+        1940
+      ],
+      "id": "31ec316a-777b-4099-acd9-3b13028c23e2",
+      "name": "Get or Generate SEO Strategy Document"
+    },
+    {
+      "parameters": {
+        "name": "create_blog_post",
+        "description": "Call this tool to create a new blog post. This tool will conduct SEO research, create a keyword strategy, generate a new SEO optimised blog post and upload it to the user's wordpress site together with a newly generated image.",
+        "workflowId": {
+          "__rl": true,
+          "value": "Q4DvK9uZrWi0Sqir",
+          "mode": "list",
+          "cachedResultName": "Generate Wordpress Post"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "wordpressClientId": "={{ $('Config').item.json.wordpressClientId }}",
+            "title": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('title', `The title of the idea for the blog post`, 'string') }}",
+            "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('description', `The description of the idea for the blog post`, 'string') }}"
+          },
+          "matchingColumns": [
+            "route"
+          ],
+          "schema": [
+            {
+              "id": "wordpressClientId",
+              "displayName": "wordpressClientId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "description",
+              "displayName": "description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        600,
+        620
+      ],
+      "id": "425bea77-12ad-4843-b165-f8610e694088",
+      "name": "Create Blog Post Tool"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f688a7ed-2f08-48d9-85f1-dcc89b2b30c1",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "ALREADY_GENERATING",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -580,
+        1940
+      ],
+      "id": "684f3588-8e4f-478a-903a-565335a11caf",
+      "name": "If already generating"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.telegramChatId }}",
+        "text": "=Hello! I'm your SEO-focused copywriter assistant. I specialize in creating engaging blog content tailored to your business. I can help you:\n\n• Generate blog post ideas\n• Create SEO-optimized content\n• Answer questions about your website content\n\nWould you like to start by brainstorming some blog post ideas for your business?",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -400,
+        660
+      ],
+      "id": "05a2872b-460f-459a-affa-cd423454de78",
+      "name": "Send Welcome Message",
+      "webhookId": "40d23887-38a6-4899-93e5-cf5a25541ea0",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
         }
       }
     }
@@ -1672,6 +1420,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-03-26T20:17:30.000Z",
-  "versionId": "886266e5-fd9d-4b06-9570-26720599c4ac"
+  "updatedAt": "2025-03-27T17:12:47.000Z",
+  "versionId": "f0bb4c33-31bd-4802-a914-c7a87c46f3f9"
 }
