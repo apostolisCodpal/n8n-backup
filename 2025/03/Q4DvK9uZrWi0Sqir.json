@@ -74,7 +74,13 @@
     },
     "Set image ID for the post": {
       "main": [
-        []
+        [
+          {
+            "node": "Update Is Not Generating",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Merge chapters title and text": {
@@ -114,7 +120,7 @@
       "main": [
         [
           {
-            "node": "Get SEO Strategy Document",
+            "node": "If is already generating",
             "type": "main",
             "index": 0
           }
@@ -426,6 +432,35 @@
           }
         ]
       ]
+    },
+    "If is already generating": {
+      "main": [
+        [
+          {
+            "node": "Error, already generating",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Is Generating",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Is Generating": {
+      "main": [
+        [
+          {
+            "node": "Get SEO Strategy Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-25T10:50:55.815Z",
@@ -503,7 +538,7 @@
       "parameters": {
         "content": "## Featured image",
         "height": 369,
-        "width": 1238,
+        "width": 1178,
         "color": 3
       },
       "id": "8514908b-d35d-4a8f-9f7c-eb121105503a",
@@ -621,7 +656,7 @@
       "name": "Settings",
       "type": "n8n-nodes-base.set",
       "position": [
-        420,
+        440,
         160
       ],
       "typeVersion": 3.3
@@ -630,31 +665,15 @@
       "parameters": {
         "content": "## Settings",
         "height": 371,
-        "width": 247,
+        "width": 207,
         "color": 2
       },
       "id": "4bfedefb-0789-477b-bc4d-8f0efc51f974",
       "name": "Sticky Note8",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        340,
+        380,
         -20
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "Set the URL of your WordPress here",
-        "height": 80,
-        "width": 199,
-        "color": 7
-      },
-      "id": "27b1b924-54a7-4346-baac-9c9d30c84c84",
-      "name": "Sticky Note15",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        360,
-        40
       ],
       "typeVersion": 1
     },
@@ -928,7 +947,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -540,
+        -940,
         160
       ],
       "id": "0e112b45-15b1-416a-8606-75c688666569",
@@ -946,7 +965,7 @@
           "mappingMode": "defineBelow",
           "value": {
             "documentType": "SeoContentStrategy",
-            "wordpressClientId": "={{ $json.id }}"
+            "wordpressClientId": "={{ $('Get Wordpress Client').first().json.id }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -978,7 +997,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -80,
+        -20,
         160
       ],
       "id": "c8244d6e-b445-454a-9917-18b7d186b006",
@@ -1006,7 +1025,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -300,
+        -720,
         160
       ],
       "id": "571fefe0-b1f6-4502-a2ca-f316a2acf487",
@@ -1062,7 +1081,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        140,
+        200,
         160
       ],
       "id": "90fc28ab-4fc2-4fbd-9735-8b18d9b928d2",
@@ -1778,6 +1797,521 @@
           "name": "CodPal Account"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "11d1ed98-9f50-43ee-ab10-2cc216f79dc7",
+              "leftValue": "={{ $json.IsGeneratingBlogPost }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -500,
+        160
+      ],
+      "id": "d733b35c-2d08-4697-8a6d-a6400717ddb7",
+      "name": "If is already generating"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2de1e167-733a-44f9-a579-b3d5e17cbe1c",
+              "name": "error",
+              "value": "ALREADY_GENERATING",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -240,
+        -40
+      ],
+      "id": "01ccbc84-b8a8-4be5-abe1-f17cc807eca1",
+      "name": "Error, already generating"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblty7DapzrDJ6cV6",
+          "mode": "list",
+          "cachedResultName": "Wordpress Clients",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblty7DapzrDJ6cV6"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "IsGeneratingBlogPost": true,
+            "Last Modified Time": "={{ $now }}",
+            "id": "={{ $json.id }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "RecordId",
+              "displayName": "RecordId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Client",
+              "displayName": "Client",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "URL",
+              "displayName": "URL",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Wordpress Username",
+              "displayName": "Wordpress Username",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Wordpress Password",
+              "displayName": "Wordpress Password",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "ConnectionStatus",
+              "displayName": "ConnectionStatus",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "In progress",
+                  "value": "In progress"
+                },
+                {
+                  "name": "Connected",
+                  "value": "Connected"
+                },
+                {
+                  "name": "Error",
+                  "value": "Error"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Error Message",
+              "displayName": "Error Message",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "IsGeneratingBlogPost",
+              "displayName": "IsGeneratingBlogPost",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Created Time",
+              "displayName": "Created Time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Last Modified Time",
+              "displayName": "Last Modified Time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "SEO Content Research",
+              "displayName": "SEO Content Research",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -240,
+        160
+      ],
+      "id": "5b8d31b1-1a30-44c4-97d1-0e7e04772959",
+      "name": "Update Is Generating",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblty7DapzrDJ6cV6",
+          "mode": "list",
+          "cachedResultName": "Wordpress Clients",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblty7DapzrDJ6cV6"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "IsGeneratingBlogPost": false,
+            "Last Modified Time": "={{ $now }}",
+            "id": "={{ $('Get Wordpress Client').first().json.id }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "RecordId",
+              "displayName": "RecordId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Client",
+              "displayName": "Client",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "URL",
+              "displayName": "URL",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Wordpress Username",
+              "displayName": "Wordpress Username",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Wordpress Password",
+              "displayName": "Wordpress Password",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "ConnectionStatus",
+              "displayName": "ConnectionStatus",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "In progress",
+                  "value": "In progress"
+                },
+                {
+                  "name": "Connected",
+                  "value": "Connected"
+                },
+                {
+                  "name": "Error",
+                  "value": "Error"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Error Message",
+              "displayName": "Error Message",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "IsGeneratingBlogPost",
+              "displayName": "IsGeneratingBlogPost",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Created Time",
+              "displayName": "Created Time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Last Modified Time",
+              "displayName": "Last Modified Time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "SEO Content Research",
+              "displayName": "SEO Content Research",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        5920,
+        160
+      ],
+      "id": "a67ab277-12d2-48ab-b5cf-6fe83e5be867",
+      "name": "Update Is Not Generating",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Set the URL of your WordPress here",
+        "height": 80,
+        "width": 170,
+        "color": 7
+      },
+      "id": "27b1b924-54a7-4346-baac-9c9d30c84c84",
+      "name": "Sticky Note15",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        400,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Generation done",
+        "height": 370.512611879577,
+        "width": 225.47038972308582,
+        "color": 7
+      },
+      "id": "7f78864f-aa7f-4f9a-b6a8-75b15d4859d6",
+      "name": "Sticky Note30",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5860,
+        -20
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Splits out chapter contents from the previous node",
+        "height": 80,
+        "width": 185.6051460344073,
+        "color": 6
+      },
+      "id": "fe7b5f27-fab7-48b9-a01f-6ce75631a55c",
+      "name": "Sticky Note31",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5880,
+        40
+      ],
+      "typeVersion": 1
     }
   ],
   "pinData": {
@@ -1800,6 +2334,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-26T11:49:50.000Z",
-  "versionId": "63a8555d-f7db-42a8-8259-79decc6123a3"
+  "updatedAt": "2025-03-27T17:04:25.000Z",
+  "versionId": "45e2537b-0254-4daf-a7b8-29a8078dd33e"
 }
