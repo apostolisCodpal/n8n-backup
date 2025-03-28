@@ -461,6 +461,17 @@
           }
         ]
       ]
+    },
+    "Update Is Not Generating": {
+      "main": [
+        [
+          {
+            "node": "Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-25T10:50:55.815Z",
@@ -2286,7 +2297,7 @@
         "content": "## Generation done",
         "height": 370.512611879577,
         "width": 225.47038972308582,
-        "color": 7
+        "color": 4
       },
       "id": "7f78864f-aa7f-4f9a-b6a8-75b15d4859d6",
       "name": "Sticky Note30",
@@ -2299,7 +2310,7 @@
     },
     {
       "parameters": {
-        "content": "Splits out chapter contents from the previous node",
+        "content": "Update Airtable, generation is done.",
         "height": 80,
         "width": 185.6051460344073,
         "color": 6
@@ -2312,6 +2323,85 @@
         40
       ],
       "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Output",
+        "height": 370.512611879577,
+        "width": 225.47038972308582,
+        "color": 7
+      },
+      "id": "a2868968-2a13-405b-8824-1fcc2d0a8700",
+      "name": "Sticky Note32",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6100,
+        -20
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Output important fields",
+        "height": 80,
+        "width": 185.6051460344073,
+        "color": 6
+      },
+      "id": "483f100c-b5dc-47af-913e-a487ac36b8ba",
+      "name": "Sticky Note33",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6120,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3095fd73-7f8b-4466-b111-f9b2b38ab196",
+              "name": "postId",
+              "value": "={{ $('Set image ID for the post').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "d67d58b7-e776-4ecc-bdee-1f1805696cc7",
+              "name": "date",
+              "value": "={{ $('Set image ID for the post').item.json.date }}",
+              "type": "string"
+            },
+            {
+              "id": "dea7d3e0-c259-40d8-a23a-b80d57064a68",
+              "name": "link",
+              "value": "={{ $('Set image ID for the post').item.json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "08409e81-ebc9-49fe-adb3-4bdc6dfdfb00",
+              "name": "title",
+              "value": "={{ $('Set image ID for the post').item.json.title.rendered }}",
+              "type": "string"
+            },
+            {
+              "id": "fd3daabe-8022-4158-9bd5-c6ca3a185313",
+              "name": "excerpt",
+              "value": "={{ $('Set image ID for the post').item.json.excerpt.rendered }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6160,
+        160
+      ],
+      "id": "9b288c21-e267-4305-9341-5af6f2be3c15",
+      "name": "Output"
     }
   ],
   "pinData": {
@@ -2334,6 +2424,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-27T17:04:25.000Z",
-  "versionId": "45e2537b-0254-4daf-a7b8-29a8078dd33e"
+  "updatedAt": "2025-03-28T08:43:59.000Z",
+  "versionId": "6971fe4c-11ea-4996-9aa8-e2a30a27ff30"
 }
