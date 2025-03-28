@@ -128,9 +128,7 @@
       "parameters": {
         "operation": "getAll",
         "limit": 1,
-        "options": {
-          "status": "publish"
-        }
+        "options": {}
       },
       "type": "n8n-nodes-base.wordpress",
       "typeVersion": 1,
@@ -628,6 +626,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2025-03-25T13:34:49.000Z",
-  "versionId": "711e7507-e8fe-4d4d-bdc7-371146e619fd"
+  "updatedAt": "2025-03-28T07:56:35.000Z",
+  "versionId": "a56e9bf6-fde7-44da-9a9b-a591f41d837b"
 }
