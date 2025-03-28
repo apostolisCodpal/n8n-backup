@@ -5,69 +5,7 @@
       "main": [
         [
           {
-            "node": "Typing",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model12": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Ask user for permission",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Typing": {
-      "main": [
-        [
-          {
-            "node": "Ask user for permission",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ask user for permission": {
-      "main": [
-        [
-          {
-            "node": "Wait for permission",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait for permission": {
-      "main": [
-        [
-          {
-            "node": "If approved",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If approved": {
-      "main": [
-        [
-          {
-            "node": "Update Is Not Generating1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Generate SEO Content Strategy",
+            "node": "If strategy less than 5 days old",
             "type": "main",
             "index": 0
           }
@@ -78,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Date & Time",
+            "node": "createdTime or default",
             "type": "main",
             "index": 0
           }
@@ -163,6 +101,35 @@
         [
           {
             "node": "Strategy Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If strategy less than 5 days old": {
+      "main": [
+        [
+          {
+            "node": "Update Is Not Generating1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate SEO Content Strategy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "createdTime or default": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
             "type": "main",
             "index": 0
           }
@@ -260,7 +227,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2540,
+        2120,
         100
       ],
       "id": "c4f8557d-378d-4615-99ac-70d7d367497a",
@@ -282,147 +249,11 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        1360,
+        1560,
         0
       ],
       "id": "f6abcfa6-96a9-4a52-a6a9-6cbc1cad482e",
       "name": "Date & Time"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4o-mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        1760,
-        220
-      ],
-      "id": "2622c09f-9273-4cbd-8068-d06977cf27bc",
-      "name": "OpenAI Chat Model12",
-      "credentials": {
-        "openAiApi": {
-          "id": "I92UkH9mThS7D4I6",
-          "name": "CodPal Account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "sendChatAction",
-        "chatId": "={{ $('Trigger').first().json.config.telegramChatId }}"
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        1560,
-        0
-      ],
-      "id": "08b46fa0-3941-4c69-a250-2ec628d124dc",
-      "name": "Typing",
-      "webhookId": "3aa8a27f-f5fd-43b8-bdea-c9c923c67690",
-      "credentials": {
-        "telegramApi": {
-          "id": "EHNvbxKETcV3t5MW",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Write the following message by rewriting the date into a human friendly way.\n\nMessage: I found a strategy I created {X days} ago. Do you mind if I reuse it?\n\nDate: {{ JSON.stringify($('Date & Time').item.json.timeDifference, null, 2) }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "=Answer the user's question without any additional comments or information. Keep the response as concise as possible."
-            }
-          ]
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.5,
-      "position": [
-        1740,
-        0
-      ],
-      "id": "aa7874c9-4568-4625-a3a3-222d783b7853",
-      "name": "Ask user for permission"
-    },
-    {
-      "parameters": {
-        "operation": "sendAndWait",
-        "chatId": "={{ $('Trigger').first().json.config.telegramChatId }}",
-        "message": "={{ $json.text }}\n\n[Strategy Link]({{ $('Get Document').item.json.Document[0].url }})",
-        "approvalOptions": {
-          "values": {
-            "approvalType": "double",
-            "disapproveLabel": "❌ Create new strategy"
-          }
-        },
-        "options": {
-          "limitWaitTime": {
-            "values": {
-              "resumeAmount": 2,
-              "resumeUnit": "days"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        2080,
-        0
-      ],
-      "id": "382d95ec-7a5f-482c-baa7-e2dfef4b54a9",
-      "name": "Wait for permission",
-      "webhookId": "68ca8d74-58f2-4518-818d-92409e425640",
-      "credentials": {
-        "telegramApi": {
-          "id": "EHNvbxKETcV3t5MW",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "5a4a9bc6-a23f-4058-9fac-10755f4fe7be",
-              "leftValue": "={{ $json.data.approved }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "true",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        2260,
-        0
-      ],
-      "id": "2ecd1e14-fb90-4a9f-bf8a-fa029fde903e",
-      "name": "If approved"
     },
     {
       "parameters": {
@@ -475,7 +306,8 @@
         0
       ],
       "id": "22825cb7-ffec-4112-9d8e-46e27386da44",
-      "name": "Get Document"
+      "name": "Get Document",
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -485,7 +317,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2760,
+        2340,
         -100
       ],
       "id": "b45dc6a3-361d-46f5-9419-a4d17b9dc714",
@@ -1000,7 +832,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        2760,
+        2340,
         100
       ],
       "id": "a4ae552c-9639-4e14-84f0-dc910b4ecfee",
@@ -1020,7 +852,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2980,
+        2560,
         100
       ],
       "id": "bb414f84-3513-49da-8f79-6fdf2a127108",
@@ -1219,7 +1051,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        2540,
+        2120,
         -100
       ],
       "id": "410046f2-92f4-49c6-bcac-1c0957547b6b",
@@ -1230,6 +1062,53 @@
           "name": "Airtable Personal Access Token account"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1db26346-2426-4111-983d-bbb2e35a29ce",
+              "leftValue": "={{ $json.timeDifference.days }}",
+              "rightValue": 5,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1800,
+        0
+      ],
+      "id": "6cffeac1-2abf-4ea4-bf4e-9d982022b6d6",
+      "name": "If strategy less than 5 days old"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\n$input.item.json.createdTime = $input.item.json.createdTime ?? $now.minus({ years: 1 });\n\nreturn $input.item;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        0
+      ],
+      "id": "0c90facd-68ba-4556-acee-eb15f6f9e00c",
+      "name": "createdTime or default"
     }
   ],
   "pinData": {
@@ -1245,7 +1124,7 @@
             "wordpressUsername": "apostolis.stephanou@gmail.com",
             "wordpressPassword": "K^lRRPq*6C9tU!x^sLDsP$Nd",
             "wordpressUrl": "https://codpal.com",
-            "wordpressClientId": "recffZZw0CIteTg2l",
+            "wordpressClientId": "reccGYpj5cUbWj7wP",
             "wordpressClientIdentifier": 1
           }
         }
@@ -1261,6 +1140,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-27T14:48:05.000Z",
-  "versionId": "9d15f251-a4ce-4222-bd91-bcb7861b2368"
+  "updatedAt": "2025-03-28T21:44:53.000Z",
+  "versionId": "54d46f25-e7af-4b0d-8a75-f4d406830fb4"
 }
