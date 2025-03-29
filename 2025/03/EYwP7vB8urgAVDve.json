@@ -1,0 +1,361 @@
+{
+  "active": false,
+  "connections": {
+    "Upload media": {
+      "main": [
+        [
+          {
+            "node": "Review image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sentiment Analysis": {
+      "main": [
+        [
+          {
+            "node": "Output media object",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Sentiment Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WP Creds": {
+      "main": [
+        [
+          {
+            "node": "Generate image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trigger": {
+      "main": [
+        [
+          {
+            "node": "WP Creds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete media": {
+      "main": [
+        [
+          {
+            "node": "Generate image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate image": {
+      "main": [
+        [
+          {
+            "node": "Upload media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Review image": {
+      "main": [
+        [
+          {
+            "node": "Sentiment Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-29T17:28:10.930Z",
+  "id": "EYwP7vB8urgAVDve",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Generate and upload wordpress image",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "The image is generated with DALL-E 3, uploaded to WordPress, and analyzed by ChatGPT for obvious defects and regenerated if necessary",
+        "height": 80,
+        "width": 938,
+        "color": 7
+      },
+      "id": "236b1a5d-25e9-4e2e-a246-9c48912ded26",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -340,
+        -300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$('WP Creds').item.json.URL}}/wp-json/wp/v2/media",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Disposition",
+              "value": "attachment; filename=\"example.jpg\""
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "id": "bc664369-269c-4b79-8b52-22ada0e53e6b",
+      "name": "Upload media",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -80,
+        -120
+      ],
+      "typeVersion": 4.1,
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.content }}",
+        "options": {
+          "categories": "Positive, Negative"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.sentimentAnalysis",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -120
+      ],
+      "id": "414c290f-3a6c-4aac-a820-f8d396142f82",
+      "name": "Sentiment Analysis"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        300,
+        100
+      ],
+      "id": "5621bbe3-4712-48d4-8ce4-cf8396f67417",
+      "name": "OpenAI Mini",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return $input.item.json.wpCreds;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -520,
+        -120
+      ],
+      "id": "cca0f11f-8e8d-46e6-942e-dd0486a615e0",
+      "name": "WP Creds"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "prompt"
+            },
+            {
+              "name": "wpCreds",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -760,
+        -120
+      ],
+      "id": "89b4912e-8b8f-424e-8e21-85777941ac94",
+      "name": "Trigger"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "={{$('WP Creds').item.json.URL}}/wp-json/wp/v2/media/{{ $('Upload media').item.json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "force",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c14ccf34-a3cc-4316-bc7e-2257788c772d",
+      "name": "Delete media",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        0,
+        140
+      ],
+      "typeVersion": 4.1,
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return $(\"Upload media\").item.json;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        740,
+        -140
+      ],
+      "id": "c55993ea-b66a-4363-8bdb-16314cfbf771",
+      "name": "Output media object"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "prompt": "={{ $('Trigger').item.json.prompt }}",
+        "options": {
+          "quality": "hd",
+          "size": "1792x1024",
+          "style": "natural"
+        }
+      },
+      "id": "0f6c2da1-8933-4d4b-9fe0-090a723b4d2e",
+      "name": "Generate image",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        -260,
+        -120
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "text": "This image is planned to go on my blog.\nPlease review if the image is suitable to go on my blog or not.\nIf you identify any of the below, the image should not go on my blog:\n- Miss-formed people, animals, buildings etc\n- Readable text (no text is allowed on the image unless very blurry and not visible)\nIf you identify any of the above or if the image is not visually appealing (low quality, difficult to understand what it depicts) then it is not suitable for my blog.\n\nExplain your reasoning before answering, is the image suitable for my blog?",
+        "imageUrls": "={{ $json.source_url }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        100,
+        -120
+      ],
+      "id": "d5ef4206-ed07-49ff-b103-3f529efbe1cb",
+      "name": "Review image",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Trigger": [
+      {
+        "json": {
+          "prompt": "A CTO sitting in the board of directors room alone, calling another CTO to ask for advice.",
+          "wpCreds": {
+            "URL": "https://codpal.com",
+            "Wordpress Username": "apostolis.stephanou@gmail.com",
+            "Wordpress Password": "6qbs fmaO kidl pQNm sT6I LyaU"
+          }
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-29T17:58:49.000Z",
+  "versionId": "02c91f2b-5f41-4af1-b8ba-4a35ea35209d"
+}
