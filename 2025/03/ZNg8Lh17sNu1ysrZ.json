@@ -1,0 +1,601 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Scheduling Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Scheduling Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Post Schedule": {
+      "ai_tool": [
+        [
+          {
+            "node": "Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Post Schedules": {
+      "ai_tool": [
+        [
+          {
+            "node": "Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Post Schedule": {
+      "ai_tool": [
+        [
+          {
+            "node": "Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Post Schedule": {
+      "ai_tool": [
+        [
+          {
+            "node": "Scheduling Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Trigger",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trigger12": {
+      "main": [
+        []
+      ]
+    },
+    "Trigger": {
+      "main": [
+        [
+          {
+            "node": "Scheduling Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-29T20:26:19.002Z",
+  "id": "ZNg8Lh17sNu1ysrZ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Schedule Wordpress Post Creation",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=# Scheduling Agent System Prompt\n\nYou are a specialized scheduling assistant that helps users manage their post creation schedules. Your primary function is to create, read, update, and delete post schedules based on user requests.\n\n## Available Tools\n\nYou have access to four tools to manage post schedules:\n\n1. `get_post_schedules`: Retrieves all current post schedules\n2. `create_post_schedule`: Creates a new post schedule\n3. `update_post_schedule`: Modifies an existing post schedule\n4. `delete_post_schedule`: Removes an existing post schedule\n\n## Core Workflow\n\n1. Always begin by calling `get_post_schedules` to review existing schedules before making any changes.\n2. Process the user's request to determine which operation they want to perform.\n3. Execute the appropriate tool with the required parameters.\n4. Confirm the action's completion to the user.\n\n## Required Parameters\n\nWhen creating or updating schedules:\n- `DayOfWeek`: Day of the week (e.g., Monday, Tuesday, Everyday)\n- `Hour`: Time in 24-hour format (0-23)\n- `CustomInstructions`: Optional specific instructions for post creation\n\nWhen updating or deleting schedules:\n- `RecordId`: The unique identifier for the schedule (must be retrieved from `get_post_schedules` or `create_post_schedule`)\n\n## Response Guidelines\n\n- Confirm all actions clearly and concisely\n- Summarize existing schedules when relevant\n- Ask for clarification if user instructions are ambiguous\n- Provide helpful suggestions when appropriate\n\nAlways prioritize accuracy when managing schedules, and double-check record IDs before making updates or deletions."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        780,
+        0
+      ],
+      "id": "f462d7e8-158e-43ce-b0d4-1dced5d721e1",
+      "name": "Scheduling Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        600,
+        220
+      ],
+      "id": "9e7dcd01-ff28-449c-b3bc-7362e7d4e0da",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=schedule-agent-{{ $('When chat message received').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        760,
+        220
+      ],
+      "id": "220411a4-6bd7-409a-b283-6fe11155016b",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Create a new schedule for a post at a given hour",
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWV3zjbf9LEArEf",
+          "mode": "list",
+          "cachedResultName": "Wordpress Post Schedules",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblWV3zjbf9LEArEf"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "DayOfWeek": "={{ $fromAI(\"DayOfWeek\", \"The day of the week (eg. Monday. Also accepts Everyday.)\") }}",
+            "Hour": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Hour', `Must be a whole number between 0-23`, 'number') }}",
+            "WordpressClient": "=[\"{{ $('Trigger').item.json.wordpressClientId }}\"]",
+            "CustomInstructions": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('CustomInstructions', `Custom instructions for the agent who will create the post`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "RecordId",
+              "displayName": "RecordId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "WordpressClient",
+              "displayName": "WordpressClient",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "DayOfWeek",
+              "displayName": "DayOfWeek",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Monday",
+                  "value": "Monday"
+                },
+                {
+                  "name": "Tuesday",
+                  "value": "Tuesday"
+                },
+                {
+                  "name": "Wednesday",
+                  "value": "Wednesday"
+                },
+                {
+                  "name": "Thursday",
+                  "value": "Thursday"
+                },
+                {
+                  "name": "Friday",
+                  "value": "Friday"
+                },
+                {
+                  "name": "Saturday",
+                  "value": "Saturday"
+                },
+                {
+                  "name": "Sunday",
+                  "value": "Sunday"
+                },
+                {
+                  "name": "Everyday",
+                  "value": "Everyday"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Hour",
+              "displayName": "Hour",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "CustomInstructions",
+              "displayName": "CustomInstructions",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        1060,
+        220
+      ],
+      "id": "64c5e34f-2263-4f6d-b912-dc92a34d0581",
+      "name": "Create Post Schedule",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get already scheduled posts",
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWV3zjbf9LEArEf",
+          "mode": "list",
+          "cachedResultName": "Wordpress Scheduled Posts",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblWV3zjbf9LEArEf"
+        },
+        "filterByFormula": "={WordpressClient}=\"{{ $json.wordpressClientId }}\"",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        920,
+        220
+      ],
+      "id": "559e593c-f7e0-4a1e-b1bc-193aa383d3a9",
+      "name": "Get Post Schedules",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Update an existing schedule for a post",
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWV3zjbf9LEArEf",
+          "mode": "list",
+          "cachedResultName": "Wordpress Post Schedules",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblWV3zjbf9LEArEf"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "WordpressClient": "=[\"{{ $('Trigger').item.json.wordpressClientId }}\"]",
+            "Hour": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Hour', `Must be a whole number between 0-23`, 'number') }}",
+            "CustomInstructions": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('CustomInstructions', `Custom instructions for the agent who will create the post`, 'string') }}",
+            "RecordId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('RecordId__using_to_match_', ``, 'string') }}",
+            "DayOfWeek": "={{ $fromAI(\"DayOfWeek\", \"The day of the week (eg. Monday. Also accepts Everyday.)\") }}"
+          },
+          "matchingColumns": [
+            "RecordId"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "RecordId",
+              "displayName": "RecordId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "WordpressClient",
+              "displayName": "WordpressClient",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "DayOfWeek",
+              "displayName": "DayOfWeek",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Monday",
+                  "value": "Monday"
+                },
+                {
+                  "name": "Tuesday",
+                  "value": "Tuesday"
+                },
+                {
+                  "name": "Wednesday",
+                  "value": "Wednesday"
+                },
+                {
+                  "name": "Thursday",
+                  "value": "Thursday"
+                },
+                {
+                  "name": "Friday",
+                  "value": "Friday"
+                },
+                {
+                  "name": "Saturday",
+                  "value": "Saturday"
+                },
+                {
+                  "name": "Sunday",
+                  "value": "Sunday"
+                },
+                {
+                  "name": "Everyday",
+                  "value": "Everyday"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Hour",
+              "displayName": "Hour",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "CustomInstructions",
+              "displayName": "CustomInstructions",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        1200,
+        220
+      ],
+      "id": "b8085a3e-9876-419b-99eb-7a2cdcd8b0c7",
+      "name": "Update Post Schedule",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Deletes a post schedule",
+        "operation": "deleteRecord",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWV3zjbf9LEArEf",
+          "mode": "list",
+          "cachedResultName": "Wordpress Post Schedules",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblWV3zjbf9LEArEf"
+        },
+        "id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Record_ID', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        1340,
+        220
+      ],
+      "id": "d7c009a1-5ce8-45c5-a9f0-ef56d1cdceba",
+      "name": "Delete Post Schedule",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        100,
+        40
+      ],
+      "id": "2b84674f-7cfd-4ffa-b1f2-07012694f99f",
+      "name": "When chat message received",
+      "webhookId": "c49336bf-0b1d-420b-8007-e77b51a5395f"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "wordpressClientId"
+            },
+            {
+              "name": "chatId"
+            },
+            {
+              "name": "message"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        -140
+      ],
+      "id": "9e03cc78-029d-41a9-bfe6-622475477078",
+      "name": "Trigger12"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return {\n  \"wordpressClientId\": \"recffZZw0CIteTg2l\",\n  \"chatId\": \"\",\n  \"message\": \"Schedule a post to be created twice a day\"\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        380,
+        40
+      ],
+      "id": "4237a504-9561-4289-9779-5ebe811dc813",
+      "name": "Trigger"
+    }
+  ],
+  "pinData": {
+    "Trigger12": [
+      {
+        "json": {
+          "wordpressClientId": "recffZZw0CIteTg2l",
+          "chatId": "",
+          "message": "Schedule a post to be created twice a day"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-29T21:19:29.000Z",
+  "versionId": "1010c430-79be-49c8-abde-20d2d2ed8418"
+}
