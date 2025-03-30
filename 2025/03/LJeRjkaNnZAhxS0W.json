@@ -180,6 +180,7 @@
       "id": "31892475-36a0-4eae-9fd8-03b5d630cc7d",
       "name": "Fetch latest Wordpress Client Document",
       "alwaysOutputData": false,
+      "retryOnFail": true,
       "credentials": {
         "airtableTokenApi": {
           "id": "f9JH5DCFMvod79bz",
@@ -207,6 +208,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-25T13:42:08.000Z",
-  "versionId": "cbb4fbef-ffd3-4ebf-b5c0-571bdf7a232e"
+  "updatedAt": "2025-03-30T08:09:06.000Z",
+  "versionId": "d48db9db-32e6-45f7-8281-fcc4a4a0056d"
 }
