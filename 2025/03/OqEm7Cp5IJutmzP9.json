@@ -1,0 +1,2372 @@
+{
+  "active": false,
+  "connections": {
+    "Settings": {
+      "main": [
+        [
+          {
+            "node": "Create post outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge chapters title and text": {
+      "main": [
+        [
+          {
+            "node": "If chapter has image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post on Wordpress": {
+      "main": [
+        [
+          {
+            "node": "Generate featured image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set image ID for the post": {
+      "main": [
+        [
+          {
+            "node": "Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "Create post outline",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get SEO Strategy Document": {
+      "main": [
+        [
+          {
+            "node": "Get Business Analysis Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Business Analysis Document": {
+      "main": [
+        [
+          {
+            "node": "WP Creds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Create post outline",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create post outline": {
+      "main": [
+        [
+          {
+            "node": "Create image prompts",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Outline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Create post outline",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Create chapters text",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Create chapters text",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create chapters text": {
+      "main": [
+        [
+          {
+            "node": "Chapters HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WP Creds": {
+      "main": [
+        [
+          {
+            "node": "Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Valid HTML Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Rewrite as HTML",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chapters HTML": {
+      "main": [
+        [
+          {
+            "node": "Valid HTML Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If not all chapters1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rewrite as HTML": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Valid HTML Classifier": {
+      "main": [
+        [
+          {
+            "node": "Rewrite as HTML",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If not all chapters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge chapters title and text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarization Chain": {
+      "main": [
+        [
+          {
+            "node": "Write SEO Conclusion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Article without conclusion": {
+      "main": [
+        [
+          {
+            "node": "Summarization Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final Article": {
+      "main": [
+        [
+          {
+            "node": "Post on Wordpress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Prompt": {
+      "main": [
+        [
+          {
+            "node": "Final Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Post Excerpts": {
+      "ai_tool": [
+        [
+          {
+            "node": "Write SEO Conclusion",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write SEO Conclusion": {
+      "main": [
+        [
+          {
+            "node": "Image Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Thinking model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Image Prompt",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI 4o": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarization Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Write SEO Conclusion",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create image prompts": {
+      "main": [
+        [
+          {
+            "node": "Outline",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Create image prompts",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Create image prompts",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Outline": {
+      "main": [
+        [
+          {
+            "node": "Chapters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chapters": {
+      "main": [
+        [
+          {
+            "node": "Create chapters text",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge chapters title and text",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If not all chapters": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Merge chapters title and text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If not all chapters1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge chapters title and text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Thinking model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Chapter Image Prompts",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Image alt text",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If chapter has image": {
+      "main": [
+        [
+          {
+            "node": "Chapter Image Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Article without conclusion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate featured image": {
+      "main": [
+        [
+          {
+            "node": "Set image ID for the post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate chapter image": {
+      "main": [
+        [
+          {
+            "node": "Image alt text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image alt text": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Wordpress Client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Wordpress Client": {
+      "main": [
+        [
+          {
+            "node": "Get SEO Strategy Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chapter Image Prompts": {
+      "main": [
+        [
+          {
+            "node": "Generate chapter image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-30T08:21:46.179Z",
+  "id": "OqEm7Cp5IJutmzP9",
+  "meta": null,
+  "name": "Generate Wordpress Post Internal",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Data check",
+        "height": 372,
+        "width": 881,
+        "color": 4
+      },
+      "id": "8ab34a24-a0b7-4cfb-9a4b-9e782620c60d",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1840,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Checks that the data returned by the Agent is correct",
+        "height": 80,
+        "width": 393,
+        "color": 7
+      },
+      "id": "f9eb8b17-400b-4890-aff8-07185495dce6",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1860,
+        60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Draft on WordPress",
+        "height": 372,
+        "width": 222,
+        "color": 5
+      },
+      "id": "bedab211-50c2-4316-8d82-782266b916ba",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6240,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "The article is posted as a draft on WordPress",
+        "height": 80,
+        "width": 175,
+        "color": 7
+      },
+      "id": "a8578108-4924-4c5a-af53-b08bfd8cc5c4",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6260,
+        120
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Featured image",
+        "height": 369,
+        "width": 438,
+        "color": 3
+      },
+      "id": "4a11a278-01e9-4870-9faa-20259c567203",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6480,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Starting from the given keywords, generates the article title, subtitle, chapters, and image prompt",
+        "height": 80,
+        "width": 287.370178643191,
+        "color": 7
+      },
+      "id": "c1177dbc-a2f9-4706-9dd2-8a37b8e6c17b",
+      "name": "Sticky Note12",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        420,
+        60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Article structure",
+        "height": 370.512611879577,
+        "width": 319.697690939268,
+        "color": 6
+      },
+      "id": "8a46162b-3003-406f-8d8e-9b708c9126c3",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        400,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 275.3956890735875,
+        "width": 319.8306137081817,
+        "color": 7
+      },
+      "id": "f54f7f0f-fe9b-46b2-856f-b50af0477099",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        400,
+        400
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "322a1ea5-30c1-4b2f-b88e-0573ad0ddb3f",
+              "name": "title",
+              "value": "={{ $('Trigger').item.json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "6ffa4332-117f-46e5-8cb3-a6fbc0958931",
+              "name": "description",
+              "value": "={{ $('Trigger').item.json.description }}",
+              "type": "string"
+            },
+            {
+              "id": "93e76c25-14db-49d7-86ae-059be5bf9975",
+              "name": "businessAnalysis",
+              "value": "={{ $('Get Business Analysis Document').item.json.fileContent }}",
+              "type": "string"
+            },
+            {
+              "id": "42960a41-8a88-4928-8e03-1f3eb0f1378b",
+              "name": "seoStrategyDocument",
+              "value": "={{ $('Get SEO Strategy Document').item.json.fileContent }}",
+              "type": "string"
+            },
+            {
+              "id": "f9f37b0c-9c1c-4557-97df-f1b73fcbda8f",
+              "name": "wordpressUrl",
+              "value": "={{ $('Get Wordpress Client').item.json.URL }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "10c68926-dc82-49ac-8d7c-787b927458ea",
+      "name": "Settings",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        240,
+        180
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "content": "## Settings",
+        "height": 371,
+        "width": 187,
+        "color": 2
+      },
+      "id": "2f2a2484-399c-4854-b447-33083293b329",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        200,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "b614eb68-f41a-40dd-b789-a1de392aa521",
+      "name": "Merge chapters title and text",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        3140,
+        300
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "title": "={{ $('Settings').first().json.title }}",
+        "additionalFields": {
+          "content": "={{ $('Final Article').item.json.article }}",
+          "status": "draft"
+        }
+      },
+      "id": "62b5f5a1-6421-4db7-abf2-4be08ba7ed07",
+      "name": "Post on Wordpress",
+      "type": "n8n-nodes-base.wordpress",
+      "position": [
+        6300,
+        220
+      ],
+      "typeVersion": 1,
+      "retryOnFail": true,
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$('WP Creds').first().json.URL}}/wp-json/wp/v2/posts/{{ $('Post on Wordpress').item.json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "featured_media",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ed71ef5d-9d2e-40e2-bb05-c3c7708d83de",
+      "name": "Set image ID for the post",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        6760,
+        220
+      ],
+      "typeVersion": 4.1,
+      "retryOnFail": true,
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Chapters split",
+        "height": 370.512611879577,
+        "width": 225.47038972308582,
+        "color": 2
+      },
+      "id": "c506e992-9add-49eb-b99e-3ab4f5ae7565",
+      "name": "Sticky Note16",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1240,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Splits out chapter contents from the previous node",
+        "height": 80,
+        "width": 185.6051460344073,
+        "color": 7
+      },
+      "id": "8178bc46-5690-4aa3-8c01-f3a75ff77099",
+      "name": "Sticky Note17",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1260,
+        60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Writes the text for each chapter",
+        "height": 80,
+        "width": 287.370178643191,
+        "color": 7
+      },
+      "id": "a3066343-3d8a-471b-a780-6d50e5ebddb9",
+      "name": "Sticky Note18",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1500,
+        60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Write chapter text",
+        "height": 370.512611879577,
+        "width": 333.40108076977657,
+        "color": 6
+      },
+      "id": "8f9eb86f-f5d3-4f5b-bf47-813b77181c2f",
+      "name": "Sticky Note19",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1480,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Content preparation",
+        "height": 474,
+        "width": 540,
+        "color": 2
+      },
+      "id": "97b2bd6d-fd8a-43f6-90fa-99362ce82626",
+      "name": "Sticky Note21",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2740,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Merges the content and prepare it before sending it to WordPress",
+        "height": 80,
+        "width": 488,
+        "color": 7
+      },
+      "id": "e8096518-794f-4816-b953-dbe46e91a663",
+      "name": "Sticky Note22",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2760,
+        60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "1ed04d80-ea83-4b32-abcb-607f3feaf7cf",
+      "name": "Wikipedia",
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "position": [
+        500,
+        440
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "LJeRjkaNnZAhxS0W",
+          "mode": "list",
+          "cachedResultName": "Airtable Get Document"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "documentType": "SeoContentStrategy",
+            "wordpressClientId": "={{ $('Trigger').item.json.wordpressClientId }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "wordpressClientId",
+              "displayName": "wordpressClientId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "documentType",
+              "displayName": "documentType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -400,
+        180
+      ],
+      "id": "dde4dcdf-5257-4f83-aba2-00624110b1ad",
+      "name": "Get SEO Strategy Document"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "LJeRjkaNnZAhxS0W",
+          "mode": "list",
+          "cachedResultName": "Airtable Get Document"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "documentType": "BusinessAnalysis",
+            "wordpressClientId": "={{ $('Trigger').item.json.wordpressClientId }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "wordpressClientId",
+              "displayName": "wordpressClientId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "documentType",
+              "displayName": "documentType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -180,
+        180
+      ],
+      "id": "6e51a5c7-21f7-4af4-83c5-f3a66198e3ca",
+      "name": "Get Business Analysis Document"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        440,
+        560
+      ],
+      "id": "08ec7895-1d05-44bd-941c-79933d0db9f1",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Business Analysis: {{ $json.businessAnalysis }}\n\nSEO Content Stratery: {{ $json.seoStrategyDocument }}\n\nUse the following title and description for the topic:\nTitle: {{ $json.title }}\nDescription: {{ $json.description }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are an SEO Blog Post Spec Generator. Your task is to create a detailed specification that includes an introduction, chapters, and prioritized keywords based on user provided keyword research, business analysis, a title, and a description. Follow these guidelines:\n- SEO Best Practices: Ensure proper keyword density, semantic relevance, internal/external linking suggestions, meta tags, and mobile-friendly structure.\n- Content Structure: Generate a clear outline with chapters/sections, headings/subheadings, and key points to cover.\n- For any factual posts, always refer to the wikepedia tool to verify your knowledge.\n- In the introduction introduce the topic that is then explored in depth in the rest of the text\n- The introduction should be maximum 60 words\n- The conclusions should be maximum 60 words\n- Use the conclusions to sum all said in the article and offer a conclusion to the reader\n- For each chapter provide a title and an exaustive prompt that will be used to write the chapter text.\n- The chapters should follow a logical flow and not repeat the same concepts.\n- The chapters should be one related to the other and not isolated blocks of text. The text should be fluent and folow a linear logic.\n- Don't start the chapters with \"Chapter 1\", \"Chapter 2\", \"Chapter 3\"... just write the title of the chapter\n- For the title and the capthers' titles don't use colons (`:`)\n- Don't use markdown for formatting.\n- Always search on Wikipedia for useful information or verify the accuracy of what you write.\n- Never mention it if you don't find information on Wikipedia or the web\n- Go deep in the topic you treat, don't just throw some superficial info\n- Extract keywords from the SEO Content Strategy that are relevant with the user's requested topic to be used in the chapters.\n\nOutput a JSON in the following format:\n{\n\"subtitle\": \"\",\n\"introduction\": \"\",\n\"chapters\": [{ \"title\": \"\", \"prompt\": \"\"}],\n\"conclusions\": \"\",\n\"keywords\": [\"\"]\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        420,
+        180
+      ],
+      "id": "8653ac0a-d237-419a-b7fb-63e80ec66bcc",
+      "name": "Create post outline",
+      "retryOnFail": true,
+      "waitBetweenTries": 500
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\"subtitle\": \"\",\n\"introduction\": \"\",\n\"chapters\": [{ \"title\": \"\", \"prompt\": \"\"}],\n\"conclusions\": \"\",\n\"keywords\": [\"\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        600,
+        540
+      ],
+      "id": "1c1ed340-02e0-42a2-abb9-97e179570868",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {},
+      "id": "b0f3bc84-4f52-47f2-a0a7-3ca6658a897b",
+      "name": "Wikipedia1",
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "position": [
+        1700,
+        500
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1540,
+        500
+      ],
+      "id": "bfc6782a-4d53-414b-9795-803e59b28b20",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 275,
+        "width": 340,
+        "color": 7
+      },
+      "id": "3a25ea03-7ada-4881-8970-4c2a8c81e841",
+      "name": "Sticky Note20",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1480,
+        400
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Write a chapter for the article: {{ $('Settings').item.json.title }}, {{  $('Create post outline').item.json.output.subtitle }}.\nAritble introduction: {{ $('Create post outline').item.json.output.introduction }}\nSEO keywords: {{ $('Create post outline').item.json.output.keywords }}\n\n{{ $itemIndex > 0 ?\n`The previous chapter talks about ${$input.all()[$itemIndex-1].json.title} - ${$input.all()[$itemIndex-1].json.prompt}`\n: \"\" }}\n{{ $itemIndex < $input.all().length ?\n  `The following chapter will talk about ${$input.all()[$itemIndex+1].json.title} - ${$input.all()[$itemIndex+1].json.prompt}`\n: \"\" }}\n\nYour task is to write the current chapter, integrating it seamlessly into the article.\n\nChapter {{ $itemIndex + 1 }}\n- title: {{ $json.title }}\n- prompt: {{ $json.prompt }}\n\nOutput only the chapter with no other commentery.",
+        "options": {
+          "systemMessage": "=You are an SEO Blog Post Post Copywriter. Your task is to write chapters for blog posts. The user will provide you the article subject. They will also provide you with SEO keywords to try and include in your writing where applicable.\n\nGuidelines:\n- Don't add internal titles or headings.\n- Use ONLY HTML for formatting, but limited to bold, italic and lists.\n- Each chapther should be around {{ Math.round(1200/ $('Create post outline').item.json.output.chapters.length) }} words\n- Go deep in the topic you treat, don't just throw some superficial info\n- Search on Wikipedia to verify the accuracy of what you write.\n- Consider the previous and following chapters when writing the text for this chapter. The text must be coherent with the previous and following chapters.\n- This chapter should not repeat the concepts already exposed in the previous chapter.\n- This chapter is a part of a larger article so don't include an introduction or conclusions. This chapter should merge with the rest of the article.\n- Use short, easy to read paragraphs targetted at below-average readers.\n- Prefer active counterparts over passive voice.\n- IMPORTANT: Sentenses must be maximum 20 words."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        1520,
+        180
+      ],
+      "id": "aac66753-2640-4d7a-b761-186a101a0e12",
+      "name": "Create chapters text",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "content": "## WP Creds",
+        "height": 371,
+        "width": 185,
+        "color": 2
+      },
+      "id": "f92ba83d-40d2-4d34-97f6-d3ef9fd5a128",
+      "name": "Sticky Note23",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Prepare user's wordpress credentials",
+        "height": 80,
+        "width": 150,
+        "color": 7
+      },
+      "id": "9cff17d2-31dd-4f3e-b393-cf53aad46b32",
+      "name": "Sticky Note24",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        20,
+        60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b4ee67b3-b417-4baa-910d-1caac99b5456",
+              "name": "URL",
+              "value": "={{ $('Get Wordpress Client').first().json.URL }}",
+              "type": "string"
+            },
+            {
+              "id": "7f471c0a-8e38-479e-9070-65e925c7e67f",
+              "name": "Wordpress Username",
+              "value": "={{ $('Get Wordpress Client').first().json['Wordpress Username'] }}",
+              "type": "string"
+            },
+            {
+              "id": "17fb6dd9-fed5-4c24-83fa-73a1c4a08844",
+              "name": "Wordpress Password",
+              "value": "={{ $('Get Wordpress Client').first().json['Wordpress Password'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        40,
+        180
+      ],
+      "id": "b4b144ee-5f0b-407c-842b-2ec316490fef",
+      "name": "WP Creds"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2020,
+        420
+      ],
+      "id": "e0dc4bc0-b89a-4392-9515-01fdc48bdfa2",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2320,
+        420
+      ],
+      "id": "a87420e7-c3da-448b-bf37-c389e36c183e",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6cdef507-2ff6-4ccd-bbc3-2878b5cce400",
+              "name": "chapterNumber",
+              "value": "={{ $itemIndex + 1 }}",
+              "type": "number"
+            },
+            {
+              "id": "e7e9c8f8-564d-4c27-9839-55063634c246",
+              "name": "chapterHtml",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1860,
+        180
+      ],
+      "id": "b3349282-7939-41bb-8bfe-80d77b66d714",
+      "name": "Chapters HTML"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c08ef838-77fe-4f0e-b7c7-b70dd6be6fb8",
+              "name": "chapterNumber",
+              "value": "={{ $('Chapters HTML').item.json.chapterNumber }}",
+              "type": "number"
+            },
+            {
+              "id": "1ac9e521-ff9e-45be-a930-fcdea62146be",
+              "name": "chapterHtml",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2600,
+        60
+      ],
+      "id": "266a3e00-6e69-4a77-962b-27704f995607",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chapterHtml }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Replace all markdown syntax with html tags.\nExamples:\n*italic text* becomes <i>italic text</i>\n**bold text** becomes <strong>bold text</strong>\n\nReply only with the updated message."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        2300,
+        60
+      ],
+      "id": "810de36a-2ec3-421c-9d39-4ff4bc00b61a",
+      "name": "Rewrite as HTML",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.chapterHtml }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Markdown",
+              "description": "The text includes markdown syntax (*italic*, **bold**, ## headings etc)"
+            },
+            {
+              "category": "Other"
+            }
+          ]
+        },
+        "options": {
+          "enableAutoFixing": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        180
+      ],
+      "id": "3f028f56-dbc5-4536-b3fc-785b52e14d41",
+      "name": "Valid HTML Classifier",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "chapterNumber",
+        "joinMode": "keepEverything",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3000,
+        180
+      ],
+      "id": "86df8f44-d7e1-4f16-8f9c-cfb34753db7e",
+      "name": "Merge",
+      "alwaysOutputData": false,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainSummarization",
+      "typeVersion": 2,
+      "position": [
+        5080,
+        220
+      ],
+      "id": "0a803ac9-a36d-455e-a910-9986168afe85",
+      "name": "Summarization Chain",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "let article = \"\";\n\n// Introduction\narticle += $('Create post outline').first().json.output.introduction;\narticle += \"<br><br>\";\n\nconst chapters = [...$input.all()];\nchapters.sort((a, b) => a.json.chapterNumber - b.json.chapterNumber);\nfor (const item of chapters) {\n  const json = item.json;\n  article += \"<h2>\" + json.title + \"</h2>\";\n  \n  if (json.image === \"before\") {\n    article += \"<br><br>\";\n    // width=\"1792\" height=\"1024\"\n    article += `<img src=\"${json.imageUrl}\" alt=\"${json.imageAlt}\" />`;\n  }\n  \n  article += \"<br><br>\";\n  article += json.chapterHtml;\n  article += \"<br><br>\";\n\n  if (json.image === \"after\") {\n    article += `<img src=\"${json.imageUrl}\" alt=\"${json.imageAlt}\" />`;\n    article += \"<br><br>\";\n  }\n}\n\nreturn [\n  {\n    \"article\": article\n  }\n];"
+      },
+      "id": "9fb6af06-06c4-4e8f-99ec-d3b0fd41f917",
+      "name": "Article without conclusion",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        4880,
+        220
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "let article = $(\"Article without conclusion\").item.json.article;\nconst conclusion = $('Write SEO Conclusion').item.json.output;\nconst imagePrompt = $input.item.json.text;\n\n// Conclusions\narticle += \"<h2>Conclusions</h2>\";\narticle += \"<br><br>\";\narticle += conclusion;\n\nreturn {\n  article,\n  imagePrompt,\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6080,
+        220
+      ],
+      "id": "d3473b53-a28c-4767-93c6-e9545b52c108",
+      "name": "Final Article"
+    },
+    {
+      "parameters": {
+        "content": "## Generate featured image prompt",
+        "height": 371,
+        "width": 433,
+        "color": 6
+      },
+      "id": "c9194562-1220-4ffe-b995-1975da9ba4f7",
+      "name": "Sticky Note25",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5780,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Imagine an image for the article below. Come up with an idea for the image and then try vividly to describe it. It's important that you think about what you want the image to be before you write the prompt. Do not mention any text in the image prompt.\n\nArticle summary: {{ $('Summarization Chain').item.json.response.text }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "System Role: **Dall-E 3 Enhanced Prompt Generator System Instructions**:\n\n**Narrative Enrichment**: Upon receiving basic input, transform it into a vivid, immersive mental image for the user, emphasizing clarity and conciseness.\n**Artistic Integrity**: Ensure that the nuances of the generated output resonate deeply with any specified medium, whether it's 'photography', 'painting', 'sketch', etc.\n**Inclusive Imagery**: When depicting human subjects, showcase a diverse range of ethnicities and genders.\n**Descriptive Dexterity**: Create descriptions that are evocative but not overly verbose, staying within a limit of 2-3 sentences. Descriptions should serve as a springboard for imagination.\n**User/Assistant Interaction**: Interact as the worlds top DALL-E text to image prompt engineer. Follow the user's instructions, then adhere to the above guidelines, employing all your creative acumen to meet the user's desires.\n**Reality**: Keep your prompts grounded to reality.\n\n**Usage Protocol**:\n\nNo matter the length of the users input, the improved creative output will strictly adhere to 2-3, perfectly crafted and tailored NLP prompts.\n\nOutput only the 2-3 sentence prompt. No other output."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        5800,
+        220
+      ],
+      "id": "f47e1fba-b37c-4cc7-a4ae-bec82c787c7b",
+      "name": "Image Prompt",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "content": "## Generate LLM summary",
+        "height": 371,
+        "width": 353,
+        "color": 6
+      },
+      "id": "3bf10a93-85aa-4046-b071-fe4ff50764be",
+      "name": "Sticky Note26",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5040,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Generates a short summary to be used to write a conclusion and image prompt",
+        "height": 80,
+        "width": 308,
+        "color": 7
+      },
+      "id": "38d78e5d-1504-4b54-8c4c-e39ffc521742",
+      "name": "Sticky Note27",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5060,
+        100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "name": "get_old_post_excerpts",
+        "description": "Call this tool to get previous posts from the user's blog. The tool returns title, excerpt and link.",
+        "workflowId": {
+          "__rl": true,
+          "value": "eut3QHHHOaKsiuUO",
+          "mode": "list",
+          "cachedResultName": "Wordpress Get Excerpts"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "WP Creds": "={{ $('WP Creds').first().json }}",
+            "postsOrPages": "posts",
+            "limit": 20
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "WP Creds",
+              "displayName": "WP Creds",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object"
+            },
+            {
+              "id": "postsOrPages",
+              "displayName": "postsOrPages",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "limit",
+              "displayName": "limit",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number"
+            },
+            {
+              "id": "search",
+              "displayName": "search",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        5620,
+        460
+      ],
+      "id": "f35b4927-bc15-4267-a7a4-81a6799954a5",
+      "name": "Get Post Excerpts"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Write a conclusion for the following article.\n\nSummary: {{ $('Summarization Chain').item.json.response.text }}",
+        "options": {
+          "systemMessage": "You are a professional copywriter.\nThe user will provide a summary to an article.\nYour task is to write a conclusion for the article.\nBefore writing the article, call the get_old_post_excerpts tool to get a list of old articles.\nIdentify ONE article that might be a good next read for the reader and include a link to it in your conclusion.\nThe link should be seamless, as if part of the flow of the conclusion.\nOutput only the conclusion without any other commentary.\nLink format:\n<a href=\"{link}\">{title}</a>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        5460,
+        220
+      ],
+      "id": "0ec947d3-dbc7-49d3-9676-bcde45f7a9c5",
+      "name": "Write SEO Conclusion",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "content": "## Generate SEO conclusion",
+        "height": 371,
+        "width": 333,
+        "color": 6
+      },
+      "id": "674b9f8a-689b-43f0-85d4-69840cdd02bd",
+      "name": "Sticky Note28",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5420,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Generates a conclusion using the article summary. Includes a link to another relevant post.",
+        "height": 80,
+        "width": 288,
+        "color": 7
+      },
+      "id": "c30ae8e3-6161-48b1-af88-5f7846403758",
+      "name": "Sticky Note29",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5440,
+        100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "o3-mini",
+          "mode": "list",
+          "cachedResultName": "o3-mini"
+        },
+        "options": {
+          "reasoningEffort": "medium"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5820,
+        440
+      ],
+      "id": "a897a369-a70f-40a5-902a-d83e549b723c",
+      "name": "Thinking model",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5300,
+        500
+      ],
+      "id": "f8e70b5b-bc07-4181-a346-6e9b2f53a4c7",
+      "name": "OpenAI 4o",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Set the URL of your WordPress here",
+        "height": 80,
+        "width": 150,
+        "color": 7
+      },
+      "id": "634641e1-ac20-4491-b6cf-fefe1c2ba8f6",
+      "name": "Sticky Note15",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        220,
+        60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Output",
+        "height": 370.512611879577,
+        "width": 225.47038972308582,
+        "color": 7
+      },
+      "id": "701f3d50-baf6-4907-ad72-b09708bbe507",
+      "name": "Sticky Note32",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6940,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Output important fields",
+        "height": 80,
+        "width": 185.6051460344073,
+        "color": 6
+      },
+      "id": "1480a12b-14f4-4563-97e3-7cddf583f003",
+      "name": "Sticky Note33",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6960,
+        100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3095fd73-7f8b-4466-b111-f9b2b38ab196",
+              "name": "postId",
+              "value": "={{ $('Set image ID for the post').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "d67d58b7-e776-4ecc-bdee-1f1805696cc7",
+              "name": "date",
+              "value": "={{ $('Set image ID for the post').item.json.date }}",
+              "type": "string"
+            },
+            {
+              "id": "dea7d3e0-c259-40d8-a23a-b80d57064a68",
+              "name": "link",
+              "value": "={{ $('Set image ID for the post').item.json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "08409e81-ebc9-49fe-adb3-4bdc6dfdfb00",
+              "name": "title",
+              "value": "={{ $('Set image ID for the post').item.json.title.rendered }}",
+              "type": "string"
+            },
+            {
+              "id": "fd3daabe-8022-4158-9bd5-c6ca3a185313",
+              "name": "excerpt",
+              "value": "={{ $('Set image ID for the post').item.json.excerpt.rendered }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        7000,
+        220
+      ],
+      "id": "d8e0011e-188e-4400-ac82-44896b60d3cb",
+      "name": "Output"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.output }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are an AI assistant specialized in analyzing blog content and determining optimal image placement to enhance reader engagement and SEO.\n\nInput Format:\nYou will receive a JSON object representing a blog post outline with the following structure:\n```json\n{\n  \"subtitle\": \"\",\n  \"introduction\": \"\",\n  \"chapters\": [{ \"title\": \"\", \"prompt\": \"\" }],\n  \"conclusions\": \"\",\n  \"keywords\": [\"\"]\n}\n```\n\n1. Analyze the blog post structure and content.\n2. Identify the 3 chapters that would benefit most from having accompanying images.\n3. Return a JSON object specifying the indexes of those chapters and the placement (before or after the chapter text).\n\nWhen selecting chapters for images, prioritize:\n- Chapters discussing complex concepts that would benefit from visual explanation\n- Chapters introducing key topics that need visual reinforcement\n- Chapters with high SEO value based on keywords\n- Chapters discussing visual elements or comparisons\n- Chapters positioned strategically throughout the post (beginning, middle, end)\n\nYour response must be a JSON object in this exact format:\n```json\n{\n  \"chaptersWithImages\": [\n      {\n        \"index\": 0,\n        \"placement\": \"before or after\"\n      }\n    ]\n}\n```\nWhere x, y, and z are the zero-based indexes of the three chapters you've selected.\n\nAlways select exactly 3 chapters, even for shorter blog posts. Do not provide any explanations or additional text in your response - only the JSON object is required."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        760,
+        180
+      ],
+      "id": "22b5e3d7-630e-4b9e-879b-d20b6fa500c7",
+      "name": "Create image prompts",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "content": "Add image prompts between some chapters",
+        "height": 80,
+        "width": 267,
+        "color": 7
+      },
+      "id": "5e2c25ca-a323-4f96-aaa8-a72c4d3f162c",
+      "name": "Sticky Note13",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        760,
+        60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Image prompts",
+        "height": 371,
+        "width": 300,
+        "color": 6
+      },
+      "id": "f5973605-b155-4e3e-ac3b-8b259cbc886d",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        740,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        760,
+        400
+      ],
+      "id": "2142cce0-c50a-4735-9d1b-66e2523b0c42",
+      "name": "Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"chaptersWithImages\": [\n      {\n        \"index\": 0,\n        \"placement\": \"before\"\n      }\n    ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        940,
+        400
+      ],
+      "id": "ed1e9cf3-c19d-475e-9e02-b17d74aafef4",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1100,
+        180
+      ],
+      "id": "19336499-e623-48df-9dee-cbac434aafd5",
+      "name": "Outline"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nfor (const item of $input.all()) {\n  const json = item.json;\n  json.myNewField = 1;\n  const chapters = json.output.chapters.map((c, i) => ({\n    ...c,\n    image: json.output.chaptersWithImages.find(x => x.index === i)?.placement ?? \"none\"\n  }));\n  return chapters;\n}\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        180
+      ],
+      "id": "43a7eea8-6f93-44f8-a915-33a28095f03e",
+      "name": "Chapters"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aef98c12-cceb-4f92-a10b-be2ee90777dd",
+              "leftValue": "={{ $('Chapters HTML').all().length }}",
+              "rightValue": "={{ $('Valid HTML Classifier').all().length }}",
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2780,
+        340
+      ],
+      "id": "c47b4805-6a11-45a4-b940-45750cbdace3",
+      "name": "If not all chapters"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aef98c12-cceb-4f92-a10b-be2ee90777dd",
+              "leftValue": "={{ $('Chapters HTML').all().length }}",
+              "rightValue": "={{ $('Edit Fields').all().length }}",
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2780,
+        200
+      ],
+      "id": "089a9288-9680-4f8a-8add-e4177efdcdf9",
+      "name": "If not all chapters1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "o3-mini",
+          "mode": "list",
+          "cachedResultName": "o3-mini"
+        },
+        "options": {
+          "reasoningEffort": "medium"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3680,
+        420
+      ],
+      "id": "c35ef81c-0379-4b06-91c0-fdf90edbb1bd",
+      "name": "Thinking model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Chapter image prompts",
+        "height": 371,
+        "width": 473,
+        "color": 6
+      },
+      "id": "773359e5-a97a-46ec-b4c6-30f64e296826",
+      "name": "Sticky Note34",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3300,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b07bff0a-891c-4ef7-988e-258fc6882e3c",
+              "leftValue": "={{ $json.image }}",
+              "rightValue": "none",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3340,
+        220
+      ],
+      "id": "fa21cae0-583e-4bc9-9380-3bf34c3707db",
+      "name": "If chapter has image"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "chapterNumber",
+        "joinMode": "keepEverything",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        4680,
+        220
+      ],
+      "id": "0ad3ab10-57fe-46ed-a259-2f7fa18d6a79",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c08ef838-77fe-4f0e-b7c7-b70dd6be6fb8",
+              "name": "chapterNumber",
+              "value": "={{ $('If chapter has image').item.json.chapterNumber }}",
+              "type": "number"
+            },
+            {
+              "id": "706fe513-9742-472d-bbe5-52d465cff5ec",
+              "name": "chapterHtml",
+              "value": "={{ $('If chapter has image').item.json.chapterHtml }}",
+              "type": "string"
+            },
+            {
+              "id": "34583bc7-8f70-4a79-8070-5ec3095d521d",
+              "name": "title",
+              "value": "={{ $('If chapter has image').item.json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "0f4cf064-815d-4080-9290-1452cfd6a76a",
+              "name": "prompt",
+              "value": "={{ $('If chapter has image').item.json.prompt }}",
+              "type": "string"
+            },
+            {
+              "id": "96dc1582-508c-46fd-bb77-d8f50e4a89bf",
+              "name": "image",
+              "value": "={{ $('If chapter has image').item.json.image }}",
+              "type": "string"
+            },
+            {
+              "id": "1ac9e521-ff9e-45be-a930-fcdea62146be",
+              "name": "imageUrl",
+              "value": "={{ $('Generate chapter image').item.json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "c3a52be0-8b27-41b9-a3dd-8bf8e3101ec0",
+              "name": "imagePrompt",
+              "value": "={{ $('Chapter Image Prompts').item.json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "e575341f-515e-4d8a-bc64-bcc3530823a2",
+              "name": "imageAlt",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4460,
+        80
+      ],
+      "id": "7d7e08cd-cb84-489d-b4a2-7c27dd080bf3",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "EYwP7vB8urgAVDve",
+          "mode": "list",
+          "cachedResultName": "Generate and upload wordpress image"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "prompt": "={{ $('Final Article').item.json.imagePrompt }}",
+            "wpCreds": "={{ $('WP Creds').first().json }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "prompt",
+              "displayName": "prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "wpCreds",
+              "displayName": "wpCreds",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        6540,
+        220
+      ],
+      "id": "578e0d3a-075a-48e4-b216-6de6f1837bb0",
+      "name": "Generate featured image"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "EYwP7vB8urgAVDve",
+          "mode": "list",
+          "cachedResultName": "Generate and upload wordpress image"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "prompt": "={{ $json.text }}",
+            "wpCreds": "={{ $('WP Creds').item.json }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "prompt",
+              "displayName": "prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "wpCreds",
+              "displayName": "wpCreds",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "mode": "each",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        3880,
+        80
+      ],
+      "id": "1d931d10-b978-441c-a243-2be66ec78fe4",
+      "name": "Generate chapter image"
+    },
+    {
+      "parameters": {
+        "content": "## Chapter image generation",
+        "height": 251,
+        "width": 253,
+        "color": 6
+      },
+      "id": "d25dbf95-a1f0-48f5-ab68-2b87fba89703",
+      "name": "Sticky Note35",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3800,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Turn the image prompt into SEO optimised alt text for an img tag.\n\nImage prompt: {{ $('Chapter Image Prompts').item.json.text }}\n\nLength must be less than 125 characters.\nOutput only the alt text, no other commentary."
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        4100,
+        80
+      ],
+      "id": "81f7e5cf-2626-4794-a077-8b4b9c5bbab4",
+      "name": "Image alt text",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "wordpressClientId"
+            },
+            {
+              "name": "title"
+            },
+            {
+              "name": "description"
+            },
+            {
+              "name": "wordpressClient",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -840,
+        180
+      ],
+      "id": "70467828-5816-4416-ae3b-c9c538b31819",
+      "name": "Trigger"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return $input.item.json.wordpressClient;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -620,
+        180
+      ],
+      "id": "c2f7a468-27a0-4751-adda-11590b50bcb3",
+      "name": "Get Wordpress Client"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Chapter Title: {{ $json.title }}\nContent: {{ $json.chapterHtml }}\nThe image will be positioned {{ $json.image }} the article.\n\nCreate a visual prompt for DALL-E 3 while avoiding any mention of books, signs, titles, blogs or anything that assumes the use of text in the image.\n\nOutput ONLY the prompt text.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a DALL-E 3 prompt engineer creating diverse visual concepts from content. Your prompts should:\n- AVOID overused imagery like generic boardroom/executive meetings\n- Generate varied visual styles including illustrations, diagrams, metaphorical concepts, workspaces, collaborative scenes, and abstract representations\n- Adapt naturally to any industry or topic based on the provided content\n- Remain visually distinctive and engaging\n\nOutput ONLY the optimized prompt text (2 sentences) with no additional explanation.\n\nMost important: Create visual variety by switching between different imagery types (illustrations, conceptual scenes, workspaces, diagrams) based on the content's needs rather than defaulting to standard business imagery."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        3480,
+        80
+      ],
+      "id": "9e38fa12-8961-4c19-b9f6-6c5ac3cf000e",
+      "name": "Chapter Image Prompts",
+      "retryOnFail": true
+    }
+  ],
+  "pinData": {
+    "Trigger": [
+      {
+        "json": {
+          "wordpressClientId": "recffZZw0CIteTg2l",
+          "wordpressClient": {
+            "id": "recffZZw0CIteTg2l",
+            "createdTime": "2025-03-20T07:58:18.000Z",
+            "RecordId": "recffZZw0CIteTg2l",
+            "ConnectionStatus": "Connected",
+            "URL": "https://codpal.com",
+            "Wordpress Username": "apostolis.stephanou@gmail.com",
+            "Wordpress Password": "6qbs fmaO kidl pQNm sT6I LyaU",
+            "Client": [
+              "rece2Siq6iLfUTt9s"
+            ],
+            "Created Time": "2025-03-20T13:07:00.000Z",
+            "Last Modified Time": "2025-03-30T12:18:09.665Z",
+            "SEO Content Research": [
+              "recqP3LKm0X4GegQE",
+              "recLEjA1HZIHNHWvO",
+              "rec9ZCjRsjcnTKjtP",
+              "recxY6t44t11PSjM8",
+              "recCwThmEiLES4xNt",
+              "recM0r6snUvsPlFt6",
+              "rec1DsWOQ398tgelL",
+              "recHKcslNEcKoEBe1",
+              "recA1gEQfrCNRFUbi",
+              "recKZjH8oxnoMCOt8",
+              "recEz5r4WWzT7qRlE",
+              "rec6raXaVkPQZePT5"
+            ],
+            "Wordpress Scheduled Posts": [
+              "recyg3lanrHfdoq9Q",
+              "recOxI6DfXiqSOdLC"
+            ]
+          },
+          "title": "Empower Your Business with Expert CTO Leadership",
+          "description": "In today's rapidly evolving technological landscape, the role of the Chief Technology Officer (CTO) has become more crucial than ever. A CTO stands at the crossroads of technology and business, serving as the key figure responsible for outlining and implementing the technological vision that aligns with the company’s overall strategic goals."
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-30T14:52:03.000Z",
+  "versionId": "3b352768-6311-4220-9c5c-2a1ffc45d245"
+}
