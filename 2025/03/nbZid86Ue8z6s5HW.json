@@ -27,7 +27,7 @@
       "main": [
         [
           {
-            "node": "Config",
+            "node": "If is voice message",
             "type": "main",
             "index": 0
           }
@@ -71,7 +71,7 @@
       "main": [
         [
           {
-            "node": "Action Typing",
+            "node": "WP Creds",
             "type": "main",
             "index": 0
           }
@@ -157,6 +157,79 @@
       ]
     },
     "Publish Post": {
+      "ai_tool": [
+        [
+          {
+            "node": "Copywriter",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If is voice message": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get File": {
+      "main": [
+        [
+          {
+            "node": "Transcribe Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Get File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe Audio": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WP Creds": {
+      "main": [
+        [
+          {
+            "node": "Action Typing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Blog Post Scheduler": {
       "ai_tool": [
         [
           {
@@ -290,7 +363,7 @@
             {
               "id": "1da58776-5c25-41d4-9294-a6d985ea1c9d",
               "name": "urlEncoded",
-              "value": "={{ $json.URL.base64Encode() }}",
+              "value": "={{ $('Wordpress Client').item.json.URL.base64Encode() }}",
               "type": "string"
             },
             {
@@ -302,37 +375,31 @@
             {
               "id": "8c75bb0f-c975-41a5-ba35-b293624d865b",
               "name": "message",
-              "value": "={{ $('Telegram Trigger').item.json.message.text }}",
+              "value": "={{ $('Telegram Trigger').item.json.message.text ?? $('Transcribe Audio').item.json.text }}",
               "type": "string"
             },
             {
               "id": "1d00fb9b-7478-45a6-90b2-9b7056f7d6dc",
               "name": "wordpressUsername",
-              "value": "={{ $json[\"Wordpress Username\"] }}",
+              "value": "={{ $('Wordpress Client').item.json[\"Wordpress Username\"] }}",
               "type": "string"
             },
             {
               "id": "2faa367f-ce60-4235-a8ee-06ef72a52303",
               "name": "wordpressPassword",
-              "value": "={{ $json[\"Wordpress Password\"] }}",
+              "value": "={{ $('Wordpress Client').item.json[\"Wordpress Password\"] }}",
               "type": "string"
             },
             {
               "id": "96145c8b-5eb2-4baa-b018-7f26dda1ce1c",
               "name": "wordpressUrl",
-              "value": "={{ $json.URL }}",
+              "value": "={{ $('Wordpress Client').item.json.URL }}",
               "type": "string"
             },
             {
               "id": "f9aadfa4-4037-45b5-8888-ae2d897bfd35",
               "name": "wordpressClientId",
-              "value": "={{ $json.id }}",
-              "type": "string"
-            },
-            {
-              "id": "642e5844-f04f-4214-b6c1-f3e9e22208ba",
-              "name": "wordpressClientIdentifier",
-              "value": "={{ $json.Identifier }}",
+              "value": "={{ $('Wordpress Client').item.json.id }}",
               "type": "string"
             }
           ]
@@ -342,7 +409,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -860,
+        -20,
         520
       ],
       "id": "019b43a7-cadb-447f-abf3-ed17250b9a7b",
@@ -351,12 +418,12 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "=copywriter2-{{ $('Config').item.json.id }}"
+        "sessionKey": "=copywriter5-{{ $('Config').item.json.id }}"
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        20,
+        800,
         620
       ],
       "id": "921943ba-0d88-48ad-aae7-45ce02518194",
@@ -365,12 +432,12 @@
     {
       "parameters": {
         "operation": "sendChatAction",
-        "chatId": "={{ $json.telegramChatId }}"
+        "chatId": "={{ $('Config').item.json.telegramChatId }}"
       },
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -400,
+        580,
         380
       ],
       "id": "ad4aba58-5341-4139-ba01-85910e1e3143",
@@ -410,7 +477,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -660,
+        120,
         520
       ],
       "id": "9d0a6634-b59d-4d2e-9db1-8d3d957532e9",
@@ -447,16 +514,6 @@
               "removed": false
             },
             {
-              "id": "seoContentStrategy",
-              "displayName": "seoContentStrategy",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
               "id": "config",
               "displayName": "config",
               "required": false,
@@ -474,8 +531,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.1,
       "position": [
-        160,
-        620
+        860,
+        780
       ],
       "id": "c7403771-0b95-446d-aa41-a4268c038e13",
       "name": "Idea Agent Tool"
@@ -491,7 +548,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        680,
+        1300,
         380
       ],
       "id": "878c1e5f-a1ce-4a27-ae61-26bec570781a",
@@ -509,13 +566,14 @@
         "promptType": "define",
         "text": "={{ $('Config').item.json.message }}",
         "options": {
-          "systemMessage": "=You are an expert SEO copywriter with access to powerful content creation tools:\n- idea_agent for SEO-driven blog post ideas\n- create_blog_post for content generation\n- publish_post for publishing a blog post\n- website_knowledge_base for grounded research\n\nYou are unable to schedule work for later. If there are any problems with your tools, ask the user to try again later.\nIf you get an error ALREADY_GENERATING from a tool, inform the user that you are already working and they need to ask again when you are done.\n\nCurrent Date: {{ $now.format('yyyy-MM-dd HH:mm') }}\n\nCRITICAL INSTRUCTION: \n1. For new blog posts, ALWAYS:\n   - Generate idea using idea_agent\n   - Get user APPROVAL before creating post\n   - Use create_blog_post only after user confirms\n2. Use website_knowledge_base for ALL user questions to ensure answer accuracy\n3. If idea is rejected, generate new ideas until user approves\n4. Publish a post ONLY if the user asks and approves"
+          "systemMessage": "=You are an expert SEO copywriter with access to powerful content creation tools:\n- idea_agent for generating SEO-driven blog post ideas\n- create_blog_post for content generation\n- publish_post for publishing a blog post\n- blog_post_scheduler for scheduling repeated blog posts on a set cadence\n- website_knowledge_base for research grounded in your site's existing content\n\nCurrent Date: {{ $now.format('yyyy-MM-dd HH:mm') }}\n\nCRITICAL WORKFLOW INSTRUCTIONS (Follow these exactly):\n\n1. NEW BLOG POST CREATION PROCESS:\n   - FIRST generate ideas using idea_agent\n   - WAIT for explicit user APPROVAL before proceeding\n   - Use create_blog_post ONLY after user confirms an idea\n   - Publish a post ONLY if the user explicitly requests and approves\n\n2. REPEATING CONTENT REQUESTS:\n   - When a user asks for recurring/repeated blog posts, EXCLUSIVELY use blog_post_scheduler\n   - NEVER attempt to create immediate blog posts when handling recurring content requests\n   - Collect all necessary scheduling parameters (topic, frequency, start date, time) before using the scheduler\n   - Confirm scheduling details with the user before finalizing\n\n3. KNOWLEDGE & RESPONSE GUIDELINES:\n   - ALWAYS consult website_knowledge_base for ANY user questions to ensure factual accuracy\n   - If ideas are rejected, generate new options until user approves\n   - If tools return ALREADY_GENERATING error, inform the user processing is in progress and to try again later\n   - For any other tool errors, politely ask the user to try again later\n\nRemember: You are an assistant focused on high-quality SEO content creation. Always maintain a helpful, professional tone while strictly following these workflow instructions.",
+          "passthroughBinaryImages": true
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.8,
       "position": [
-        120,
+        900,
         380
       ],
       "id": "4b0ba40d-a5eb-4a23-ba9e-6eb625723aaa",
@@ -539,8 +597,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
       "typeVersion": 1,
       "position": [
-        520,
-        620
+        1140,
+        760
       ],
       "id": "6a12c21d-c25e-434c-bb32-7c4ef8dbf968",
       "name": "Pinecone Vector Store",
@@ -560,8 +618,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        540,
-        760
+        1100,
+        900
       ],
       "id": "8b039e88-f436-4383-bb03-bee0afc7a2f0",
       "name": "Embeddings OpenAI",
@@ -579,8 +637,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
       "typeVersion": 1,
       "position": [
-        1180,
-        780
+        1700,
+        740
       ],
       "id": "7a9573eb-292e-4f34-be7c-7781d1ac7d3c",
       "name": "SerpAPI",
@@ -650,8 +708,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.1,
       "position": [
-        300,
-        620
+        980,
+        680
       ],
       "id": "425bea77-12ad-4843-b165-f8610e694088",
       "name": "Create Blog Post Tool"
@@ -667,7 +725,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -400,
+        380,
         660
       ],
       "id": "05a2872b-460f-459a-affa-cd423454de78",
@@ -693,7 +751,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -100,
+        680,
         620
       ],
       "id": "731c17ed-6aca-4c9e-8788-02667946a1ae",
@@ -718,7 +776,7 @@
       "type": "n8n-nodes-base.wordpressTool",
       "typeVersion": 1,
       "position": [
-        420,
+        1100,
         620
       ],
       "id": "9119c9d8-3807-4082-ad26-818558773602",
@@ -729,6 +787,210 @@
           "name": "WP Creds"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger').item.json.message.voice.file_id }}"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -500,
+        340
+      ],
+      "id": "54a99311-9361-478e-8492-dd945b877438",
+      "name": "Get File",
+      "webhookId": "cd83ecc7-819b-4d74-bf6d-3cd52cbad1e8",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4dc577eb-e2ce-42ce-b833-e0c093316284",
+              "leftValue": "={{ $('Telegram Trigger').item.json.message.voice?.file_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -940,
+        520
+      ],
+      "id": "a47c6d30-764b-41b8-a18c-da99e3eceeb6",
+      "name": "If is voice message"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -340,
+        340
+      ],
+      "id": "fd1632ba-4e3f-4675-8123-4d62997069ce",
+      "name": "Transcribe Audio",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3c49d33b-5b3a-4aad-8ed6-c4c57e8c5d18",
+              "leftValue": "={{ $('Telegram Trigger').item.json.message.voice.file_size }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        420
+      ],
+      "id": "dfa91778-cfd1-45ed-bf0f-f587866947d4",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b4ee67b3-b417-4baa-910d-1caac99b5456",
+              "name": "URL",
+              "value": "={{ $('Config').first().json.wordpressUrl }}",
+              "type": "string"
+            },
+            {
+              "id": "7f471c0a-8e38-479e-9070-65e925c7e67f",
+              "name": "Wordpress Username",
+              "value": "={{ $('Config').first().json.wordpressUsername }}",
+              "type": "string"
+            },
+            {
+              "id": "17fb6dd9-fed5-4c24-83fa-73a1c4a08844",
+              "name": "Wordpress Password",
+              "value": "={{ $('Config').first().json.wordpressPassword }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        380,
+        380
+      ],
+      "id": "fce62efd-d300-4588-a491-b82c3925abef",
+      "name": "WP Creds"
+    },
+    {
+      "parameters": {
+        "name": "blog_post_scheduler",
+        "description": "Call this agent tool to manage scheduled blog posts. You can ask to get the existing schedule and make changes to it.",
+        "workflowId": {
+          "__rl": true,
+          "value": "ZNg8Lh17sNu1ysrZ",
+          "mode": "list",
+          "cachedResultName": "Wordpress Post Scheduling Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "wordpressClientId": "={{ $('Config').item.json.wordpressClientId }}",
+            "chatId": "={{ $('Config').first().json.telegramChatId }}",
+            "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "wordpressClientId",
+              "displayName": "wordpressClientId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "chatId",
+              "displayName": "chatId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        1320,
+        620
+      ],
+      "id": "cae75160-ace5-49a7-a619-1fd3b1118795",
+      "name": "Blog Post Scheduler"
     }
   ],
   "pinData": {},
@@ -741,6 +1003,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-03-29T20:16:33.000Z",
-  "versionId": "121e5dac-5586-40a6-b4ee-f4a94fd7063e"
+  "updatedAt": "2025-03-30T15:56:08.000Z",
+  "versionId": "70b7dcf4-d4e6-4f68-82ca-8d22ad9d0455"
 }
