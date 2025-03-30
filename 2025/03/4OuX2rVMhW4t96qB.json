@@ -1,0 +1,831 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Schedules",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Schedules": {
+      "main": [
+        [
+          {
+            "node": "Get Wordpress Client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Wordpress Client": {
+      "main": [
+        [
+          {
+            "node": "Get Client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Client": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Get Idea",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Idea": {
+      "main": [
+        [
+          {
+            "node": "If already working",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ask for Approval": {
+      "main": [
+        [
+          {
+            "node": "If Approved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Approved": {
+      "main": [
+        [
+          {
+            "node": "Acknowledge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Get Idea",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Post": {
+      "main": [
+        [
+          {
+            "node": "Ask to publish",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ask to publish": {
+      "main": [
+        [
+          {
+            "node": "If should publish",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If should publish": {
+      "main": [
+        [
+          {
+            "node": "Publish",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Not published",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Acknowledge": {
+      "main": [
+        [
+          {
+            "node": "Generate Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publish": {
+      "main": [
+        [
+          {
+            "node": "Published",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If already working": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ask for Approval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get Idea",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-30T06:59:33.073Z",
+  "id": "4OuX2rVMhW4t96qB",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Wordpress Post Schedule",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        0
+      ],
+      "id": "2a813745-c787-4ddb-92ad-e02a71cdf4d6",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWV3zjbf9LEArEf",
+          "mode": "list",
+          "cachedResultName": "Wordpress Post Schedules",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblWV3zjbf9LEArEf"
+        },
+        "filterByFormula": "=AND(\n  OR({DayOfWeek} = \"{{ $json['Day of week'] }}\", {DayOfWeek} = \"Everyday\"),\n  {Hour} = {{ $json.Hour }}\n)",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        280,
+        0
+      ],
+      "id": "327b6160-fdfb-4bec-876b-1e4d503d8309",
+      "name": "Get Schedules",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblty7DapzrDJ6cV6",
+          "mode": "list",
+          "cachedResultName": "Wordpress Clients",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblty7DapzrDJ6cV6"
+        },
+        "id": "={{ $json.WordpressClient[0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        500,
+        0
+      ],
+      "id": "6b658347-79e1-4170-b3aa-be05c91bc236",
+      "name": "Get Wordpress Client",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "app3foHr3iDjZBLvs",
+          "mode": "list",
+          "cachedResultName": "Engineering Prototype Builder",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblfU3UiMHDL5DnNu",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblfU3UiMHDL5DnNu"
+        },
+        "id": "={{ $json.Client[0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        720,
+        0
+      ],
+      "id": "0c883a4b-df5f-4c79-87c1-265470148964",
+      "name": "Get Client",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "f9JH5DCFMvod79bz",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3e874d24-b794-4c5a-b2c7-d51c5550645b",
+              "name": "id",
+              "value": "={{ $('Get Schedules').item.json.TelegramChatId }}",
+              "type": "string"
+            },
+            {
+              "id": "07ae83b4-fc6a-48b1-bb0b-99cf0120757c",
+              "name": "Name",
+              "value": "={{ $json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "91a2704f-5bc2-4b30-8d10-1d3e4b126e45",
+              "name": "urlEncoded",
+              "value": "={{ $('Get Wordpress Client').item.json.URL.base64Encode() }}",
+              "type": "string"
+            },
+            {
+              "id": "d38c8b6b-304f-44b5-bf5e-feb0a9a36138",
+              "name": "telegramChatId",
+              "value": "={{ $('Get Schedules').item.json.TelegramChatId }}",
+              "type": "number"
+            },
+            {
+              "id": "744b54af-ff3c-42e9-ba6f-873e2c0a8c04",
+              "name": "message",
+              "value": "={{ $('Get Schedules').item.json.CustomInstructions }}",
+              "type": "string"
+            },
+            {
+              "id": "f7b69cab-7a98-421e-ba4b-015ed92644e2",
+              "name": "wordpressUsername",
+              "value": "={{ $('Get Wordpress Client').item.json['Wordpress Username'] }}",
+              "type": "string"
+            },
+            {
+              "id": "a49bd629-d378-4a65-9619-80f86f548651",
+              "name": "wordpressPassword",
+              "value": "={{ $('Get Wordpress Client').item.json['Wordpress Password'] }}",
+              "type": "string"
+            },
+            {
+              "id": "79ed2c90-df08-4d49-be6f-171dbfd5b4dd",
+              "name": "wordpressUrl",
+              "value": "={{ $('Get Wordpress Client').item.json.URL }}",
+              "type": "string"
+            },
+            {
+              "id": "02eb7917-3dd1-4d70-bde9-ec06823b4c58",
+              "name": "wordpressClientId",
+              "value": "={{ $('Get Wordpress Client').item.json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        940,
+        0
+      ],
+      "id": "76953780-951e-453e-af01-6d38f9a6317a",
+      "name": "Config"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "poonN77q8k2q5Laz",
+          "mode": "list",
+          "cachedResultName": "Blog Post Idea Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "config": "={{ $('Config').item.json }}",
+            "query": "={{ $json.message }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "config",
+              "displayName": "config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1220,
+        0
+      ],
+      "id": "451ae93f-54d7-44a6-b30c-080a02594108",
+      "name": "Get Idea"
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "chatId": "={{ $('Config').item.json.telegramChatId }}",
+        "message": "=I came up with the following idea for your scheduled post. Can I have your approval to use it or would you like me to come up with a different one?\n\nTitle: {{ $json.output.title }}\nDescription: {{ $json.output.description }}",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "disapproveLabel": "❌ Try Again"
+          }
+        },
+        "options": {
+          "limitWaitTime": {
+            "values": {
+              "resumeAmount": 2
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1820,
+        0
+      ],
+      "id": "2ecece4c-fdf7-423d-937d-d3356048a561",
+      "name": "Ask for Approval",
+      "webhookId": "870fe600-f942-48ae-9cec-88a4f72ec312",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "eb23e71a-834e-4f68-9c96-0973203c6a84",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2040,
+        0
+      ],
+      "id": "188252b6-1cde-44d3-ab4b-89a56b18c819",
+      "name": "If Approved"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "94fec818-880d-4802-822a-10d038e903fb",
+              "name": "message",
+              "value": "=I don't like that. Generate another one.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2480,
+        100
+      ],
+      "id": "6d8f8c8a-93fd-4176-906e-2cda9943336e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "Q4DvK9uZrWi0Sqir",
+          "mode": "list",
+          "cachedResultName": "Generate Wordpress Post"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "wordpressClientId": "={{ $('Config').item.json.wordpressClientId }}",
+            "title": "={{ $('Get Idea').item.json.output.title }}",
+            "description": "={{ $('Get Idea').item.json.output.description }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "wordpressClientId",
+              "displayName": "wordpressClientId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "description",
+              "displayName": "description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2520,
+        -100
+      ],
+      "id": "b9943bf7-699a-419e-ab4c-09857827f647",
+      "name": "Generate Post"
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "chatId": "={{ $('Config').item.json.telegramChatId }}",
+        "message": "=The blog post titled \"{{ $json.title.rendered }}\" has been successfully created and uploaded to your website. You can view it [here]({{ $json.link }}).\n\nShall I publish it?\n",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "approveLabel": "✅ Yes",
+            "disapproveLabel": "❌ No"
+          }
+        },
+        "options": {
+          "limitWaitTime": {
+            "values": {
+              "resumeAmount": 2
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2720,
+        -100
+      ],
+      "id": "bd7a80f7-db1c-4a09-b938-52bde845fa67",
+      "name": "Ask to publish",
+      "webhookId": "870fe600-f942-48ae-9cec-88a4f72ec312",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "eb23e71a-834e-4f68-9c96-0973203c6a84",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2920,
+        -100
+      ],
+      "id": "f66b16bf-d9fa-43e9-8cb2-0bb9dc42b821",
+      "name": "If should publish"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "postId": "={{ $('Generate Post').item.json.postId }}",
+        "updateFields": {
+          "status": "publish"
+        }
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        -180
+      ],
+      "id": "370eb5b9-f376-4afc-b194-a84bdd209cd8",
+      "name": "Publish",
+      "retryOnFail": true,
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Config').item.json.telegramChatId }}",
+        "text": "Ok, I'll create the post now.",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2320,
+        -100
+      ],
+      "id": "24e18e7e-ff2e-4e01-bfc2-5110f4b242cf",
+      "name": "Acknowledge",
+      "webhookId": "be76eac2-8e3d-441c-a151-058cc6d863a0",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Config').item.json.telegramChatId }}",
+        "text": "It's published.",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3400,
+        -180
+      ],
+      "id": "7ce60be5-dff1-4a91-a26a-2f184d049ce1",
+      "name": "Published",
+      "webhookId": "04a51006-beb2-4046-824d-b3730013997b",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c5c07652-817c-4be5-a4cd-4cb26e766bf4",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "ALREADY_GENERATING",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1500,
+        -20
+      ],
+      "id": "218f19f5-5f27-4397-9517-192299a0b138",
+      "name": "If already working"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1820,
+        300
+      ],
+      "id": "f184ce49-ddff-4f8c-aa69-3a18e8eea2b9",
+      "name": "Wait",
+      "webhookId": "20646089-fe6a-448d-92e4-5408f0fb5976"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Config').item.json.telegramChatId }}",
+        "text": "Ok, I won't publish it.",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3180,
+        40
+      ],
+      "id": "cdbb0572-bf67-414a-aeee-fe6bb5545297",
+      "name": "Not published",
+      "webhookId": "04a51006-beb2-4046-824d-b3730013997b",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-30T19:00:33.000Z",
+  "versionId": "46c4104b-9267-4b9e-9046-f313eed01330"
+}
