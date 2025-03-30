@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Review image",
+            "node": "Update Media Caption",
             "type": "main",
             "index": 0
           }
@@ -14,16 +14,10 @@
     },
     "Sentiment Analysis": {
       "main": [
+        [],
         [
           {
-            "node": "Output media object",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Delete media",
+            "node": "Fix prompt",
             "type": "main",
             "index": 0
           }
@@ -65,13 +59,7 @@
     },
     "Delete media": {
       "main": [
-        [
-          {
-            "node": "Generate image",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Generate image": {
@@ -90,6 +78,33 @@
         [
           {
             "node": "Sentiment Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix prompt": {
+      "main": [
+        []
+      ]
+    },
+    "Thinking model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Fix prompt",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Media Caption": {
+      "main": [
+        [
+          {
+            "node": "Output media object",
             "type": "main",
             "index": 0
           }
@@ -116,7 +131,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         -340,
-        -300
+        -340
       ],
       "typeVersion": 1
     },
@@ -131,7 +146,7 @@
           "parameters": [
             {
               "name": "Content-Disposition",
-              "value": "attachment; filename=\"example.jpg\""
+              "value": "=attachment; filename=\"{{ (+new Date).toString(36).slice(-5) + Math.random().toString(36).substr(2, 5) }}.jpg\""
             }
           ]
         },
@@ -144,10 +159,11 @@
       "name": "Upload media",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        -80,
+        580,
         -120
       ],
       "typeVersion": 4.1,
+      "retryOnFail": true,
       "credentials": {
         "wordpressApi": {
           "id": "XgkEm6HEu6J7cAxr",
@@ -165,11 +181,12 @@
       "type": "@n8n/n8n-nodes-langchain.sentimentAnalysis",
       "typeVersion": 1,
       "position": [
-        280,
-        -120
+        80,
+        240
       ],
       "id": "414c290f-3a6c-4aac-a820-f8d396142f82",
-      "name": "Sentiment Analysis"
+      "name": "Sentiment Analysis",
+      "retryOnFail": true
     },
     {
       "parameters": {
@@ -183,8 +200,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        300,
-        100
+        120,
+        440
       ],
       "id": "5621bbe3-4712-48d4-8ce4-cf8396f67417",
       "name": "OpenAI Mini",
@@ -253,10 +270,11 @@
       "name": "Delete media",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        0,
-        140
+        1040,
+        300
       ],
       "typeVersion": 4.1,
+      "retryOnFail": true,
       "credentials": {
         "wordpressApi": {
           "id": "XgkEm6HEu6J7cAxr",
@@ -266,14 +284,13 @@
     },
     {
       "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "return $(\"Upload media\").item.json;"
+        "jsCode": "return $(\"Upload media\").all().map(x => x.json);"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        740,
-        -140
+        1040,
+        -120
       ],
       "id": "c55993ea-b66a-4363-8bdb-16314cfbf771",
       "name": "Output media object"
@@ -281,11 +298,11 @@
     {
       "parameters": {
         "resource": "image",
-        "prompt": "={{ $('Trigger').item.json.prompt }}",
+        "prompt": "={{ $json.text ?? $('Trigger').item.json.prompt }}\n\nCRITICAL RULES:\n1. Focus on specific, visually representable elements.\n2. Describe actions and scenarios rather than abstract concepts.\n3. Avoid ambiguous language that could be interpreted as including text.",
         "options": {
           "quality": "hd",
           "size": "1792x1024",
-          "style": "natural"
+          "style": "vivid"
         }
       },
       "id": "0f6c2da1-8933-4d4b-9fe0-090a723b4d2e",
@@ -296,6 +313,7 @@
         -120
       ],
       "typeVersion": 1,
+      "retryOnFail": true,
       "credentials": {
         "openAiApi": {
           "id": "I92UkH9mThS7D4I6",
@@ -313,22 +331,102 @@
           "mode": "list",
           "cachedResultName": "GPT-4O"
         },
-        "text": "This image is planned to go on my blog.\nPlease review if the image is suitable to go on my blog or not.\nIf you identify any of the below, the image should not go on my blog:\n- Miss-formed people, animals, buildings etc\n- Readable text (no text is allowed on the image unless very blurry and not visible)\nIf you identify any of the above or if the image is not visually appealing (low quality, difficult to understand what it depicts) then it is not suitable for my blog.\n\nExplain your reasoning before answering, is the image suitable for my blog?",
-        "imageUrls": "={{ $json.source_url }}",
+        "text": "You are tasked with reviewing images for blog suitability.\n\nAn image is NOT SUITABLE if it contains ANY of the following:\n1. Malformed/distorted people, animals, buildings, or other objects\n2. ANY readable text whatsoever - this is a strict requirement:\n   - Even a single readable word or phrase makes the image unsuitable\n   - Even if the text seems relevant to the blog's content\n   - The only exception is if text is completely blurred and unreadable\n\nAn image is also NOT SUITABLE if:\n- It is low quality (blurry, pixelated, poorly composed)\n- It is difficult to understand what it depicts\n\nReview process:\n1. Carefully scan the entire image for ANY readable text\n2. Assess the visual quality and clarity of the image\n3. Explain your specific observations\n4. Make a definitive decision (SUITABLE or NOT SUITABLE)\n5. When in doubt, REJECT the image\n\nRemember: The presence of ANY readable text is an automatic rejection criterion, regardless of the text's relevance or content.",
+        "inputType": "base64",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        100,
-        -120
+        -120,
+        240
       ],
       "id": "d5ef4206-ed07-49ff-b103-3f529efbe1cb",
       "name": "Review image",
+      "retryOnFail": true,
       "credentials": {
         "openAiApi": {
           "id": "I92UkH9mThS7D4I6",
           "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Prompt: {{ $('Trigger').item.json.prompt }}\n\nRejection reason from reviewer: {{ $('Review image').item.json.content }}\n\nOutput only the updated prompt. No other comments.",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a DALL-E 3 prompt engineer. Your task is to analyse images that were rejected and corrected thir prompts so that they will be approved when regenerated. Please review the prompt, criteria and rejection reason and adjust re-engineer the prompt so that it will pass the review.\n\nCriteria:\nAn image is NOT SUITABLE if it contains ANY of the following:\n1. Malformed/distorted people, animals, buildings, or other objects\n2. ANY readable text whatsoever - this is a strict requirement:\n   - Even a single readable word or phrase makes the image unsuitable\n   - Even if the text seems relevant to the blog's content\n   - The only exception is if text is completely blurred and unreadable\n\nAn image is also NOT SUITABLE if:\n- It is low quality (blurry, pixelated, poorly composed)\n- It is difficult to understand what it depicts\n\nReview process:\n1. Carefully scan the entire image for ANY readable text\n2. Assess the visual quality and clarity of the image\n3. Explain your specific observations\n4. Make a definitive decision (SUITABLE or NOT SUITABLE)\n5. When in doubt, REJECT the image\n\nRemember: The presence of ANY readable text is an automatic rejection criterion, regardless of the text's relevance or content."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        480,
+        260
+      ],
+      "id": "64ada40f-8bca-42e2-8bea-6f5b68d137a6",
+      "name": "Fix prompt"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "o3-mini",
+          "mode": "list",
+          "cachedResultName": "o3-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        520,
+        480
+      ],
+      "id": "e9886471-5df8-4667-b451-6ada77236c2b",
+      "name": "Thinking model",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$('WP Creds').item.json.URL}}/wp-json/wp/v2/media/{{ $json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "description",
+              "value": "={{ $('Trigger').item.json.prompt }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "41dc8987-53e8-4ce8-9f24-21fb6ebb4b25",
+      "name": "Update Media Caption",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        800,
+        -120
+      ],
+      "typeVersion": 4.1,
+      "retryOnFail": true,
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
         }
       }
     }
@@ -337,7 +435,7 @@
     "Trigger": [
       {
         "json": {
-          "prompt": "A CTO sitting in the board of directors room alone, calling another CTO to ask for advice.",
+          "prompt": "A modern tech workspace comes alive as a seasoned, diverse tech leader animatedly engages with a group of startup founders around a sleek boardroom table, with ambient light and futuristic screens showcasing intricate digital networks and scalable architectures.",
           "wpCreds": {
             "URL": "https://codpal.com",
             "Wordpress Username": "apostolis.stephanou@gmail.com",
@@ -356,6 +454,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-29T17:58:49.000Z",
-  "versionId": "02c91f2b-5f41-4af1-b8ba-4a35ea35209d"
+  "updatedAt": "2025-03-30T14:55:28.000Z",
+  "versionId": "001b8ffa-375f-4db7-b206-5ce84ce22668"
 }
