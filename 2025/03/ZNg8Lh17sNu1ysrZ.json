@@ -67,22 +67,6 @@
         ]
       ]
     },
-    "When chat message received": {
-      "main": [
-        [
-          {
-            "node": "Trigger",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Trigger12": {
-      "main": [
-        []
-      ]
-    },
     "Trigger": {
       "main": [
         [
@@ -100,12 +84,12 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Schedule Wordpress Post Creation",
+  "name": "Wordpress Post Scheduling Agent",
   "nodes": [
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "text": "={{ $json.message }}",
         "options": {
           "systemMessage": "=# Scheduling Agent System Prompt\n\nYou are a specialized scheduling assistant that helps users manage their post creation schedules. Your primary function is to create, read, update, and delete post schedules based on user requests.\n\n## Available Tools\n\nYou have access to four tools to manage post schedules:\n\n1. `get_post_schedules`: Retrieves all current post schedules\n2. `create_post_schedule`: Creates a new post schedule\n3. `update_post_schedule`: Modifies an existing post schedule\n4. `delete_post_schedule`: Removes an existing post schedule\n\n## Core Workflow\n\n1. Always begin by calling `get_post_schedules` to review existing schedules before making any changes.\n2. Process the user's request to determine which operation they want to perform.\n3. Execute the appropriate tool with the required parameters.\n4. Confirm the action's completion to the user.\n\n## Required Parameters\n\nWhen creating or updating schedules:\n- `DayOfWeek`: Day of the week (e.g., Monday, Tuesday, Everyday)\n- `Hour`: Time in 24-hour format (0-23)\n- `CustomInstructions`: Optional specific instructions for post creation\n\nWhen updating or deleting schedules:\n- `RecordId`: The unique identifier for the schedule (must be retrieved from `get_post_schedules` or `create_post_schedule`)\n\n## Response Guidelines\n\n- Confirm all actions clearly and concisely\n- Summarize existing schedules when relevant\n- Ask for clarification if user instructions are ambiguous\n- Provide helpful suggestions when appropriate\n\nAlways prioritize accuracy when managing schedules, and double-check record IDs before making updates or deletions."
         }
@@ -147,7 +131,7 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "=schedule-agent-{{ $('When chat message received').item.json.sessionId }}"
+        "sessionKey": "=schedule-agent-{{ $json.chatId }}"
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
@@ -182,8 +166,9 @@
           "value": {
             "DayOfWeek": "={{ $fromAI(\"DayOfWeek\", \"The day of the week (eg. Monday. Also accepts Everyday.)\") }}",
             "Hour": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Hour', `Must be a whole number between 0-23`, 'number') }}",
-            "WordpressClient": "=[\"{{ $('Trigger').item.json.wordpressClientId }}\"]",
-            "CustomInstructions": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('CustomInstructions', `Custom instructions for the agent who will create the post`, 'string') }}"
+            "WordpressClient": "=[\"{{ $json.wordpressClientId }}\"]",
+            "CustomInstructions": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('CustomInstructions', `Custom instructions for the agent who will create the post`, 'string') }}",
+            "TelegramChatId": "={{ Number($json.chatId) }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -275,6 +260,17 @@
               "type": "string",
               "readOnly": false,
               "removed": false
+            },
+            {
+              "id": "TelegramChatId",
+              "displayName": "TelegramChatId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -317,7 +313,14 @@
           "cachedResultUrl": "https://airtable.com/app3foHr3iDjZBLvs/tblWV3zjbf9LEArEf"
         },
         "filterByFormula": "={WordpressClient}=\"{{ $json.wordpressClientId }}\"",
-        "options": {}
+        "options": {
+          "fields": [
+            "RecordId",
+            "DayOfWeek",
+            "Hour",
+            "CustomInstructions"
+          ]
+        }
       },
       "type": "n8n-nodes-base.airtableTool",
       "typeVersion": 2.1,
@@ -356,11 +359,12 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "WordpressClient": "=[\"{{ $('Trigger').item.json.wordpressClientId }}\"]",
+            "WordpressClient": "=[\"{{ $json.wordpressClientId }}\"]",
             "Hour": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Hour', `Must be a whole number between 0-23`, 'number') }}",
             "CustomInstructions": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('CustomInstructions', `Custom instructions for the agent who will create the post`, 'string') }}",
             "RecordId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('RecordId__using_to_match_', ``, 'string') }}",
-            "DayOfWeek": "={{ $fromAI(\"DayOfWeek\", \"The day of the week (eg. Monday. Also accepts Everyday.)\") }}"
+            "DayOfWeek": "={{ $fromAI(\"DayOfWeek\", \"The day of the week (eg. Monday. Also accepts Everyday.)\") }}",
+            "TelegramChatId": "={{ Number($json.chatId) }}"
           },
           "matchingColumns": [
             "RecordId"
@@ -464,6 +468,17 @@
               "type": "string",
               "readOnly": false,
               "removed": false
+            },
+            {
+              "id": "TelegramChatId",
+              "displayName": "TelegramChatId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -524,20 +539,6 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        100,
-        40
-      ],
-      "id": "2b84674f-7cfd-4ffa-b1f2-07012694f99f",
-      "name": "When chat message received",
-      "webhookId": "c49336bf-0b1d-420b-8007-e77b51a5395f"
-    },
-    {
-      "parameters": {
         "workflowInputs": {
           "values": [
             {
@@ -555,34 +556,20 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        0,
-        -140
+        360,
+        0
       ],
       "id": "9e03cc78-029d-41a9-bfe6-622475477078",
-      "name": "Trigger12"
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "return {\n  \"wordpressClientId\": \"recffZZw0CIteTg2l\",\n  \"chatId\": \"\",\n  \"message\": \"Schedule a post to be created twice a day\"\n}"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        380,
-        40
-      ],
-      "id": "4237a504-9561-4289-9779-5ebe811dc813",
       "name": "Trigger"
     }
   ],
   "pinData": {
-    "Trigger12": [
+    "Trigger": [
       {
         "json": {
           "wordpressClientId": "recffZZw0CIteTg2l",
-          "chatId": "",
-          "message": "Schedule a post to be created twice a day"
+          "chatId": "TEST-1",
+          "message": "When did we pay you will create the posts?"
         }
       }
     ]
@@ -596,6 +583,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-29T21:19:29.000Z",
-  "versionId": "1010c430-79be-49c8-abde-20d2d2ed8418"
+  "updatedAt": "2025-03-30T15:52:54.000Z",
+  "versionId": "f9d1a682-5dc9-47f8-b848-31b2361cf064"
 }
