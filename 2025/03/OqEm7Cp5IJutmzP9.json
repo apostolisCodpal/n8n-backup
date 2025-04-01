@@ -34,17 +34,6 @@
         ]
       ]
     },
-    "Set image ID for the post": {
-      "main": [
-        [
-          {
-            "node": "Output",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Wikipedia": {
       "ai_tool": [
         [
@@ -122,17 +111,6 @@
           {
             "node": "Create chapters text",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Create chapters text",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -328,11 +306,6 @@
             "node": "Summarization Chain",
             "type": "ai_languageModel",
             "index": 0
-          },
-          {
-            "node": "Write SEO Conclusion",
-            "type": "ai_languageModel",
-            "index": 0
           }
         ]
       ]
@@ -493,7 +466,7 @@
       "main": [
         [
           {
-            "node": "Set image ID for the post",
+            "node": "Set image ID and excerpt",
             "type": "main",
             "index": 0
           }
@@ -554,11 +527,46 @@
           }
         ]
       ]
+    },
+    "Set image ID and excerpt": {
+      "main": [
+        [
+          {
+            "node": "Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Create chapters text",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI 4o1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Write SEO Conclusion",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-30T08:21:46.179Z",
   "id": "OqEm7Cp5IJutmzP9",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Generate Wordpress Post Internal",
   "nodes": [
     {
@@ -722,6 +730,12 @@
               "name": "wordpressUrl",
               "value": "={{ $('Get Wordpress Client').item.json.URL }}",
               "type": "string"
+            },
+            {
+              "id": "5aad0c50-4182-4c5d-af16-a1ee32d6b524",
+              "name": "comments",
+              "value": "={{ $('Trigger').item.json.comments }}",
+              "type": "string"
             }
           ]
         },
@@ -783,39 +797,6 @@
         220
       ],
       "typeVersion": 1,
-      "retryOnFail": true,
-      "credentials": {
-        "wordpressApi": {
-          "id": "XgkEm6HEu6J7cAxr",
-          "name": "WP Creds"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "={{$('WP Creds').first().json.URL}}/wp-json/wp/v2/posts/{{ $('Post on Wordpress').item.json.id }}",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "wordpressApi",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "featured_media",
-              "value": "={{ $json.id }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "ed71ef5d-9d2e-40e2-bb05-c3c7708d83de",
-      "name": "Set image ID for the post",
-      "type": "n8n-nodes-base.httpRequest",
-      "position": [
-        6760,
-        220
-      ],
-      "typeVersion": 4.1,
       "retryOnFail": true,
       "credentials": {
         "wordpressApi": {
@@ -1059,10 +1040,10 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Business Analysis: {{ $json.businessAnalysis }}\n\nSEO Content Stratery: {{ $json.seoStrategyDocument }}\n\nUse the following title and description for the topic:\nTitle: {{ $json.title }}\nDescription: {{ $json.description }}",
+        "text": "=Business Analysis: {{ $json.businessAnalysis }}\n\nSEO Content Stratery: {{ $json.seoStrategyDocument }}\n\nUse the following title and description for the topic:\nTitle: {{ $json.title }}\nDescription: {{ $json.description }}\n{{ $json.comments ? `Comments: ${$json.comments}` : \"\" }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "You are an SEO Blog Post Spec Generator. Your task is to create a detailed specification that includes an introduction, chapters, and prioritized keywords based on user provided keyword research, business analysis, a title, and a description. Follow these guidelines:\n- SEO Best Practices: Ensure proper keyword density, semantic relevance, internal/external linking suggestions, meta tags, and mobile-friendly structure.\n- Content Structure: Generate a clear outline with chapters/sections, headings/subheadings, and key points to cover.\n- For any factual posts, always refer to the wikepedia tool to verify your knowledge.\n- In the introduction introduce the topic that is then explored in depth in the rest of the text\n- The introduction should be maximum 60 words\n- The conclusions should be maximum 60 words\n- Use the conclusions to sum all said in the article and offer a conclusion to the reader\n- For each chapter provide a title and an exaustive prompt that will be used to write the chapter text.\n- The chapters should follow a logical flow and not repeat the same concepts.\n- The chapters should be one related to the other and not isolated blocks of text. The text should be fluent and folow a linear logic.\n- Don't start the chapters with \"Chapter 1\", \"Chapter 2\", \"Chapter 3\"... just write the title of the chapter\n- For the title and the capthers' titles don't use colons (`:`)\n- Don't use markdown for formatting.\n- Always search on Wikipedia for useful information or verify the accuracy of what you write.\n- Never mention it if you don't find information on Wikipedia or the web\n- Go deep in the topic you treat, don't just throw some superficial info\n- Extract keywords from the SEO Content Strategy that are relevant with the user's requested topic to be used in the chapters.\n\nOutput a JSON in the following format:\n{\n\"subtitle\": \"\",\n\"introduction\": \"\",\n\"chapters\": [{ \"title\": \"\", \"prompt\": \"\"}],\n\"conclusions\": \"\",\n\"keywords\": [\"\"]\n}"
+          "systemMessage": "You are an SEO Blog Post Spec Generator. Your task is to create a detailed specification that includes an introduction, chapters, and prioritized keywords based on user provided keyword research, business analysis, a title, and a description. Follow these guidelines:\n- SEO Best Practices: Ensure proper keyword density, semantic relevance, internal/external linking suggestions, meta tags, and mobile-friendly structure.\n- Content Structure: Generate a clear outline with chapters/sections, headings/subheadings, and key points to cover.\n- For any factual posts, always refer to the wikepedia tool to verify your knowledge.\n- In the introduction introduce the topic that is then explored in depth in the rest of the text\n- The introduction should be maximum 60 words\n- The conclusions should be maximum 60 words\n- Use the conclusions to sum all said in the article and offer a conclusion to the reader\n- For each chapter provide a title and an exaustive prompt that will be used to write the chapter text.\n- The chapters should follow a logical flow and not repeat the same concepts.\n- The chapters should be one related to the other and not isolated blocks of text. The text should be fluent and folow a linear logic.\n- Don't start the chapters with \"Chapter 1\", \"Chapter 2\", \"Chapter 3\"... just write the title of the chapter\n- For the title and the capthers' titles don't use colons (`:`)\n- Don't use markdown for formatting.\n- Always search on Wikipedia for useful information or verify the accuracy of what you write.\n- Never mention it if you don't find information on Wikipedia or the web\n- Go deep in the topic you treat, don't just throw some superficial info\n- Extract keywords from the SEO Content Strategy that are relevant with the user's requested topic to be used in the chapters.\n\nOutput a JSON in the following format respecting the user's language:\n{\n\"subtitle\": \"\",\n\"introduction\": \"\",\n\"chapters\": [{ \"title\": \"\", \"prompt\": \"\"}],\n\"conclusions\": \"\",\n\"keywords\": [\"\"]\n}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -1102,31 +1083,6 @@
     },
     {
       "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4o",
-          "mode": "list",
-          "cachedResultName": "gpt-4o"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        1540,
-        500
-      ],
-      "id": "bfc6782a-4d53-414b-9795-803e59b28b20",
-      "name": "OpenAI Chat Model1",
-      "credentials": {
-        "openAiApi": {
-          "id": "I92UkH9mThS7D4I6",
-          "name": "CodPal Account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "content": "",
         "height": 275,
         "width": 340,
@@ -1146,7 +1102,7 @@
         "promptType": "define",
         "text": "=Write a chapter for the article: {{ $('Settings').item.json.title }}, {{  $('Create post outline').item.json.output.subtitle }}.\nAritble introduction: {{ $('Create post outline').item.json.output.introduction }}\nSEO keywords: {{ $('Create post outline').item.json.output.keywords }}\n\n{{ $itemIndex > 0 ?\n`The previous chapter talks about ${$input.all()[$itemIndex-1].json.title} - ${$input.all()[$itemIndex-1].json.prompt}`\n: \"\" }}\n{{ $itemIndex < $input.all().length ?\n  `The following chapter will talk about ${$input.all()[$itemIndex+1].json.title} - ${$input.all()[$itemIndex+1].json.prompt}`\n: \"\" }}\n\nYour task is to write the current chapter, integrating it seamlessly into the article.\n\nChapter {{ $itemIndex + 1 }}\n- title: {{ $json.title }}\n- prompt: {{ $json.prompt }}\n\nOutput only the chapter with no other commentery.",
         "options": {
-          "systemMessage": "=You are an SEO Blog Post Post Copywriter. Your task is to write chapters for blog posts. The user will provide you the article subject. They will also provide you with SEO keywords to try and include in your writing where applicable.\n\nGuidelines:\n- Don't add internal titles or headings.\n- Use ONLY HTML for formatting, but limited to bold, italic and lists.\n- Each chapther should be around {{ Math.round(1200/ $('Create post outline').item.json.output.chapters.length) }} words\n- Go deep in the topic you treat, don't just throw some superficial info\n- Search on Wikipedia to verify the accuracy of what you write.\n- Consider the previous and following chapters when writing the text for this chapter. The text must be coherent with the previous and following chapters.\n- This chapter should not repeat the concepts already exposed in the previous chapter.\n- This chapter is a part of a larger article so don't include an introduction or conclusions. This chapter should merge with the rest of the article.\n- Use short, easy to read paragraphs targetted at below-average readers.\n- Prefer active counterparts over passive voice.\n- IMPORTANT: Sentenses must be maximum 20 words."
+          "systemMessage": "=You are an SEO Blog Post Post Copywriter. Your task is to write SEO optimised chapters for blog posts. The user will provide you the article subject. They will also provide you with SEO keywords to try and include in your writing where applicable.\n\nGuidelines:\n- Don't add internal titles or headings.\n- Go deep in the topic you treat, don't just throw some superficial info\n- Search on Wikipedia to verify the accuracy of what you write.\n- Consider the previous and following chapters when writing the text for this chapter. The text must be coherent with the previous and following chapters.\n- This chapter should not repeat the concepts already exposed in the previous chapter.\n- This chapter is a part of a larger article so don't include an introduction or conclusions. This chapter should merge with the rest of the article.\n- Use ONLY HTML for formatting, but limited to bold, italic and lists.\n- A chapther must not exceed 300 words.\n- Use short, easy to read paragraphs targetted at below-average readers.\n- Prefer active counterparts over passive voice.\n- Use only transition words between sentences.\n- IMPORTANT: Sentenses must be maximum 20 words.\n- Respect the user's language. "
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -1404,7 +1360,14 @@
     },
     {
       "parameters": {
-        "options": {}
+        "options": {
+          "summarizationMethodAndPrompts": {
+            "values": {
+              "combineMapPrompt": "Write a concise summary of the following:\n\n\n\"{text}\"\n\n\nCONCISE SUMMARY (in original language):",
+              "prompt": "Write a concise summary of the following:\n\n\n\"{text}\"\n\n\nCONCISE SUMMARY (in original language):"
+            }
+          }
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.chainSummarization",
       "typeVersion": 2,
@@ -1587,7 +1550,7 @@
         "promptType": "define",
         "text": "=Write a conclusion for the following article.\n\nSummary: {{ $('Summarization Chain').item.json.response.text }}",
         "options": {
-          "systemMessage": "You are a professional copywriter.\nThe user will provide a summary to an article.\nYour task is to write a conclusion for the article.\nBefore writing the article, call the get_old_post_excerpts tool to get a list of old articles.\nIdentify ONE article that might be a good next read for the reader and include a link to it in your conclusion.\nThe link should be seamless, as if part of the flow of the conclusion.\nOutput only the conclusion without any other commentary.\nLink format:\n<a href=\"{link}\">{title}</a>"
+          "systemMessage": "You are a professional copywriter.\nThe user will provide a summary to an article.\nYour task is to write a conclusion for the article.\nBefore writing the article, call the get_old_post_excerpts tool to get a list of old articles.\nIdentify ONE article that might be a good next read for the reader and include a link to it in your conclusion.\nThe link should be seamless, as if part of the flow of the conclusion.\nOutput only the conclusion without any other commentary.\nRespect the user's language.\nLink format:\n<a href=\"{link}\">{title}</a>"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -1672,8 +1635,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        5300,
-        500
+        5120,
+        460
       ],
       "id": "f8e70b5b-bc07-4181-a346-6e9b2f53a4c7",
       "name": "OpenAI 4o",
@@ -1739,31 +1702,31 @@
             {
               "id": "3095fd73-7f8b-4466-b111-f9b2b38ab196",
               "name": "postId",
-              "value": "={{ $('Set image ID for the post').item.json.id }}",
+              "value": "={{ $('Set image ID and excerpt').item.json.id }}",
               "type": "string"
             },
             {
               "id": "d67d58b7-e776-4ecc-bdee-1f1805696cc7",
               "name": "date",
-              "value": "={{ $('Set image ID for the post').item.json.date }}",
+              "value": "={{ $('Set image ID and excerpt').item.json.date }}",
               "type": "string"
             },
             {
               "id": "dea7d3e0-c259-40d8-a23a-b80d57064a68",
               "name": "link",
-              "value": "={{ $('Set image ID for the post').item.json.link }}",
+              "value": "={{ $('Set image ID and excerpt').item.json.link }}",
               "type": "string"
             },
             {
               "id": "08409e81-ebc9-49fe-adb3-4bdc6dfdfb00",
               "name": "title",
-              "value": "={{ $('Set image ID for the post').item.json.title.rendered }}",
+              "value": "={{ $('Set image ID and excerpt').item.json.title.rendered }}",
               "type": "string"
             },
             {
               "id": "fd3daabe-8022-4158-9bd5-c6ca3a185313",
               "name": "excerpt",
-              "value": "={{ $('Set image ID for the post').item.json.excerpt.rendered }}",
+              "value": "={{ $('Set image ID and excerpt').item.json.excerpt.rendered }}",
               "type": "string"
             }
           ]
@@ -2265,6 +2228,9 @@
             {
               "name": "wordpressClient",
               "type": "object"
+            },
+            {
+              "name": "comments"
             }
           ]
         }
@@ -2313,6 +2279,83 @@
       "id": "9e38fa12-8961-4c19-b9f6-6c5ac3cf000e",
       "name": "Chapter Image Prompts",
       "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$('WP Creds').first().json.URL}}/wp-json/wp/v2/posts/{{ $('Post on Wordpress').item.json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"featured_media\": {{ $json.id }},\n  \"excerpt\": \"{{ $('Trigger').first().json.description }}\"\n}",
+        "options": {}
+      },
+      "id": "ed71ef5d-9d2e-40e2-bb05-c3c7708d83de",
+      "name": "Set image ID and excerpt",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        6760,
+        220
+      ],
+      "typeVersion": 4.1,
+      "retryOnFail": true,
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1540,
+        500
+      ],
+      "id": "f0805ddf-1c8b-4144-8468-561788142b57",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5460,
+        460
+      ],
+      "id": "96f7413a-0ee9-4bc4-84c2-928ef9eb918f",
+      "name": "OpenAI 4o1",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -2367,6 +2410,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-30T14:52:03.000Z",
-  "versionId": "3b352768-6311-4220-9c5c-2a1ffc45d245"
+  "updatedAt": "2025-04-01T17:47:25.000Z",
+  "versionId": "efda7195-7f72-4e5b-a77e-c58e294f5dc3"
 }
