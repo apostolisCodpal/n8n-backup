@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Schedule Trigger": {
       "main": [
@@ -111,7 +111,7 @@
       "main": [
         [
           {
-            "node": "Ask to publish",
+            "node": "If already working1",
             "type": "main",
             "index": 0
           }
@@ -192,6 +192,35 @@
         [
           {
             "node": "Get Idea",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If already working1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ask to publish",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Generate Post",
             "type": "main",
             "index": 0
           }
@@ -534,8 +563,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2480,
-        100
+        2240,
+        160
       ],
       "id": "6d8f8c8a-93fd-4176-906e-2cda9943336e",
       "name": "Edit Fields"
@@ -553,7 +582,8 @@
           "value": {
             "wordpressClientId": "={{ $('Config').item.json.wordpressClientId }}",
             "title": "={{ $('Get Idea').item.json.output.title }}",
-            "description": "={{ $('Get Idea').item.json.output.description }}"
+            "description": "={{ $('Get Idea').item.json.output.description }}",
+            "comments": "={{ $('Config').item.json.message }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -583,6 +613,16 @@
               "display": true,
               "canBeUsedToMatch": true,
               "type": "string"
+            },
+            {
+              "id": "comments",
+              "displayName": "comments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -622,7 +662,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2720,
+        3140,
         -100
       ],
       "id": "bd7a80f7-db1c-4a09-b938-52bde845fa67",
@@ -663,7 +703,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2920,
+        3340,
         -100
       ],
       "id": "f66b16bf-d9fa-43e9-8cb2-0bb9dc42b821",
@@ -680,7 +720,7 @@
       "type": "n8n-nodes-base.wordpress",
       "typeVersion": 1,
       "position": [
-        3180,
+        3600,
         -180
       ],
       "id": "370eb5b9-f376-4afc-b194-a84bdd209cd8",
@@ -728,7 +768,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3400,
+        3820,
         -180
       ],
       "id": "7ce60be5-dff1-4a91-a26a-2f184d049ce1",
@@ -780,8 +820,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1820,
-        300
+        1720,
+        380
       ],
       "id": "f184ce49-ddff-4f8c-aa69-3a18e8eea2b9",
       "name": "Wait",
@@ -798,7 +838,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3180,
+        3600,
         40
       ],
       "id": "cdbb0572-bf67-414a-aeee-fe6bb5545297",
@@ -810,6 +850,51 @@
           "name": "Telegram account"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "82f539c0-b1d0-4934-a196-40c9390e573a",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "ALREADY_GENERATING",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2740,
+        -100
+      ],
+      "id": "090edb59-1150-4933-acb8-8e5c03dfc45d",
+      "name": "If already working1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2980,
+        140
+      ],
+      "id": "f652ca07-1abc-4ded-a3cb-cd959966b418",
+      "name": "Wait1",
+      "webhookId": "20646089-fe6a-448d-92e4-5408f0fb5976"
     }
   ],
   "pinData": {},
@@ -826,6 +911,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-03-30T19:00:33.000Z",
-  "versionId": "46c4104b-9267-4b9e-9046-f313eed01330"
+  "updatedAt": "2025-04-01T12:55:39.000Z",
+  "versionId": "f7ed018e-83e2-4260-a888-aa1acc3b1fbd"
 }
