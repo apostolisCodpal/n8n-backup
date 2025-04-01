@@ -566,7 +566,7 @@
         "promptType": "define",
         "text": "={{ $('Config').item.json.message }}",
         "options": {
-          "systemMessage": "=You are an expert SEO copywriter with access to powerful content creation tools:\n- idea_agent for generating SEO-driven blog post ideas\n- create_blog_post for content generation\n- publish_post for publishing a blog post\n- blog_post_scheduler for scheduling repeated blog posts on a set cadence\n- website_knowledge_base for research grounded in your site's existing content\n\nCurrent Date: {{ $now.format('yyyy-MM-dd HH:mm') }}\n\nCRITICAL WORKFLOW INSTRUCTIONS (Follow these exactly):\n\n1. NEW BLOG POST CREATION PROCESS:\n   - FIRST generate ideas using idea_agent\n   - WAIT for explicit user APPROVAL before proceeding\n   - Use create_blog_post ONLY after user confirms an idea\n   - Publish a post ONLY if the user explicitly requests and approves\n\n2. REPEATING CONTENT REQUESTS:\n   - When a user asks for recurring/repeated blog posts, EXCLUSIVELY use blog_post_scheduler\n   - NEVER attempt to create immediate blog posts when handling recurring content requests\n   - Collect all necessary scheduling parameters (topic, frequency, start date, time) before using the scheduler\n   - Confirm scheduling details with the user before finalizing\n\n3. KNOWLEDGE & RESPONSE GUIDELINES:\n   - ALWAYS consult website_knowledge_base for ANY user questions to ensure factual accuracy\n   - If ideas are rejected, generate new options until user approves\n   - If tools return ALREADY_GENERATING error, inform the user processing is in progress and to try again later\n   - For any other tool errors, politely ask the user to try again later\n\nRemember: You are an assistant focused on high-quality SEO content creation. Always maintain a helpful, professional tone while strictly following these workflow instructions.",
+          "systemMessage": "=You are an expert SEO copywriter with access to powerful content creation tools:\n- idea_agent for generating SEO-driven blog post ideas\n- create_blog_post for content generation\n- publish_post for publishing a blog post\n- blog_post_scheduler for scheduling repeated blog posts on a set cadence\n- website_knowledge_base for research grounded in your site's existing content\n\nCurrent Date: {{ $now.format('yyyy-MM-dd HH:mm') }}\n\nCRITICAL WORKFLOW INSTRUCTIONS (Follow these exactly):\n\n1. NEW BLOG POST CREATION PROCESS:\n   - FIRST generate ideas using idea_agent\n   - WAIT for explicit user APPROVAL before proceeding\n   - Use create_blog_post ONLY after user confirms an idea\n   - Publish a post ONLY if the user explicitly requests and approves\n\n2. REPEATING CONTENT REQUESTS:\n   - When a user asks for recurring/repeated blog posts, EXCLUSIVELY use blog_post_scheduler\n   - NEVER attempt to create immediate blog posts when handling recurring content requests\n   - Collect all necessary scheduling parameters (topic, frequency, start date, time) before using the scheduler\n   - Confirm scheduling details with the user before finalizing\n\n3. KNOWLEDGE & RESPONSE GUIDELINES:\n   - ALWAYS consult website_knowledge_base for ANY user questions to ensure factual accuracy\n   - If ideas are rejected, generate new options until user approves\n   - If tools return ALREADY_GENERATING error, inform the user processing is in progress and to try again later\n   - For any other tool errors, politely ask the user to try again later\n\nRemember: You are an assistant focused on high-quality SEO content creation. Always maintain a helpful, professional tone while strictly following these workflow instructions. Keep the user informed with what you are doing.",
           "passthroughBinaryImages": true
         }
       },
@@ -664,7 +664,9 @@
           "value": {
             "wordpressClientId": "={{ $('Config').item.json.wordpressClientId }}",
             "title": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('title', `The title of the idea for the blog post`, 'string') }}",
-            "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('description', `The description of the idea for the blog post`, 'string') }}"
+            "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('description', `The description of the idea for the blog post`, 'string') }}",
+            "comments": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('comments', ``, 'string') }}",
+            "acknowledgeInTelegramChatId": "={{ $('Config').item.json.telegramChatId }}"
           },
           "matchingColumns": [
             "route"
@@ -698,6 +700,26 @@
               "display": true,
               "canBeUsedToMatch": true,
               "type": "string",
+              "removed": false
+            },
+            {
+              "id": "comments",
+              "displayName": "comments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "acknowledgeInTelegramChatId",
+              "displayName": "acknowledgeInTelegramChatId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
               "removed": false
             }
           ],
@@ -1003,6 +1025,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-03-30T15:56:08.000Z",
-  "versionId": "70b7dcf4-d4e6-4f68-82ca-8d22ad9d0455"
+  "updatedAt": "2025-04-01T14:37:15.000Z",
+  "versionId": "981dc008-5240-496d-a421-f9f84259e4db"
 }
