@@ -1,0 +1,145 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "WP Creds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "WP Creds": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-01T09:37:35.132Z",
+  "id": "XanK4acXyrFpQvnH",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Testing",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "29b1a5b5-c872-4b50-a236-273f308da409",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "postId": "5636",
+        "updateFields": {}
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        760,
+        0
+      ],
+      "id": "29996852-df45-4048-a5bf-a88b52794721",
+      "name": "Wordpress",
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://codpal.com/wp-json/wp/v2/posts/5636",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"excerpt\": \"Testing setting the excerpt from the API\",\n  \"meta\": {\n    \"title\": \"Testing meta title\",\n    \"description\": \"Testing meta description\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        0
+      ],
+      "id": "ff4775db-04d5-4bbb-9b69-b14b54fd59dd",
+      "name": "HTTP Request",
+      "credentials": {
+        "wordpressApi": {
+          "id": "XgkEm6HEu6J7cAxr",
+          "name": "WP Creds"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "43ad614b-29d6-4ff2-bc72-9bb6d67a87ec",
+              "name": "Wordpress Username",
+              "value": "apostolis.stephanou@gmail.com",
+              "type": "string"
+            },
+            {
+              "id": "8bb1a8de-e2aa-4852-8736-d209f9b23695",
+              "name": "Wordpress Password",
+              "value": "6qbs fmaO kidl pQNm sT6I LyaU",
+              "type": "string"
+            },
+            {
+              "id": "9d01191b-380b-4444-bc3d-efafa064be10",
+              "name": "URL",
+              "value": "https://codpal.com",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "4de08ddd-cf8a-4499-b0d0-465361cb300c",
+      "name": "WP Creds"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-backup",
+  "repo_owner": "apostolisCodpal",
+  "repo_path": "https://github.com/apostolisCodpal/n8n-backup/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-01T09:43:13.000Z",
+  "versionId": "d4868b5c-07e5-4bae-b45b-68aa2cb94cc6"
+}
