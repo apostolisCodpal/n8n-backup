@@ -34,7 +34,7 @@
       "main": [
         [
           {
-            "node": "Generate Post",
+            "node": "If acknowledgeInTelegramChatId",
             "type": "main",
             "index": 0
           }
@@ -75,6 +75,35 @@
         [
           {
             "node": "Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If acknowledgeInTelegramChatId": {
+      "main": [
+        [
+          {
+            "node": "Acknowledge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Acknowledge": {
+      "main": [
+        [
+          {
+            "node": "Generate Post",
             "type": "main",
             "index": 0
           }
@@ -591,7 +620,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -760,
+        -180,
         140
       ],
       "id": "36b98528-fa64-4e48-bf08-93e8ea677156",
@@ -616,6 +645,13 @@
             },
             {
               "name": "description"
+            },
+            {
+              "name": "comments"
+            },
+            {
+              "name": "acknowledgeInTelegramChatId",
+              "type": "number"
             }
           ]
         }
@@ -643,7 +679,8 @@
             "wordpressClientId": "={{ $('Get Wordpress Client').item.json.id }}",
             "wordpressClient": "={{ $('Get Wordpress Client').item.json }}",
             "title": "={{ $('Trigger').item.json.title }}",
-            "description": "={{ $('Trigger').item.json.description }}"
+            "description": "={{ $('Trigger').item.json.description }}",
+            "comments": "={{ $('Trigger').item.json.comments }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -686,6 +723,16 @@
               "canBeUsedToMatch": true,
               "type": "object",
               "removed": false
+            },
+            {
+              "id": "comments",
+              "displayName": "comments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -696,7 +743,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -1040,
+        -460,
         140
       ],
       "id": "eb015911-d806-4e28-95a2-01dd8f743c41",
@@ -711,11 +758,78 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -540,
+        40,
         140
       ],
       "id": "826c37d3-fd78-4c8c-9cd4-edb8dddb47ec",
       "name": "Output"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0727277c-dc33-44e3-b88f-0a28c871700e",
+              "leftValue": "={{ $('Trigger').item.json.acknowledgeInTelegramChatId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "cce3de50-85ef-408f-9f17-0526d3aa57c6",
+              "leftValue": "={{ $('Trigger').item.json.acknowledgeInTelegramChatId }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1100,
+        140
+      ],
+      "id": "bd4c32c7-4721-48ab-b64f-7cd77549dd92",
+      "name": "If acknowledgeInTelegramChatId"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Trigger').item.json.acknowledgeInTelegramChatId }}",
+        "text": "Ok, I'll get to work.",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -820,
+        40
+      ],
+      "id": "0edd851a-9bbb-426d-aaf2-5d649fe22794",
+      "name": "Acknowledge",
+      "webhookId": "d5234826-ed03-48ee-a10e-7973fd00bac9",
+      "credentials": {
+        "telegramApi": {
+          "id": "EHNvbxKETcV3t5MW",
+          "name": "Telegram account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -738,6 +852,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-30T10:06:10.000Z",
-  "versionId": "3b093e0c-de3f-4b0d-8b26-83a4cf0ee854"
+  "updatedAt": "2025-04-01T14:25:13.000Z",
+  "versionId": "32934054-fa1f-4078-a689-0b86539afd24"
 }
