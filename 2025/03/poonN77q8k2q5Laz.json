@@ -105,7 +105,7 @@
       "main": [
         [
           {
-            "node": "If title <= 60 chats",
+            "node": "If title <= 60 chars",
             "type": "main",
             "index": 0
           }
@@ -160,19 +160,7 @@
       "main": [
         [
           {
-            "node": "If title <= 60 chats",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If title <= 60 chats": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Reduce title length to 60 chars",
+            "node": "If title <= 60 chars",
             "type": "main",
             "index": 0
           }
@@ -211,6 +199,69 @@
           }
         ]
       ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Reduce description length to 160 chars",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If description <> 140-160 chars",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reduce description length to 160 chars": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If title <= 60 chars": {
+      "main": [
+        [
+          {
+            "node": "If description <> 140-160 chars",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reduce title length to 60 chars",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If description <> 140-160 chars": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Reduce description length to 160 chars",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-29T20:05:00.338Z",
@@ -226,7 +277,7 @@
         "text": "={{ $json.query }}\n\nSEO Content Strategy: {{ $json.seoContentStrategy }}\n\nThe idea must be different than the existing posts.\nExisting posts:\n{{ $json.existingPosts.map(x => x.title).join(\"\\n\") }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "You are an ideas agent specialized in generating post ideas based on an SEO Content Strategy document provided by the user. Follow these instructions:\n\t1.\tInput Processing:\n\t•\tRead and analyze the SEO Content Strategy document provided by the user.\n\t•\tIdentify key topics, trends, keywords, and any data insights that can inform a new post idea.\n\t2.\tIdea Generation:\n\t•\tDevelop a creative and data-driven post idea that aligns with the strategy.\n\t•\tEnsure that the idea is innovative, relevant, and actionable.\n\t3.\tOutput Requirements:\n\t•\tProduce the final output in JSON format.summarizing the idea.\n\t•\tEnsure both the title and description clearly reflect the insights derived from the provided SEO content strategy.\n\t4.\tConstraints:\n\t•\tDo not exceed the 100-character limit for the description.\n\t•\tGround your idea entirely on the data and insights from the SEO Content Strategy document.\n\t•\tMaintain clarity and brevity in both the title and the description.\n\nYour goal is to produce a JSON output that provides a clear, data-driven idea for a new post, adhering strictly to the formatting and length constraints specified.\n\nRespond only with:\n{\n\"title\": \"A concise, engaging title for the post idea. At least 100 characters\",\n\"description\": \"A short description. Max 100 characters\"\n}"
+          "systemMessage": "=You are an ideas agent specialized in generating post ideas based on an SEO Content Strategy document provided by the user. Follow these instructions:\n\t1.\tInput Processing:\n\t•\tRead and analyze the SEO Content Strategy document provided by the user.\n\t•\tIdentify key topics, trends, keywords, and any data insights that can inform a new post idea.\n\t2.\tIdea Generation:\n\t•\tDevelop a creative and data-driven post idea that aligns with the strategy.\n\t•\tEnsure that the idea is innovative, relevant, and actionable.\n\t3.\tOutput Requirements:\n\t•\tProduce the final output in JSON format.summarizing the idea.\n\t•\tEnsure both the title and description clearly reflect the insights derived from the provided SEO content strategy.\n\t4.\tConstraints:\n    •\tDo not exceed the 60-character limit for the title.\n\t•\tDescription must be 140-160 characters.\n\t•\tGround your idea entirely on the data and insights from the SEO Content Strategy document.\n\t•\tMaintain clarity and brevity in both the title and the description.\n\nYour goal is to produce a JSON output that provides a clear, data-driven idea for a new post, adhering strictly to the formatting and length constraints specified.\n\nRespond only with:\n{\n\"title\": \"A concise, engaging SEO title for the post idea. Max 60 characters.\",\n\"description\": \"A short SEO description. Max 160 characters.\"\n}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -589,39 +640,6 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "79e3e372-ee59-4516-96c3-d4c78eb338ce",
-              "leftValue": "={{ $json.output.title.length }}",
-              "rightValue": 60,
-              "operator": {
-                "type": "number",
-                "operation": "lte"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        1140,
-        0
-      ],
-      "id": "4d113ed9-1d75-45a6-a832-fefeaea740f1",
-      "name": "If title <= 60 chats"
-    },
-    {
-      "parameters": {
         "operation": "getAll",
         "returnAll": true,
         "options": {
@@ -700,6 +718,149 @@
       ],
       "id": "b6a79b8c-f3cf-4abd-a8db-9ded569e74bf",
       "name": "Trigger"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2380,
+        340
+      ],
+      "id": "8621887b-2d5d-44f6-8066-5bce9edacd45",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "I92UkH9mThS7D4I6",
+          "name": "CodPal Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9e727085-a67a-4031-8ad0-f3505c532ede",
+              "name": "output.title",
+              "value": "={{ $('If description <> 140-160 chars').item.json.output.title }}",
+              "type": "string"
+            },
+            {
+              "id": "d5469d41-c5b9-4fd2-8bf5-ce89eae72213",
+              "name": "output.description",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2760,
+        100
+      ],
+      "id": "d986bf48-ade5-4ce6-857c-c385969a8d00",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Adjust the length of the following SEO description to be between 140-160 characters. Maintain the writing style and meaning as much as possible. Do no use \":\".\n\nTitle: {{ $json.output.title }}\nDescription: {{ $json.output.description }} (currently {{ $json.output.description.length }} characters long)\n\nOutput only the shortened description. Nothing else."
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        2400,
+        100
+      ],
+      "id": "2f824245-7d59-4bd3-a120-12819b14db4d",
+      "name": "Reduce description length to 160 chars"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "79e3e372-ee59-4516-96c3-d4c78eb338ce",
+              "leftValue": "={{ $json.output.title.length }}",
+              "rightValue": 60,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        0
+      ],
+      "id": "4d113ed9-1d75-45a6-a832-fefeaea740f1",
+      "name": "If title <= 60 chars"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "79e3e372-ee59-4516-96c3-d4c78eb338ce",
+              "leftValue": "={{ $json.output.description.length }}",
+              "rightValue": 140,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            },
+            {
+              "id": "958e2aae-5fe9-4b62-b7ce-40d1b0a4a88c",
+              "leftValue": "={{ $json.output.description.length }}",
+              "rightValue": 160,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2100,
+        -20
+      ],
+      "id": "fc546905-8617-4be1-8b56-8c966e6b52db",
+      "name": "If description <> 140-160 chars"
     }
   ],
   "pinData": {
@@ -731,6 +892,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-30T15:05:17.000Z",
-  "versionId": "0ac969c6-335c-42a9-ac5e-65f7cfc5f7d0"
+  "updatedAt": "2025-04-01T14:02:02.000Z",
+  "versionId": "32ce10a3-6655-46eb-a9d3-c7bb0dabd586"
 }
