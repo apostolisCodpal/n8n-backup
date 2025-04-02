@@ -558,7 +558,7 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "=post-idea-{{ $('Params').item.json.id }}",
+        "sessionKey": "=post-idea1-{{ $('Params').item.json.id }}",
         "contextWindowLength": 10
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
@@ -892,6 +892,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-04-01T14:02:02.000Z",
-  "versionId": "32ce10a3-6655-46eb-a9d3-c7bb0dabd586"
+  "updatedAt": "2025-04-02T17:14:07.000Z",
+  "versionId": "acabac78-0efb-4b4e-8210-fa1802d988a7"
 }
