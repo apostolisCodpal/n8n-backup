@@ -39,7 +39,7 @@
       "main": [
         [
           {
-            "node": "Generate image",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -110,6 +110,62 @@
           }
         ]
       ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Gemini 2.0 Flash Image Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Upload media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 2.0 Flash Image Generation": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-03-29T17:28:10.930Z",
@@ -121,24 +177,8 @@
   "nodes": [
     {
       "parameters": {
-        "content": "The image is generated with DALL-E 3, uploaded to WordPress, and analyzed by ChatGPT for obvious defects and regenerated if necessary",
-        "height": 80,
-        "width": 938,
-        "color": 7
-      },
-      "id": "236b1a5d-25e9-4e2e-a246-9c48912ded26",
-      "name": "Sticky Note11",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -340,
-        -340
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
         "method": "POST",
-        "url": "={{$('WP Creds').item.json.URL}}/wp-json/wp/v2/media",
+        "url": "={{$('WP Creds').first().json.URL}}/wp-json/wp/v2/media",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "wordpressApi",
         "sendHeaders": true,
@@ -159,7 +199,7 @@
       "name": "Upload media",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        580,
+        820,
         -120
       ],
       "typeVersion": 4.1,
@@ -181,8 +221,8 @@
       "type": "@n8n/n8n-nodes-langchain.sentimentAnalysis",
       "typeVersion": 1,
       "position": [
-        80,
-        240
+        100,
+        580
       ],
       "id": "414c290f-3a6c-4aac-a820-f8d396142f82",
       "name": "Sentiment Analysis",
@@ -200,8 +240,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        120,
-        440
+        140,
+        780
       ],
       "id": "5621bbe3-4712-48d4-8ce4-cf8396f67417",
       "name": "OpenAI Mini",
@@ -270,8 +310,8 @@
       "name": "Delete media",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        1040,
-        300
+        860,
+        600
       ],
       "typeVersion": 4.1,
       "retryOnFail": true,
@@ -289,7 +329,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1040,
+        1280,
         -120
       ],
       "id": "c55993ea-b66a-4363-8bdb-16314cfbf771",
@@ -309,8 +349,8 @@
       "name": "Generate image",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "position": [
-        -260,
-        -120
+        380,
+        -100
       ],
       "typeVersion": 1,
       "retryOnFail": true,
@@ -338,8 +378,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        -120,
-        240
+        -100,
+        580
       ],
       "id": "d5ef4206-ed07-49ff-b103-3f529efbe1cb",
       "name": "Review image",
@@ -366,8 +406,8 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.5,
       "position": [
-        480,
-        260
+        500,
+        600
       ],
       "id": "64ada40f-8bca-42e2-8bea-6f5b68d137a6",
       "name": "Fix prompt"
@@ -385,8 +425,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        520,
-        480
+        540,
+        820
       ],
       "id": "e9886471-5df8-4667-b451-6ada77236c2b",
       "name": "Thinking model",
@@ -400,7 +440,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "={{$('WP Creds').item.json.URL}}/wp-json/wp/v2/media/{{ $json.id }}",
+        "url": "={{$('WP Creds').first().json.URL}}/wp-json/wp/v2/media/{{ $json.id }}",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "wordpressApi",
         "sendBody": true,
@@ -408,7 +448,7 @@
           "parameters": [
             {
               "name": "description",
-              "value": "={{ $('Trigger').item.json.prompt }}"
+              "value": "={{ $('Trigger').first().json.prompt }}"
             }
           ]
         },
@@ -418,7 +458,7 @@
       "name": "Update Media Caption",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        800,
+        1040,
         -120
       ],
       "typeVersion": 4.1,
@@ -429,6 +469,110 @@
           "name": "WP Creds"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36a56f43-e310-498a-9993-1dfaa03fb2bc",
+              "name": "prompt",
+              "value": "={{ `Generate an image with the following description:\n\nA vibrant futuristic office scene featuring a diverse group of professionals collaborating around holographic interfaces and AI-powered digital maps, each immersed in a global tech recruitment hub that bridges remote leadership with innovation. The image blends sleek modern design with dynamic energy, capturing the seamless integration of technology and human expertise in a high-tech, interconnected workspace.` }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -260,
+        -120
+      ],
+      "id": "4684a3a3-09a0-415b-b9f3-f83877d02c9e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -760,
+        220
+      ],
+      "id": "ce905af0-767e-4765-9594-0d1e8066ea96",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "data",
+        "options": {
+          "mimeType": "={{ $json.mimeType }}"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        -360
+      ],
+      "id": "24a1ce32-b613-4777-ba75-38d30766d3f1",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        520
+      ],
+      "id": "51dc2ac6-300d-4152-a66a-4343ab4a960e",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.first()?.json?.candidates?.[0]?.content?.parts?.[0]?.inlineData\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        -360
+      ],
+      "id": "5f3e5af8-d52a-4a59-897d-36bd9a313d91",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp-image-generation:streamGenerateContent",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googlePalmApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contents\": [{\n    \"parts\":[{\n      \"text\": \"{{ $json.prompt.replaceAll(\"\\n\", \"\\\\n\") }}\"\n    }]\n  }],\n  \"generationConfig\": {\n    \"responseModalities\": [\"image\",\"text\"],\n    \"responseMimeType\": \"text/plain\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -40,
+        -120
+      ],
+      "id": "aefb7750-ab46-4829-be2d-05b5cb24a8ff",
+      "name": "Gemini 2.0 Flash Image Generation",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "JIwT7RqCsuoKe6zJ",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
+      "onError": "continueErrorOutput"
     }
   ],
   "pinData": {
@@ -454,6 +598,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-30T14:55:28.000Z",
-  "versionId": "001b8ffa-375f-4db7-b206-5ce84ce22668"
+  "updatedAt": "2025-04-02T09:19:22.000Z",
+  "versionId": "e1092b47-0163-4291-bb94-0349ea6e0aa9"
 }
